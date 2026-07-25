@@ -1,0 +1,8 @@
+node_modules
+.next
+.open-next
+.wrangler
+*.log
+.dev.vars
+/*.png
+.dev-server.pid
