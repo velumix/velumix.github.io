@@ -8,3 +8,4 @@ out
 .dev.vars
 /*.png
 .dev-server.pid
+tsconfig.tsbuildinfo
