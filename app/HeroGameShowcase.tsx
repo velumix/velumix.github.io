@@ -61,7 +61,7 @@ export default function HeroGameShowcase() {
     if (paused || games.length < 2) return;
     const timer = window.setInterval(
       () => setActive((current) => (current + 1) % games.length),
-      5200,
+      7000,
     );
     return () => window.clearInterval(timer);
   }, [games.length, paused]);
@@ -97,19 +97,18 @@ export default function HeroGameShowcase() {
         )}
         <div className="hero-shade" />
         <div className="hero-grid" />
-        <div className="hero-scan" />
 
         <div className="hero-kicker">
-          <span><i /> Selected shipped work</span>
+          <span><i /> Games I&apos;ve helped ship</span>
           <span>{String(active + 1).padStart(2, "0")} / {String(games.length).padStart(2, "0")}</span>
         </div>
 
         <div className="hero-copy">
-          <p>Roblox gameplay engineer · Software engineer</p>
-          <h1>Systems<br />players <em>feel.</em></h1>
+          <p>Roblox gameplay engineer</p>
+          <h1>I make games<br /><em>feel good.</em></h1>
           <span>
-            I build responsive mechanics, living simulations, and the
-            production architecture that keeps them reliable.
+            Controllers, combat, AI, physics, and the server systems
+            that hold everything together.
           </span>
         </div>
 
@@ -148,7 +147,7 @@ export default function HeroGameShowcase() {
       </div>
 
       <a className="hero-scroll" href="#work">
-        Explore the work <span>↓</span>
+        See my work <span>↓</span>
       </a>
     </div>
   );

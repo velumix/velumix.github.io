@@ -17,11 +17,11 @@
         "hasVerifiedBadge": false
       },
       "stats": {
-        "playing": 94,
-        "visits": 6985012,
-        "favorites": 76906,
+        "playing": 121,
+        "visits": 6985323,
+        "favorites": 76908,
         "maxPlayers": 35,
-        "upVotes": 19377,
+        "upVotes": 19379,
         "downVotes": 739
       },
       "metadata": {
@@ -51,9 +51,9 @@
         "hasVerifiedBadge": false
       },
       "stats": {
-        "playing": 13,
-        "visits": 358997,
-        "favorites": 88,
+        "playing": 6,
+        "visits": 359225,
+        "favorites": 89,
         "maxPlayers": 8,
         "upVotes": 51,
         "downVotes": 20
@@ -86,12 +86,12 @@
         "hasVerifiedBadge": true
       },
       "stats": {
-        "playing": 7008,
-        "visits": 37696005,
-        "favorites": 102998,
+        "playing": 6624,
+        "visits": 37710030,
+        "favorites": 103013,
         "maxPlayers": 50,
-        "upVotes": 123718,
-        "downVotes": 7620
+        "upVotes": 123733,
+        "downVotes": 7623
       },
       "metadata": {
         "created": "2026-04-20T02:00:10.124Z",
@@ -128,9 +128,9 @@
         "hasVerifiedBadge": true
       },
       "stats": {
-        "playing": 1231,
-        "visits": 102222731,
-        "favorites": 151521,
+        "playing": 1209,
+        "visits": 102225499,
+        "favorites": 151523,
         "maxPlayers": 14,
         "upVotes": 42375,
         "downVotes": 16007
@@ -165,11 +165,11 @@
         "hasVerifiedBadge": true
       },
       "stats": {
-        "playing": 266,
-        "visits": 14780682,
-        "favorites": 47815,
+        "playing": 257,
+        "visits": 14781157,
+        "favorites": 47817,
         "maxPlayers": 5,
-        "upVotes": 95669,
+        "upVotes": 95670,
         "downVotes": 4674
       },
       "metadata": {
@@ -184,5 +184,5 @@
       "video": null
     }
   ],
-  "fetchedAt": "2026-07-26T14:28:09.937Z"
+  "fetchedAt": "2026-07-26T14:50:36.870Z"
 }

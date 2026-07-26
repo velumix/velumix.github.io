@@ -194,8 +194,8 @@ body::before {
 
 .effects-ready .reveal-ready {
   opacity: 0;
-  transform: translateY(38px);
-  transition: opacity .75s ease, transform .85s cubic-bezier(.16,1,.3,1);
+  transform: translateY(18px);
+  transition: opacity .5s ease, transform .58s cubic-bezier(.16,1,.3,1);
 }
 .effects-ready .reveal-ready.revealed { opacity: 1; transform: none; }
 
@@ -370,10 +370,8 @@ body::before {
   color: transparent;
   font-style: normal;
   -webkit-text-stroke: 1px rgba(244,247,245,.72);
-  background: linear-gradient(100deg, transparent 18%, rgba(194,255,71,.58) 43%, rgba(105,183,255,.38) 51%, transparent 72%);
-  background-size: 240% 100%;
+  background: linear-gradient(100deg, transparent 15%, rgba(194,255,71,.5) 70%);
   background-clip: text;
-  animation: signal 5s ease-in-out infinite;
 }
 @keyframes signal { 50% { background-position: -160% 0; } }
 .hero-copy > span { max-width: 470px; margin-top: 28px; display: block; color: #b3bcb7; font-size: .94rem; line-height: 1.7; }
@@ -437,7 +435,7 @@ body::before {
 .hero-selector button.active { color: var(--ink); background: rgba(194,255,71,.05); }
 .hero-selector button.active span { color: var(--acid); }
 .hero-selector button.active img { filter: none; transform: scale(1.04); }
-.hero-selector button.active > i { right: 0; transition: right 5.2s linear; }
+.hero-selector button.active > i { right: 0; transition: right 7s linear; }
 .hero-scroll { position: absolute; left: 0; bottom: -36px; display: flex; align-items: center; gap: 12px; color: #68736d; font: .54rem Consolas, monospace; text-transform: uppercase; letter-spacing: .12em; }
 .hero-scroll span { color: var(--acid); }
 
@@ -485,10 +483,11 @@ body::before {
 .proof-grid p { margin: 0; color: var(--muted); font-size: .84rem; line-height: 1.65; }
 
 /* Shipped work */
-.work { padding: 20px 0 150px; }
+.work { padding: 105px 0 125px; }
 .gallery-heading { margin-bottom: 58px; display: grid; grid-template-columns: 1.2fr .8fr; gap: 70px; align-items: end; }
-.gallery-heading h2 span, .case-heading h2 span, .contact h2 span { color: var(--acid); }
+.gallery-heading h2 span, .case-heading h2 span, .section-heading h2 span, .contact h2 span { color: var(--acid); }
 .gallery-heading > p { max-width: 500px; margin: 0 0 5px; color: var(--muted); line-height: 1.75; }
+.gallery-swipe-hint { display: none; }
 .roblox-media-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; align-items: start; }
 .roblox-media-card {
   --card-x: 50%;
@@ -501,11 +500,11 @@ body::before {
   box-shadow: 0 28px 70px rgba(0,0,0,.24);
   transition: transform .3s, border-color .3s;
 }
-.roblox-media-card:hover { transform: translateY(-4px); border-color: rgba(194,255,71,.3); }
+.roblox-media-card:hover { transform: translateY(-2px); border-color: rgba(194,255,71,.25); }
 .roblox-media-card:nth-child(5) { grid-column: 1 / -1; width: calc(50% - 11px); justify-self: center; }
 .media-stage { position: relative; aspect-ratio: 16/9; overflow: hidden; background: #080d11; }
 .media-stage > img, .media-stage > video { width: 100%; height: 100%; display: block; object-fit: cover; transition: transform .7s cubic-bezier(.16,1,.3,1), filter .4s; }
-.roblox-media-card:hover .media-stage > img { transform: scale(1.045); filter: saturate(1.12); }
+.roblox-media-card:hover .media-stage > img { transform: scale(1.025); filter: saturate(1.06); }
 .media-overlay { position: absolute; inset: 0; pointer-events: none; background: linear-gradient(0deg, rgba(3,6,8,.95), transparent 53%), linear-gradient(90deg, rgba(3,6,8,.35), transparent 50%); }
 .media-number { position: absolute; top: 19px; right: 20px; color: rgba(255,255,255,.8); font: 650 .52rem Consolas, monospace; letter-spacing: .12em; }
 .media-status { position: absolute; top: 19px; left: 20px; display: flex; align-items: center; gap: 8px; color: var(--acid); font: 700 .51rem Consolas, monospace; text-transform: uppercase; letter-spacing: .1em; }
@@ -524,7 +523,7 @@ body::before {
 .game-tabs button:last-child { border-right: 0; }
 .game-tabs button.active { color: var(--ink); background: rgba(194,255,71,.035); }
 .game-tabs button.active::after { content: ""; position: absolute; left: 16px; right: 16px; bottom: -1px; height: 2px; background: var(--acid); box-shadow: 0 0 11px var(--acid); }
-.game-panel { min-height: 330px; padding: 22px; display: flex; flex-direction: column; }
+.game-panel { min-height: 285px; padding: 22px; display: flex; flex-direction: column; }
 .game-byline { display: flex; justify-content: space-between; gap: 14px; color: #7c8781; font: .52rem Consolas, monospace; text-transform: uppercase; letter-spacing: .07em; }
 .game-byline span:last-child { text-align: right; }
 .game-stats { margin-top: 20px; display: grid; grid-template-columns: repeat(4, 1fr); border-block: 1px solid var(--line); }
@@ -533,7 +532,7 @@ body::before {
 .game-stats strong, .game-stats span { display: block; }
 .game-stats strong { font-size: 1rem; }
 .game-stats span { margin-top: 5px; color: #6c7771; font: .47rem Consolas, monospace; text-transform: uppercase; letter-spacing: .08em; }
-.game-description { margin: 20px 0; display: -webkit-box; overflow: hidden; color: #9ba59f; font-size: .78rem; line-height: 1.65; -webkit-line-clamp: 4; -webkit-box-orient: vertical; }
+.game-description { margin: 20px 0; display: -webkit-box; overflow: hidden; color: #9ba59f; font-size: .78rem; line-height: 1.65; -webkit-line-clamp: 3; -webkit-box-orient: vertical; }
 .game-link { width: fit-content; margin-top: auto; display: flex; gap: 13px; color: var(--acid); font: 700 .55rem Consolas, monospace; text-transform: uppercase; letter-spacing: .09em; }
 .engineering-summary { margin: 0 0 17px; color: #b0bab4; font-size: .82rem; line-height: 1.65; }
 .engineering-panel > ul { margin: 0 0 18px; padding: 0; list-style: none; border-top: 1px solid var(--line); }
@@ -552,7 +551,7 @@ pre { margin: 0; padding: 15px; overflow-x: auto; color: #b5c0ba; font: .59rem/1
 @keyframes loader { to { transform: rotate(90deg) scale(1.3); background: var(--acid); } }
 
 /* Case study */
-.case-study { padding: 145px 0; border-block: 1px solid var(--line); background: #090e13; }
+.case-study { padding: 115px 0; border-block: 1px solid var(--line); background: #090e13; }
 .case-heading { display: grid; grid-template-columns: 1.25fr .75fr; gap: 90px; align-items: end; }
 .case-heading h2 { font-size: clamp(4rem, 7.5vw, 8rem); }
 .case-lede { padding-bottom: 7px; }
@@ -563,8 +562,8 @@ pre { margin: 0; padding: 15px; overflow-x: auto; color: #b5c0ba; font: .59rem/1
 .case-stats div:last-child { border-right: 0; }
 .case-stats strong { color: var(--acid); font-size: clamp(2rem, 3.4vw, 3.5rem); line-height: 1; letter-spacing: -.05em; }
 .case-stats span { margin-top: 9px; color: #7e8983; font: .53rem Consolas, monospace; text-transform: uppercase; letter-spacing: .1em; }
-.observatory-systems { margin-top: 78px; border-top: 1px solid var(--line); }
-.observatory-systems article { min-height: 220px; padding: 36px 0; display: grid; grid-template-columns: 120px 1fr; border-bottom: 1px solid var(--line); }
+.observatory-systems { margin-top: 62px; border-top: 1px solid var(--line); }
+.observatory-systems article { min-height: 180px; padding: 32px 0; display: grid; grid-template-columns: 100px 1fr; border-bottom: 1px solid var(--line); }
 .system-index { color: var(--acid); font: 700 3.5rem/.8 Consolas, monospace; opacity: .75; }
 .observatory-systems article > div:last-child { display: grid; grid-template-columns: .65fr 1fr; column-gap: 80px; align-items: start; }
 .observatory-systems h3 { margin: 0; font-size: clamp(1.7rem, 3vw, 3rem); letter-spacing: -.04em; }
@@ -584,7 +583,7 @@ pre { margin: 0; padding: 15px; overflow-x: auto; color: #b5c0ba; font: .59rem/1
 .architecture-flow > i { color: var(--acid); font-style: normal; }
 
 /* Capability */
-.capabilities { padding: 145px 0; }
+.capabilities { padding: 110px 0; }
 .section-heading { margin-bottom: 62px; display: grid; grid-template-columns: 1.2fr .8fr; gap: 80px; align-items: end; }
 .section-heading > p { max-width: 500px; margin: 0 0 5px; color: var(--muted); line-height: 1.75; }
 .capability-grid { display: grid; grid-template-columns: repeat(2, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
@@ -613,7 +612,7 @@ pre { margin: 0; padding: 15px; overflow-x: auto; color: #b5c0ba; font: .59rem/1
 .team-points { margin-top: 70px; display: grid; grid-template-columns: repeat(4, 1fr); border-top: 1px solid rgba(7,16,6,.25); }
 .team-points span { padding: 19px 15px 0 0; font: 750 .58rem Consolas, monospace; text-transform: uppercase; letter-spacing: .09em; }
 
-.contact { padding: 145px 0; text-align: center; }
+.contact { padding: 115px 0; text-align: center; }
 .contact .eyebrow { margin-bottom: 26px; }
 .contact h2 { font-size: clamp(3.6rem, 7vw, 7.5rem); }
 .contact > p:not(.eyebrow) { max-width: 620px; margin: 32px auto 0; color: var(--muted); font-size: 1rem; line-height: 1.75; }
@@ -671,14 +670,14 @@ footer > div > a:last-child { color: var(--acid); font: .55rem Consolas, monospa
   .recruiter-strip .shell { grid-template-columns: repeat(2, 1fr); padding-block: 8px; }
   .recruiter-strip span { border: 0; font-size: .49rem; }
   .proof, .capabilities, .case-study, .contact { padding-block: 90px; }
-  .work { padding: 10px 0 95px; }
+  .work { padding: 70px 0 90px; }
   .proof h2, .gallery-heading h2, .section-heading h2 { font-size: clamp(3rem, 13vw, 4.6rem); }
   .proof-grid article { min-height: 0; padding: 24px 5px; grid-template-columns: 35px 1fr; gap: 9px 13px; }
   .proof-grid article p { grid-column: 2; }
   .roblox-media-grid { grid-template-columns: 1fr; }
   .roblox-media-card:nth-child(5) { grid-column: auto; width: 100%; }
   .media-title h3 { font-size: clamp(2.1rem, 10vw, 3rem); }
-  .game-panel { min-height: 340px; padding: 18px; }
+  .game-panel { min-height: 290px; padding: 18px; }
   .code-snapshot { max-width: 100%; }
   .code-snapshot pre { max-width: 100%; }
   .game-stats { grid-template-columns: repeat(2, 1fr); }
@@ -714,6 +713,33 @@ footer > div > a:last-child { color: var(--acid); font: .55rem Consolas, monospa
   .intro-copy > p { font-size: .47rem; }
   .intro-skip { top: 16px; right: 15px; }
   .discord-toast { left: 14px; right: 14px; bottom: 14px; min-width: 0; }
+}
+
+@media (max-width: 560px) {
+  .gallery-swipe-hint {
+    margin: -25px 0 18px;
+    display: block;
+    color: #717c76;
+    font: 600 .53rem Consolas, monospace;
+    text-transform: uppercase;
+    letter-spacing: .09em;
+  }
+  .roblox-media-grid {
+    width: calc(100vw - 28px);
+    display: flex;
+    gap: 14px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    overscroll-behavior-inline: contain;
+  }
+  .roblox-media-grid::-webkit-scrollbar { display: none; }
+  .roblox-media-card,
+  .roblox-media-card:nth-child(5) {
+    width: auto;
+    flex: 0 0 min(88vw, 350px);
+    scroll-snap-align: start;
+  }
 }
 
 @media (pointer: coarse) {

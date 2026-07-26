@@ -217,14 +217,15 @@ export default function RobloxMediaGallery() {
     <div className="roblox-gallery">
       <div className="gallery-heading">
         <div>
-          <p className="eyebrow">Selected shipped work</p>
-          <h2>Games first.<br /><span>Engineering inside.</span></h2>
+          <p className="eyebrow">Selected work</p>
+          <h2>Games I&apos;ve<br /><span>worked on.</span></h2>
         </div>
         <p>
-          Every card starts with live Roblox media and experience data. Switch
-          to “My engineering” for the systems, decisions, and Luau behind the game.
+          The numbers and media come directly from Roblox. Open “My engineering”
+          to see what I contributed to each project.
         </p>
       </div>
+      <p className="gallery-swipe-hint">Swipe to browse all five games →</p>
       {state === "loading" && <div className="media-loading"><span /> Syncing Roblox experiences…</div>}
       {state === "error" && <div className="media-loading">Roblox data is temporarily unavailable.</div>}
       {state === "ready" && (
