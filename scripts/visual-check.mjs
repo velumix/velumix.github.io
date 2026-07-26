@@ -23,6 +23,11 @@ for (const viewport of [
     await page.screenshot({ path: "intro-playwright.png" });
   }
   await page.locator(".site-intro").waitFor({ state: "hidden", timeout: 5000 }).catch(() => {});
+  const popupPromise = context.waitForEvent("page", { timeout: 5000 }).catch(() => null);
+  await page.locator(".nav-cta").click();
+  const discordPage = await popupPromise;
+  const discordToastWorks = await page.locator(".discord-toast.visible").isVisible().catch(() => false);
+  if (discordPage) await discordPage.close();
   const heroButtons = page.locator(".hero-selector button");
   await heroButtons.nth(2).click();
   const heroSwitchWorks = (await page.locator(".hero-game-caption h2").textContent())?.includes("Samurai") ?? false;
@@ -66,6 +71,7 @@ for (const viewport of [
     };
   });
   report.introPresent = introPresent;
+  report.discordToastWorks = discordToastWorks;
   report.heroSwitchWorks = heroSwitchWorks;
   report.engineeringPanelVisible = engineeringPanelVisible;
 

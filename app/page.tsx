@@ -1,3 +1,4 @@
+import DiscordHireLink from "./DiscordHireLink";
 import HeroGameShowcase from "./HeroGameShowcase";
 import RobloxMediaGallery from "./RobloxMediaGallery";
 import SiteExperience from "./SiteExperience";
@@ -69,7 +70,7 @@ export default function Home() {
             <a href="#observatory">Case study</a>
             <a href="#capabilities">Capabilities</a>
           </nav>
-          <a className="nav-cta" href="#contact">Hire me <Arrow /></a>
+          <DiscordHireLink className="nav-cta" label="Hire me" />
         </div>
       </header>
 
@@ -216,14 +217,12 @@ export default function Home() {
           simulation, and production engineering all matter.
         </p>
         <div className="contact-actions">
-          <a className="button primary" href="https://github.com/velumix" target="_blank" rel="noreferrer">
-            View GitHub <Arrow />
-          </a>
+          <DiscordHireLink className="button primary" label="Message me on Discord" />
           <a className="button ghost" href="https://www.roblox.com/games/78959878729166/Aquatica-Observatory" target="_blank" rel="noreferrer">
             Play flagship work <Arrow />
           </a>
         </div>
-        <small>For opportunities, contact Velumix through Roblox Talent Hub.</small>
+        <small>Discord: @velumix · Also available through Roblox Talent Hub.</small>
       </section>
 
       <footer>
