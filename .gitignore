@@ -10,3 +10,4 @@ out
 /*.png
 .dev-server.pid
 tsconfig.tsbuildinfo
+sites-version.tar.gz
