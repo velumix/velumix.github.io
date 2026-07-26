@@ -203,7 +203,7 @@ export default function RobloxMediaGallery() {
 
   useEffect(() => {
     const controller = new AbortController();
-    fetch("/api/roblox-media", { cache: "no-store", signal: controller.signal })
+    fetch("/data/roblox-media.json", { cache: "no-store", signal: controller.signal })
       .then((response) => {
         if (!response.ok) throw new Error("Roblox media unavailable");
         return response.json();

@@ -1,0 +1,188 @@
+{
+  "games": [
+    {
+      "id": "aquatica",
+      "name": "Aquatica Observatory",
+      "url": "https://www.roblox.com/games/78959878729166/Aquatica-Observatory",
+      "icon": "https://tr.rbxcdn.com/180DAY-5249f808232d60d16f55b6a0f3267275/512/512/Image/Png/noFilter",
+      "images": [
+        "https://tr.rbxcdn.com/180DAY-b0acfcb4f46b302451da0eb0ece4dd1c/768/432/Image/Png/noFilter"
+      ],
+      "description": "🌊 The Aquatica Observatory! 🐠🔭\n\nBeta 1.0\n\nDive into Roblox's most immersive aquarium experience located in the Coral Sea.\nExplore beautiful reefs, open seas, caves, and uncover the secrets of the deep!\n\n🌟 What You Can Do:\n🔬 Scan & Discover \n🌌 Explore Beautiful Regions\n🏆 Earn Rewards\n\n🌍 Built with real ocean science.\nAre you ready to protect the blue planet?\n\nBrought to you by Aquatica Studios",
+      "creator": {
+        "id": 12889407,
+        "name": "Aquatica Studios",
+        "type": "Group",
+        "isRNVAccount": false,
+        "hasVerifiedBadge": false
+      },
+      "stats": {
+        "playing": 94,
+        "visits": 6985012,
+        "favorites": 76906,
+        "maxPlayers": 35,
+        "upVotes": 19377,
+        "downVotes": 739
+      },
+      "metadata": {
+        "created": "2024-10-10T05:12:50.83Z",
+        "updated": "2026-07-05T23:31:38.177Z",
+        "avatarType": "MorphToR15",
+        "genres": [
+          "Social"
+        ]
+      },
+      "video": null
+    },
+    {
+      "id": "ranger",
+      "name": "[BETA] Ranger Emergency",
+      "url": "https://www.roblox.com/games/120488756421319/Ranger-Emergency",
+      "icon": "https://tr.rbxcdn.com/180DAY-ce26c26e8b4ccd7c8bca5df4f9ecae9a/512/512/Image/Png/noFilter",
+      "images": [
+        "https://tr.rbxcdn.com/180DAY-92155c1238cffb985260f7655a7ff19d/768/432/Image/Png/noFilter"
+      ],
+      "description": "Aquatica Calling all units! \n\n**NOTE : THIS EXPERIENCE IS CURRENTLY IN BETA! THERE WILL BE BUGS!**\n\nJoin the Everglades Park Rangers and compete with others to protect our beautiful park from wildfires, hazardous spills, invasive species, and other environmental emergencies. Respond to calls across a vast national park, operate rescue vehicles, and work together with other players to save lives and restore damaged ecosystems!\n\n🔥| Fight spreading wildfires\n🦌| Rescue and relocate injured wildlife\n⚠️| Respond to hazardous material incidents\n\n❓| How To Play:\nStep 1: Join a match\nStep 2: Spawn your vehicle\nStep 3: Respond to the emergency\nStep 4: Get the highest environmental score!\n\nThis experience is not affiliated with or endorsed by the National Park Service or any government agency.\n\nTags: National Parks, Firefighting, Wildland Fire, Hazmat, Emergency Response, Search and Rescue, Emergency, Park Ranger, Nature",
+      "creator": {
+        "id": 707155029,
+        "name": "Park Vibes : Ranger Emergency",
+        "type": "Group",
+        "isRNVAccount": false,
+        "hasVerifiedBadge": false
+      },
+      "stats": {
+        "playing": 13,
+        "visits": 358997,
+        "favorites": 88,
+        "maxPlayers": 8,
+        "upVotes": 51,
+        "downVotes": 20
+      },
+      "metadata": {
+        "created": "2026-01-21T22:24:59.893Z",
+        "updated": "2026-07-17T16:25:50.251Z",
+        "avatarType": "MorphToR15",
+        "genres": [
+          "Action",
+          "Open World Action"
+        ]
+      },
+      "video": null
+    },
+    {
+      "id": "samurai",
+      "name": "[UPD]Samurai DUELS",
+      "url": "https://www.roblox.com/games/72248722616845/Samurai-DUELS",
+      "icon": "https://tr.rbxcdn.com/180DAY-e31847d45cb3c921e686ccd639a49b3e/512/512/Image/Png/noFilter",
+      "images": [
+        "https://tr.rbxcdn.com/180DAY-9e7b0d3823fabf297c31273d1f880417/768/432/Image/Png/noFilter"
+      ],
+      "description": "👹SAMURAI DUELS\n\nFace off against other players, charge up your swing, and outclass your opponent to win the round\n\nThis game is in beta, expect some bugs",
+      "creator": {
+        "id": 179000945,
+        "name": "Seriously Samurai",
+        "type": "Group",
+        "isRNVAccount": false,
+        "hasVerifiedBadge": true
+      },
+      "stats": {
+        "playing": 7008,
+        "visits": 37696005,
+        "favorites": 102998,
+        "maxPlayers": 50,
+        "upVotes": 123718,
+        "downVotes": 7620
+      },
+      "metadata": {
+        "created": "2026-04-20T02:00:10.124Z",
+        "updated": "2026-07-26T07:27:36.4687686Z",
+        "avatarType": "MorphToR6",
+        "genres": [
+          "Action",
+          "Battlegrounds & Fighting"
+        ]
+      },
+      "video": {
+        "poster": "https://tr.rbxcdn.com/180DAY-9e7b0d3823fabf297c31273d1f880417/768/432/Image/Png/noFilter",
+        "robloxUrl": "https://www.roblox.com/games/72248722616845/Samurai-DUELS",
+        "assetId": "131196448664040",
+        "streamUrl": null
+      }
+    },
+    {
+      "id": "paint",
+      "name": "[🎨] Paint And SEEK!",
+      "url": "https://www.roblox.com/games/78724049937437/Paint-And-SEEK",
+      "icon": "https://tr.rbxcdn.com/180DAY-82f40a5478602d650e8e02c430e401a4/512/512/Image/Png/noFilter",
+      "images": [
+        "https://tr.rbxcdn.com/180DAY-3aeb9dbdd916f3cc6416868f7f357679/768/432/Image/Png/noFilter",
+        "https://tr.rbxcdn.com/180DAY-fa0d31ec7311ecedf6bcca3e1c1e7869/768/432/Image/Png/noFilter",
+        "https://tr.rbxcdn.com/180DAY-4a03e06f04417a481f35adaa8f113b50/768/432/Image/Png/noFilter"
+      ],
+      "description": "🎨PAINT AND SEEK! ☠️\n\n🌟USE CODE: NEWUPDATE\n🌟NEXT CODE AT: 50,000 THUMBS UP\nChange your color, blend into the map, and hide from the Seekers!\n\n🎨 Hiders: PAINT & HIDE!\n🔍 Seekers: FIND THEM ALL!\n🏆 Survive until time runs out to win!\n\n✨ Paint yourself any color to hide!\n🦎 Blend into walls, floors, and objects!\n👀 Fool the seeker with clever hiding spots!\n🎉 Fast-paced hide-and-seek fun!\n\nWill you disappear into the map... or DIE trying? ☠️🎨\n🏷️Tags: Paint and Hide, Hide and Seek, Camouflage, Camo, Painting, Prop Hunt, Blend In, Multiplayer, Hiding, Seeker, Stealth, Round Based, Survival, Casual, Hide N Seek, Color, Creative, Meccha, Chameleon",
+      "creator": {
+        "id": 133797237,
+        "name": "Blend In Or Die",
+        "type": "Group",
+        "isRNVAccount": false,
+        "hasVerifiedBadge": true
+      },
+      "stats": {
+        "playing": 1231,
+        "visits": 102222731,
+        "favorites": 151521,
+        "maxPlayers": 14,
+        "upVotes": 42375,
+        "downVotes": 16007
+      },
+      "metadata": {
+        "created": "2026-04-02T16:29:59.95Z",
+        "updated": "2026-07-24T02:36:15.211Z",
+        "avatarType": "MorphToR6",
+        "genres": [
+          "Survival",
+          "1 vs All"
+        ]
+      },
+      "video": null
+    },
+    {
+      "id": "garden",
+      "name": "[🎊] Escape a Garden",
+      "url": "https://www.roblox.com/games/133356782383463/Escape-a-Garden",
+      "icon": "https://tr.rbxcdn.com/180DAY-9c8edc2fe2e1751f9a895103dfd4840d/512/512/Image/Png/noFilter",
+      "images": [
+        "https://tr.rbxcdn.com/180DAY-5ef6aa43d7fb39690d35c533142b8545/768/432/Image/Png/noFilter",
+        "https://tr.rbxcdn.com/180DAY-c75794cd441fe775be571f4f36aae019/768/432/Image/Png/noFilter",
+        "https://tr.rbxcdn.com/180DAY-0ef1a8325be4d78769531095ecac26d5/768/432/Image/Png/noFilter"
+      ],
+      "description": "Welcome to Escape a Garden!\n\n🏡 Go to further gardens for better luck! \n❓ Wait for the guards Plant You!\n🏃 Run back to your base before they catch you!\n💸 Plant your items To Earn Cash!\n\n💤 Your Plants earns Cash offline! \n\nTags: Grow, Garden, Plants, Cute, Friends, Fun, Speed, Fast, Collect, Rainbow, Colorful, Rebirth, Friends, Simulator, Tycoon",
+      "creator": {
+        "id": 91157590,
+        "name": "OMG SECRET",
+        "type": "Group",
+        "isRNVAccount": false,
+        "hasVerifiedBadge": true
+      },
+      "stats": {
+        "playing": 266,
+        "visits": 14780682,
+        "favorites": 47815,
+        "maxPlayers": 5,
+        "upVotes": 95669,
+        "downVotes": 4674
+      },
+      "metadata": {
+        "created": "2026-03-22T21:46:00.223Z",
+        "updated": "2026-07-10T06:22:13.47Z",
+        "avatarType": "MorphToR6",
+        "genres": [
+          "Simulation",
+          "Tycoon"
+        ]
+      },
+      "video": null
+    }
+  ],
+  "fetchedAt": "2026-07-26T14:28:09.937Z"
+}

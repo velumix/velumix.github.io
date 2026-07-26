@@ -1,6 +1,7 @@
-# Velumix portfolio
+# Velumix
 
-Initial portfolio for a Roblox gameplay engineer and software engineer.
+Portfolio for a Roblox gameplay engineer and software engineer. The public site
+is deployed at [velumix.github.io](https://velumix.github.io/).
 
 ## Local development
 
@@ -9,6 +10,12 @@ npm install
 npm run dev
 ```
 
-Before the public launch, replace the contact placeholder with the owner's real
-email, Roblox profile, GitHub profile, Discord contact, and selected project
-links.
+Build the static GitHub Pages version with fresh Roblox experience data:
+
+```bash
+npm run build:pages
+```
+
+The Pages workflow refreshes Roblox media and statistics on GitHub's five-minute
+schedule, then deploys the generated `pages-dist` artifact. Scheduled runs can
+occasionally be delayed by GitHub Actions load.

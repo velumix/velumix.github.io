@@ -4,8 +4,10 @@
   "private": true,
   "scripts": {
     "dev": "vinext dev",
-    "build": "vinext build && node scripts/prepare-sites.mjs",
-    "start": "vinext start"
+    "build": "vinext build",
+    "start": "vinext start",
+    "fetch:roblox": "node scripts/fetch-roblox-media.mjs",
+    "build:pages": "npm run fetch:roblox && vite build --config vite.pages.config.ts"
   },
   "dependencies": {
     "react": "^19.2.0",

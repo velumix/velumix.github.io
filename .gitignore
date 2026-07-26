@@ -3,6 +3,7 @@ node_modules
 .next
 .open-next
 dist
+pages-dist
 out
 .wrangler
 *.log

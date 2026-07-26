@@ -1,5 +1,7 @@
 import { chromium } from "playwright-core";
 
+const portfolioUrl = process.env.PORTFOLIO_URL ?? "http://localhost:3005";
+
 const browser = await chromium.launch({
   executablePath: "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
   headless: true,
@@ -17,7 +19,7 @@ for (const viewport of [
   await context.addInitScript(() => sessionStorage.clear());
   const page = await context.newPage();
 
-  await page.goto("http://localhost:3005", { waitUntil: "networkidle" });
+  await page.goto(portfolioUrl, { waitUntil: "networkidle" });
   const introPresent = await page.locator(".site-intro").isVisible().catch(() => false);
   if (viewport.name === "desktop" && introPresent) {
     await page.screenshot({ path: "intro-playwright.png" });

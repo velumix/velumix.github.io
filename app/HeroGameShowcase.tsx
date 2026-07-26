@@ -48,7 +48,7 @@ export default function HeroGameShowcase() {
 
   useEffect(() => {
     const controller = new AbortController();
-    fetch("/api/roblox-media", { cache: "no-store", signal: controller.signal })
+    fetch("/data/roblox-media.json", { cache: "no-store", signal: controller.signal })
       .then((response) => response.ok ? response.json() : Promise.reject())
       .then((payload) => {
         if (payload.games?.length) setGames(payload.games);
