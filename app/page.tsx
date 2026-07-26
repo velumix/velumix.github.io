@@ -33,6 +33,42 @@ const productionSkills = [
   ["Workflow", "GitHub · Rojo · Wally · Selene · StyLua · Luau LSP"],
 ];
 
+const originalSystems = [
+  {
+    index: "01",
+    name: "Nerve",
+    kind: "Open source Roblox framework",
+    tagline: "Give your game a nervous system.",
+    copy: "A drop-in framework for building Roblox games around a clean service and controller lifecycle. Nerve turns typed contracts into ByteNet packets and carries the everyday infrastructure a production game needs inside one package.",
+    features: [
+      "Typed ByteNet requests, responses, events, and rate limits",
+      "Automatic client and server startup from one package",
+      "Profiles, promises, signals, components, cleanup, and input included",
+    ],
+    stack: ["Luau", "ByteNet", "Moonwave", "MIT"],
+    links: [
+      { label: "View repository", href: "https://github.com/velumix/Nerve" },
+      { label: "Read the docs", href: "https://velumix.github.io/Nerve/" },
+    ],
+  },
+  {
+    index: "02",
+    name: "Abraxius",
+    kind: "Roblox Studio development companion",
+    tagline: "A verified bridge between code and Studio.",
+    copy: "A Windows-hosted companion for inspecting live Roblox projects, syncing Luau safely, and giving AI tools accurate Studio context. Every edit travels through revision-aware operations and Roblox Studio remains the authority.",
+    features: [
+      "Verified pull and granular script push workflow",
+      "Live DataModel inspection, context, memory, and AXL commands",
+      "WinUI supervisor with a Rust host and Studio companion",
+    ],
+    stack: ["Rust", "WinUI 3", "Luau", "Node.js"],
+    links: [
+      { label: "View repository", href: "https://github.com/velumix/Abraxius" },
+    ],
+  },
+];
+
 function Arrow() {
   return (
     <svg viewBox="0 0 18 18" aria-hidden="true">
@@ -55,6 +91,7 @@ export default function Home() {
           <nav aria-label="Primary navigation">
             <a href="#work">Work</a>
             <a href="#observatory">Aquatica</a>
+            <a href="#systems">Systems</a>
             <a href="#capabilities">Skills</a>
           </nav>
           <DiscordHireLink className="nav-cta" label="Hire me" />
@@ -110,6 +147,53 @@ export default function Home() {
             ))}
           </div>
 
+        </div>
+      </section>
+
+      <section className="systems shell" id="systems">
+        <div className="section-heading systems-heading">
+          <div>
+            <p className="eyebrow">Original systems</p>
+            <h2>Tools built beyond<br /><span>the game.</span></h2>
+          </div>
+          <p>
+            I turn the infrastructure I want on real projects into reusable
+            software. These are complete, public systems built to move between
+            games and development environments.
+          </p>
+        </div>
+
+        <div className="system-showcase">
+          {originalSystems.map((system) => (
+            <article className="system-showcase-card" key={system.name}>
+              <div className="system-card-topline">
+                <span>{system.index}</span>
+                <p>{system.kind}</p>
+              </div>
+              <div className="system-card-copy">
+                <div>
+                  <h3>{system.name}</h3>
+                  <strong>{system.tagline}</strong>
+                </div>
+                <p>{system.copy}</p>
+              </div>
+              <ul className="system-features">
+                {system.features.map((feature) => <li key={feature}>{feature}</li>)}
+              </ul>
+              <div className="system-card-footer">
+                <div className="system-stack">
+                  {system.stack.map((item) => <span key={item}>{item}</span>)}
+                </div>
+                <div className="system-links">
+                  {system.links.map((link) => (
+                    <a href={link.href} target="_blank" rel="noreferrer" key={link.href}>
+                      {link.label} <Arrow />
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </article>
+          ))}
         </div>
       </section>
 
