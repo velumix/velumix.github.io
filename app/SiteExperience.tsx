@@ -38,7 +38,7 @@ export default function SiteExperience() {
     }, 1100);
 
     const revealTargets = document.querySelectorAll(
-      ".gallery-heading, .roblox-media-card, .case-heading, .observatory-systems article, .section-heading, .capability-grid > div, .contact",
+      ".gallery-heading, .roblox-media-card, .case-heading, .observatory-systems article, .section-heading, .system-showcase-card, .capability-grid > div, .contact",
     );
     revealTargets.forEach((element) => element.classList.add("reveal-ready"));
     const revealObserver = new IntersectionObserver(

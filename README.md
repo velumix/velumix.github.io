@@ -4,9 +4,9 @@ This is the source for [velumix.github.io](https://velumix.github.io/), my
 portfolio as a Roblox gameplay engineer and software engineer.
 
 I built the site to show the work itself instead of filling a page with a long
-list of tools. It covers five Roblox experiences I have helped ship, what I
-worked on in each one, and how I approach gameplay systems that need to hold up
-in production.
+list of tools. It covers five Roblox experiences I have helped ship, two
+open-source systems I created, and how I approach software that needs to hold
+up in production.
 
 ## What is on the site
 
@@ -15,12 +15,23 @@ in production.
   performance work
 - A closer look at the movement, creature simulation, and discovery systems
   behind Aquatica Observatory
+- Nerve, my batteries-included Roblox framework powered by ByteNet
+- Abraxius, my verified Luau sync and Roblox Studio development companion
 - Live Roblox thumbnails, media, player counts, visits, ratings, and experience
   details
 - Direct links to play the games and contact me
 
 The featured work includes Aquatica Observatory, Ranger Emergency, Samurai
 DUELS, Paint And SEEK!, and Escape a Garden.
+
+## Featured systems
+
+- [Nerve](https://github.com/velumix/Nerve) packages typed networking,
+  lifecycle management, persistence, and common Roblox utilities into one
+  drop-in framework.
+- [Abraxius](https://github.com/velumix/Abraxius) connects local development
+  and AI-assisted workflows to live Roblox Studio state with verified,
+  revision-aware script edits.
 
 ## Built with
 

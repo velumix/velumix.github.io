@@ -168,7 +168,7 @@ function GameCard({ game, index }: { game: MediaGame; index: number }) {
               <div><strong>{compact.format(game.stats.playing)}</strong><span>Playing</span></div>
               <div><strong>{compact.format(game.stats.visits)}</strong><span>Visits</span></div>
               <div><strong>{compact.format(game.stats.favorites)}</strong><span>Favorites</span></div>
-              <div><strong>{rating ?? "—"}{rating !== null && "%"}</strong><span>Rating</span></div>
+              <div><strong>{rating ?? "N/A"}{rating !== null && "%"}</strong><span>Rating</span></div>
             </div>
           )}
           <p className="game-description">{game.description || "Live description unavailable."}</p>
