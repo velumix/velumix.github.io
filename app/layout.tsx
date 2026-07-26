@@ -2,20 +2,20 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Velumix — Gameplay Engineer",
+  title: "Velumix — Roblox Gameplay Engineer",
   description:
-    "Gameplay engineer and software engineer focused on responsive Roblox systems, scalable architecture, and production-ready tools.",
+    "Roblox gameplay engineer building custom controllers, living simulations, authoritative multiplayer systems, and production-ready Luau architecture.",
   metadataBase: new URL("https://velumix.ca.eu.org"),
   openGraph: {
-    title: "Velumix — Gameplay Engineer",
+    title: "Velumix — Roblox Gameplay Engineer",
     description:
-      "Responsive gameplay. Scalable systems. Production-minded engineering.",
+      "Shipped Roblox gameplay, custom controllers, simulation, AI, physics, data, and production systems.",
     type: "website",
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#070a0f",
+  themeColor: "#05080b",
   colorScheme: "dark",
 };
 

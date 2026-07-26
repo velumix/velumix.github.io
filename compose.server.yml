@@ -1,0 +1,45 @@
+services:
+  portfolio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: velumix-portfolio
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      PORT: 3000
+    networks:
+      - coolify
+    labels:
+      - traefik.enable=true
+      - traefik.docker.network=coolify
+      - traefik.http.routers.velumix-http.rule=Host(`velumix.ca.eu.org`) || Host(`www.velumix.ca.eu.org`)
+      - traefik.http.routers.velumix-http.entrypoints=http
+      - traefik.http.routers.velumix-http.service=velumix
+      - traefik.http.routers.velumix-http.middlewares=velumix-redirect
+      - traefik.http.middlewares.velumix-redirect.redirectscheme.scheme=https
+      - traefik.http.middlewares.velumix-redirect.redirectscheme.permanent=true
+      - traefik.http.routers.velumix-lan.rule=Host(`192.168.2.240`)
+      - traefik.http.routers.velumix-lan.entrypoints=http
+      - traefik.http.routers.velumix-lan.service=velumix
+      - traefik.http.routers.velumix-https.rule=Host(`velumix.ca.eu.org`) || Host(`www.velumix.ca.eu.org`)
+      - traefik.http.routers.velumix-https.entrypoints=https
+      - traefik.http.routers.velumix-https.service=velumix
+      - traefik.http.routers.velumix-https.tls=true
+      - traefik.http.routers.velumix-https.tls.certresolver=letsencrypt
+      - traefik.http.services.velumix.loadbalancer.server.port=3000
+    healthcheck:
+      test:
+        - CMD
+        - node
+        - -e
+        - fetch('http://127.0.0.1:3000').then(r=>{if(!r.ok)process.exit(1)}).catch(()=>process.exit(1))
+      interval: 30s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+
+networks:
+  coolify:
+    external: true

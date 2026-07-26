@@ -1,0 +1,9 @@
+.git
+.next
+.open-next
+dist
+node_modules
+out
+*.log
+*-playwright.png
+tsconfig.tsbuildinfo
