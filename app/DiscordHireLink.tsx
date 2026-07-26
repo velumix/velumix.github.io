@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 
 const DISCORD_HANDLE = "velumix";
+const DISCORD_PROFILE_URL = "https://discord.com/users/499413963310891017";
 
 type DiscordHireLinkProps = {
   className: string;
@@ -33,7 +34,7 @@ export default function DiscordHireLink({
     <>
       <a
         className={className}
-        href="https://discord.com/app"
+        href={DISCORD_PROFILE_URL}
         target="_blank"
         rel="noreferrer"
         onClick={copyDiscordHandle}
@@ -51,7 +52,7 @@ export default function DiscordHireLink({
         role="status"
         aria-live="polite"
       >
-        <span>Discord opened</span>
+        <span>Discord profile opened</span>
         <strong>@{DISCORD_HANDLE} copied</strong>
       </div>
     </>
