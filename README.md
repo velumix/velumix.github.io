@@ -29,9 +29,10 @@ DUELS, Paint And SEEK!, and Escape a Garden.
 - [Nerve](https://github.com/velumix/Nerve) packages typed networking,
   lifecycle management, persistence, and common Roblox utilities into one
   drop-in framework.
-- [Abraxius](https://github.com/velumix/Abraxius) connects local development
+- [Abraxius](https://velumix.github.io/Abraxius/) connects local development
   and AI-assisted workflows to live Roblox Studio state with verified,
-  revision-aware script edits.
+  revision-aware script edits. Its source is available in the
+  [Abraxius repository](https://github.com/velumix/Abraxius).
 
 ## Built with
 

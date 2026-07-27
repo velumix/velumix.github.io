@@ -65,6 +65,7 @@ const originalSystems = [
     stack: ["Rust", "WinUI 3", "Luau", "Node.js"],
     links: [
       { label: "View repository", href: "https://github.com/velumix/Abraxius" },
+      { label: "Read the docs", href: "https://velumix.github.io/Abraxius/" },
     ],
   },
 ];
