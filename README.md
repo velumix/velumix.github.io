@@ -15,6 +15,8 @@ up in production.
   performance work
 - A closer look at the movement, creature simulation, and discovery systems
   behind Aquatica Observatory
+- The full Aquatica Observatory engineering guide at
+  [velumix.github.io/observatory](https://velumix.github.io/observatory/)
 - Nerve, my batteries-included Roblox framework powered by ByteNet
 - Abraxius, my verified Luau sync and Roblox Studio development companion
 - Live Roblox thumbnails, media, player counts, visits, ratings, and experience
