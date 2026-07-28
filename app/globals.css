@@ -557,6 +557,7 @@ pre { margin: 0; padding: 15px; overflow-x: auto; color: #b5c0ba; font: .59rem/1
 .case-lede { padding-bottom: 7px; }
 .case-lede p { margin: 0 0 28px; color: #aab4ae; font-size: 1rem; line-height: 1.75; }
 .case-lede a { width: fit-content; display: flex; align-items: center; gap: 15px; color: var(--acid); font: 700 .59rem Consolas, monospace; text-transform: uppercase; letter-spacing: .1em; }
+.case-links { display: flex; flex-wrap: wrap; gap: 18px 30px; }
 .case-stats { margin-top: 65px; display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); }
 .case-stats div { min-height: 140px; padding: 24px; display: flex; flex-direction: column; justify-content: flex-end; border-right: 1px solid var(--line); background: rgba(255,255,255,.012); }
 .case-stats div:last-child { border-right: 0; }

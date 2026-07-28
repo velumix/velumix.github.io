@@ -129,9 +129,14 @@ export default function Home() {
                 player movement, creature simulation, discovery systems, and
                 the services connecting them.
               </p>
-              <a href="https://www.roblox.com/games/78959878729166/Aquatica-Observatory" target="_blank" rel="noreferrer">
-                Play on Roblox <Arrow />
-              </a>
+              <div className="case-links">
+                <a href="https://www.roblox.com/games/78959878729166/Aquatica-Observatory" target="_blank" rel="noreferrer">
+                  Play on Roblox <Arrow />
+                </a>
+                <a href="/observatory/">
+                  Engineering docs <Arrow />
+                </a>
+              </div>
             </div>
           </div>
 

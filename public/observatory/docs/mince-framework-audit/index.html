@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-mince-framework-audit" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.10.1">
+<title data-rh="true">Mince Framework Audit | Aquatica Observatory</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://velumix.github.io/observatory/docs/mince-framework-audit"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Mince Framework Audit | Aquatica Observatory"><meta data-rh="true" name="description" content="This audit maps the current runtime flow, where Mince is used well, where code bypasses or only partially uses it, and where systems should be split into smaller modules."><meta data-rh="true" property="og:description" content="This audit maps the current runtime flow, where Mince is used well, where code bypasses or only partially uses it, and where systems should be split into smaller modules."><link data-rh="true" rel="canonical" href="https://velumix.github.io/observatory/docs/mince-framework-audit"><link data-rh="true" rel="alternate" href="https://velumix.github.io/observatory/docs/mince-framework-audit" hreflang="en"><link data-rh="true" rel="alternate" href="https://velumix.github.io/observatory/docs/mince-framework-audit" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Mince framework audit","item":"https://velumix.github.io/observatory/docs/mince-framework-audit"}]}</script><link rel="stylesheet" href="/observatory/assets/css/styles.9822d84b.css">
+<script src="/observatory/assets/js/runtime~main.0213bf48.js" defer="defer"></script>
+<script src="/observatory/assets/js/main.71a36642.js" defer="defer"></script>
+</head>
+<body>
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/observatory/"><b class="navbar__title text--truncate">Aquatica Observatory</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/observatory/docs/intro">Docs</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search"><span aria-label="expand searchbar" role="button" class="search-icon" tabindex="0"></span><input id="search_input_react" type="search" placeholder="Loading..." aria-label="Search" class="navbar__search-input search-bar" disabled=""></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/observatory/docs/intro"><span title="Start here" class="linkLabel_WmDU">Start here</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/observatory/docs/runtime-architecture"><span title="Architecture" class="linkLabel_WmDU">Architecture</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/observatory/docs/runtime-lifecycle"><span title="Runtime lifecycle" class="linkLabel_WmDU">Runtime lifecycle</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/observatory/docs/networking"><span title="Networking" class="linkLabel_WmDU">Networking</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/observatory/docs/player-data-economy"><span title="Player data and economy" class="linkLabel_WmDU">Player data and economy</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/observatory/docs/discovery-scanning"><span title="Discovery and scanning" class="linkLabel_WmDU">Discovery and scanning</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/observatory/docs/creature-systems"><span title="Creature systems" class="linkLabel_WmDU">Creature systems</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/observatory/docs/phenomena-events"><span title="Phenomena and events" class="linkLabel_WmDU">Phenomena and events</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/observatory/docs/movement-environment"><span title="Movement and environment" class="linkLabel_WmDU">Movement and environment</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/observatory/docs/commerce-inventory"><span title="Commerce and inventory" class="linkLabel_WmDU">Commerce and inventory</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/observatory/docs/interface-audio"><span title="Interface and audio" class="linkLabel_WmDU">Interface and audio</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/observatory/docs/world-components"><span title="World components" class="linkLabel_WmDU">World components</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/observatory/docs/configuration"><span title="Configuration" class="linkLabel_WmDU">Configuration</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/observatory/docs/module-map"><span title="Module map" class="linkLabel_WmDU">Module map</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/observatory/docs/development"><span title="Development workflow" class="linkLabel_WmDU">Development workflow</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/observatory/docs/mince-bytenet"><span title="Mince and ByteNet notes" class="linkLabel_WmDU">Mince and ByteNet notes</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/observatory/docs/creature-animation-lod-plan"><span title="Creature LOD plan" class="linkLabel_WmDU">Creature LOD plan</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" href="/observatory/docs/mince-framework-audit"><span title="Mince framework audit" class="linkLabel_WmDU">Mince framework audit</span></a></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/observatory/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Mince framework audit</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Mince Framework Audit</h1></header>
+<p>This audit maps the current runtime flow, where Mince is used well, where code bypasses or only partially uses it, and where systems should be split into smaller modules.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="runtime-flow">Runtime Flow<a href="#runtime-flow" class="hash-link" aria-label="Direct link to Runtime Flow" title="Direct link to Runtime Flow" translate="no">​</a></h2>
+<p>Server boot starts in <code>ServerScriptService/Runtime/MinceLoader.server.luau</code>:</p>
+<ol>
+<li class="">Load replicated config from <code>ReplicatedStorage.Runtime.Config</code>.</li>
+<li class="">Load server config from <code>ServerScriptService.Runtime.Config</code>.</li>
+<li class="">Recursively require eligible modules below <code>ServerScriptService.Runtime.Source</code>.</li>
+<li class="">Register module <code>Setup</code> and <code>GameStart</code> lifecycle methods.</li>
+<li class="">Run <code>Mince:Start()</code>.</li>
+</ol>
+<p>Mince provides four important framework surfaces:</p>
+<ul>
+<li class=""><code>Mince:Get(name)</code> for module lookup.</li>
+<li class=""><code>Mince:GetEvent(name)</code> for remote events and named extensions.</li>
+<li class=""><code>Mince:GetFunction(name)</code> for remote functions with middleware.</li>
+<li class=""><code>Mince:GetState(name)</code> for server-owned replicated state.</li>
+<li class=""><code>Mince.Component({ Tag = &quot;...&quot; })</code> for CollectionService-tagged components.</li>
+</ul>
+<p>The intended architecture is service/controller modules with explicit <code>Setup</code> and <code>GameStart</code> phases, Mince-managed remotes, Mince-managed state for replicated values, and components for tagged world instances.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="high-priority-findings">High Priority Findings<a href="#high-priority-findings" class="hash-link" aria-label="Direct link to High Priority Findings" title="Direct link to High Priority Findings" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="1-profile-data-has-too-many-writers">1. Profile Data Has Too Many Writers<a href="#1-profile-data-has-too-many-writers" class="hash-link" aria-label="Direct link to 1. Profile Data Has Too Many Writers" title="Direct link to 1. Profile Data Has Too Many Writers" translate="no">​</a></h3>
+<p>Many services call <code>PlayerDataManager:GetProfileData()</code> or <code>GetProfile()</code> and mutate profile tables directly. Examples:</p>
+<ul>
+<li class=""><code>StoreService</code> edits <code>profile.Data.Currency</code>, <code>profile.Data.EcoPoints</code>, <code>profile.Data.OwnedItems</code>, <code>profile.Data.Statistics</code>, and <code>profile.Data.GearStats</code>.</li>
+<li class=""><code>PurchaseService</code> edits <code>PurchaseStats</code>, <code>PurchaseHistory</code>, <code>Gamepasses</code>, and has a fallback path that directly increments currency.</li>
+<li class=""><code>ToolService</code>, <code>DefaultGearService</code>, <code>TipjarService</code>, <code>AchievementService</code>, <code>DiscoverySystem</code>, <code>TreasureService</code>, <code>Statistics</code>, and <code>Settings</code> also mutate profile sections.</li>
+</ul>
+<p>This makes persistence and replication fragile because every caller must remember to call <code>UpdatePlayer</code> or <code>SchedulePlayerUpdate</code> for the right section. It also makes validation inconsistent.</p>
+<p>Recommended direction:</p>
+<ul>
+<li class="">Keep <code>PlayerDataManager</code> as the persistence owner.</li>
+<li class="">Add section-specific writer APIs instead of exposing raw profile tables for writes:<!-- -->
+<ul>
+<li class=""><code>PlayerDataManager:Patch(player, section, patchFn)</code></li>
+<li class=""><code>PlayerDataManager:GetSection(player, section)</code></li>
+<li class=""><code>PlayerDataManager:MarkDirty(player, section)</code></li>
+</ul>
+</li>
+<li class="">Move economy writes behind <code>CurrencyService</code>.</li>
+<li class="">Move inventory writes behind an <code>InventoryService</code> or <code>OwnershipService</code>.</li>
+<li class="">Move profile stats writes behind <code>Statistics</code>.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="2-storeservice-bypasses-currencyservice-spending">2. StoreService Bypasses CurrencyService Spending<a href="#2-storeservice-bypasses-currencyservice-spending" class="hash-link" aria-label="Direct link to 2. StoreService Bypasses CurrencyService Spending" title="Direct link to 2. StoreService Bypasses CurrencyService Spending" translate="no">​</a></h3>
+<p><code>StoreService:HandlePurchase</code> subtracts balances directly:</p>
+<ul>
+<li class=""><code>profile.Data.EcoPoints.Balance = ecoBalance - price</code></li>
+<li class=""><code>profile.Data.Currency.Balance = balance - price</code></li>
+</ul>
+<p>That bypasses <code>CurrencyService:SpendCurrency</code>, duplicated analytics logging, state sync, and future validation. It also has no matching <code>SpendEcoPoints</code> API.</p>
+<p>Recommended direction:</p>
+<ul>
+<li class="">Add <code>CurrencyService:SpendEcoPoints(player, amount, source)</code>.</li>
+<li class="">Change StoreService purchases to call <code>CurrencyService:SpendCurrency</code> or <code>SpendEcoPoints</code>.</li>
+<li class="">Let CurrencyService own balance mutation, total spent, state sync, and analytics.</li>
+<li class="">StoreService should only own item validation and inventory grant/equip flow.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="3-purchaseservice-bypasses-mince-remotefunction">3. PurchaseService Bypasses Mince RemoteFunction<a href="#3-purchaseservice-bypasses-mince-remotefunction" class="hash-link" aria-label="Direct link to 3. PurchaseService Bypasses Mince RemoteFunction" title="Direct link to 3. PurchaseService Bypasses Mince RemoteFunction" translate="no">​</a></h3>
+<p><code>PurchaseService:Setup</code> creates a raw <code>RemoteFunction</code> named <code>PurchasePrompt</code> under <code>ReplicatedStorage</code>.</p>
+<p>That bypasses <code>Mince:GetFunction</code>, so it does not use the framework remote registry or middleware surface.</p>
+<p>Recommended direction:</p>
+<ul>
+<li class="">Replace the raw RemoteFunction with:<!-- -->
+<ul>
+<li class=""><code>local PurchasePrompt = Mince:GetFunction(&quot;PurchasePrompt&quot;)</code></li>
+<li class=""><code>PurchasePrompt.OnInvoke = function(player, purchaseType, id) ... end</code></li>
+<li class="">optional middleware for type checks and rate limits.</li>
+</ul>
+</li>
+<li class="">Move product/gamepass prompt validation into small methods that are easy to test.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="4-mince-lifecycle-ordering-is-only-partial">4. Mince Lifecycle Ordering Is Only Partial<a href="#4-mince-lifecycle-ordering-is-only-partial" class="hash-link" aria-label="Direct link to 4. Mince Lifecycle Ordering Is Only Partial" title="Direct link to 4. Mince Lifecycle Ordering Is Only Partial" translate="no">​</a></h3>
+<p><code>Mince:Start()</code> sorts <code>SetupMethods</code> and <code>PostMethods</code>, but then starts each setup with <code>task.spawn</code>. That means lower <code>LoadOrder</code> setup starts first, but it does not necessarily complete before higher-order setup starts.</p>
+<p>Modules currently compensate by calling <code>Mince:Get</code> at top level or inside setup, but this can return proxy tables for modules that are not loaded yet.</p>
+<p>Recommended direction:</p>
+<ul>
+<li class="">Define lifecycle rules clearly:<!-- -->
+<ul>
+<li class=""><code>Setup</code> should only connect remotes/events and initialize local state.</li>
+<li class=""><code>GameStart</code> should perform work that requires other modules to be ready.</li>
+</ul>
+</li>
+<li class="">For modules with hard dependencies, use a sequential setup group or explicit dependency metadata:<!-- -->
+<ul>
+<li class=""><code>Dependencies = { &quot;PlayerDataManager&quot;, &quot;CurrencyService&quot; }</code></li>
+<li class=""><code>Mince</code> waits for dependency setup completion before invoking the module.</li>
+</ul>
+</li>
+<li class="">At minimum, document that <code>LoadOrder</code> controls start order, not completion order.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="5-mince-safe-require-can-hide-broken-modules">5. Mince Safe Require Can Hide Broken Modules<a href="#5-mince-safe-require-can-hide-broken-modules" class="hash-link" aria-label="Direct link to 5. Mince Safe Require Can Hide Broken Modules" title="Direct link to 5. Mince Safe Require Can Hide Broken Modules" translate="no">​</a></h3>
+<p><code>Mince.DoPcalling = true</code> causes require failures to become empty module tables. This keeps the server alive but shifts failures to later runtime behavior.</p>
+<p>Recommended direction:</p>
+<ul>
+<li class="">Keep pcall in production only if needed, but record failed modules in <code>Mince.FailedModules</code>.</li>
+<li class="">During Studio or development, fail fast or expose a hard warning summary after load.</li>
+<li class="">Do not register empty tables as valid modules unless the caller explicitly opts in.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="6-component-addon-depends-on-_gminceref">6. Component Addon Depends On <code>_G.MinceRef</code><a href="#6-component-addon-depends-on-_gminceref" class="hash-link" aria-label="Direct link to 6-component-addon-depends-on-_gminceref" title="Direct link to 6-component-addon-depends-on-_gminceref" translate="no">​</a></h3>
+<p><code>Mince/Addons/component.luau</code> uses <code>_G.MinceRef</code>, and the file itself has a <code>TODO: rewrite</code>. This makes the component addon order-dependent and harder to isolate.</p>
+<p>Recommended direction:</p>
+<ul>
+<li class="">Pass the Mince instance into addon initialization instead of reading <code>_G</code>.</li>
+<li class="">Normalize component method names: current code calls <code>Construct</code>, but removal code looks for <code>Removing</code>/<code>Destroying</code>; some project components use <code>Stop</code>, which Mince does not call directly.</li>
+<li class="">Add a small component lifecycle adapter:<!-- -->
+<ul>
+<li class=""><code>Construct</code></li>
+<li class=""><code>Start</code></li>
+<li class=""><code>Stop</code></li>
+<li class=""><code>Destroy</code></li>
+</ul>
+</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="medium-priority-findings">Medium Priority Findings<a href="#medium-priority-findings" class="hash-link" aria-label="Direct link to Medium Priority Findings" title="Direct link to Medium Priority Findings" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="1-remote-event-extensions-are-useful-but-under-validated">1. Remote Event Extensions Are Useful But Under-Validated<a href="#1-remote-event-extensions-are-useful-but-under-validated" class="hash-link" aria-label="Direct link to 1. Remote Event Extensions Are Useful But Under-Validated" title="Direct link to 1. Remote Event Extensions Are Useful But Under-Validated" translate="no">​</a></h3>
+<p>Extended events like <code>StoreEvents:Extend(&quot;PurchaseRequest&quot;)</code> and <code>DrinkService:Extend(&quot;DrinkMade&quot;)</code> help group feature traffic. The server remote addon also kicks players if they fire an unknown extension.</p>
+<p>The current risk is that payload validation sits in each service method, if it exists at all.</p>
+<p>Recommended direction:</p>
+<ul>
+<li class="">Add optional middleware to <code>Mince:GetEvent</code>, similar to <code>GetFunction</code>.</li>
+<li class="">Define request schemas near each remote registration:<!-- -->
+<ul>
+<li class="">Store purchase: <code>player, category: string, itemName: string</code></li>
+<li class="">Settings save: <code>player, settings: table</code></li>
+<li class="">Drink request: <code>player, method: string, ...</code></li>
+</ul>
+</li>
+<li class="">Prefer named function remotes for request/response traffic instead of custom <code>&quot;Response&quot;</code> packets on events.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="2-state-replication-is-underused">2. State Replication Is Underused<a href="#2-state-replication-is-underused" class="hash-link" aria-label="Direct link to 2. State Replication Is Underused" title="Direct link to 2. State Replication Is Underused" translate="no">​</a></h3>
+<p>Currency and EcoPoints now use <code>Mince:GetState</code>, but much of the client still receives whole profile chunks through <code>DataSync</code> and <code>DataPartialSync</code>.</p>
+<p>Good candidates for Mince state:</p>
+<ul>
+<li class="">Player economy: already partly done.</li>
+<li class="">Settings: player-owned state with registered set handlers.</li>
+<li class="">Inventory summary: owned/equipped state, read-only to client except through StoreService requests.</li>
+<li class="">Gear stats: <code>GearStats_{UserId}</code> instead of manual <code>GearStatsUpdate</code> event.</li>
+<li class="">Discovery progress: read-only state plus server request to record discoveries.</li>
+</ul>
+<p>Recommended direction:</p>
+<ul>
+<li class="">Use state for durable UI-facing values that change over time.</li>
+<li class="">Use events for transient effects/notifications.</li>
+<li class="">Use functions for request/response actions.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="3-feature-boundaries-are-blurred">3. Feature Boundaries Are Blurred<a href="#3-feature-boundaries-are-blurred" class="hash-link" aria-label="Direct link to 3. Feature Boundaries Are Blurred" title="Direct link to 3. Feature Boundaries Are Blurred" translate="no">​</a></h3>
+<p>Examples:</p>
+<ul>
+<li class=""><code>StoreService</code> owns item validation, balance spending, stats, gear stat calculation, character attributes, kit/cosmetic application, asset ownership sync, and inventory sync.</li>
+<li class=""><code>DrinkService</code> owns components, recipes, cup state, ingredient rules, visuals, placement, trash logic, and client request routing.</li>
+<li class=""><code>TipjarService</code> owns profile persistence, HTTP/Roblox API calls, product listing cache, rate limiting, prompts, transfers, and ledger sync.</li>
+<li class=""><code>ScanController</code> owns input, camera, cursor, target selection, skeleton UI, effects, discovery events, and sound.</li>
+<li class=""><code>BackpackController/Main/init.luau</code> and <code>Utility.luau</code> are each over 2,000 lines.</li>
+</ul>
+<p>Recommended direction:</p>
+<ul>
+<li class="">Split by ownership, not by folder size alone.</li>
+<li class="">Keep public Mince module APIs small and delegate internals to private child ModuleScripts.</li>
+<li class="">Do not let child private modules be auto-loaded by Mince; the current loader already skips ModuleScripts under ModuleScripts, which is useful for this.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="suggested-modularization">Suggested Modularization<a href="#suggested-modularization" class="hash-link" aria-label="Direct link to Suggested Modularization" title="Direct link to Suggested Modularization" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="economy-and-store">Economy And Store<a href="#economy-and-store" class="hash-link" aria-label="Direct link to Economy And Store" title="Direct link to Economy And Store" translate="no">​</a></h3>
+<p>Create or clarify:</p>
+<ul>
+<li class=""><code>CurrencyService</code>
+<ul>
+<li class="">Owns Credits/EcoPoints mutation, state sync, economy analytics.</li>
+<li class="">Exposes <code>GiveCurrency</code>, <code>SpendCurrency</code>, <code>GiveEcoPoints</code>, <code>SpendEcoPoints</code>.</li>
+</ul>
+</li>
+<li class=""><code>InventoryService</code>
+<ul>
+<li class="">Owns <code>OwnedItems</code>, grants, ownership checks, equip flags.</li>
+<li class="">Exposes <code>OwnsItem</code>, <code>GrantItem</code>, <code>EquipItem</code>, <code>UnequipItem</code>.</li>
+</ul>
+</li>
+<li class=""><code>GearStatsService</code>
+<ul>
+<li class="">Calculates gear stats from equipped items.</li>
+<li class="">Applies character attributes and speed bases.</li>
+</ul>
+</li>
+<li class=""><code>StoreService</code>
+<ul>
+<li class="">Owns remote request routing and store-specific validation.</li>
+<li class="">Calls CurrencyService, InventoryService, GearStatsService, KitService.</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="purchases">Purchases<a href="#purchases" class="hash-link" aria-label="Direct link to Purchases" title="Direct link to Purchases" translate="no">​</a></h3>
+<p>Create or clarify:</p>
+<ul>
+<li class=""><code>PurchaseService</code>
+<ul>
+<li class="">Owns Marketplace callbacks and receipt idempotency.</li>
+<li class="">Uses <code>Mince:GetFunction(&quot;PurchasePrompt&quot;)</code>.</li>
+</ul>
+</li>
+<li class=""><code>EntitlementService</code>
+<ul>
+<li class="">Owns gamepass lookup, player attributes, ownership sync.</li>
+</ul>
+</li>
+<li class=""><code>ProductGrantService</code>
+<ul>
+<li class="">Maps developer products to grant handlers.</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="player-data">Player Data<a href="#player-data" class="hash-link" aria-label="Direct link to Player Data" title="Direct link to Player Data" translate="no">​</a></h3>
+<p>Keep:</p>
+<ul>
+<li class=""><code>PlayerDataManager</code>
+<ul>
+<li class="">Loads profiles, releases profiles, provides patch/dirty APIs, creates initial per-player Mince state.</li>
+</ul>
+</li>
+</ul>
+<p>Move out:</p>
+<ul>
+<li class="">Section-specific mutation knowledge.</li>
+<li class="">Economy mutation.</li>
+<li class="">Item mutation.</li>
+<li class="">Achievement/stat business logic.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="drink-system">Drink System<a href="#drink-system" class="hash-link" aria-label="Direct link to Drink System" title="Direct link to Drink System" translate="no">​</a></h3>
+<p>Split <code>DrinkService/init.luau</code>:</p>
+<ul>
+<li class=""><code>DrinkService/init.luau</code>
+<ul>
+<li class="">Mince module entry, remotes/functions, player cleanup.</li>
+</ul>
+</li>
+<li class=""><code>DrinkService/CupComponent.luau</code>
+<ul>
+<li class="">Server cup component and lifecycle.</li>
+</ul>
+</li>
+<li class=""><code>DrinkService/IngredientComponent.luau</code>
+<ul>
+<li class="">Ingredient rules.</li>
+</ul>
+</li>
+<li class=""><code>DrinkService/DrinkDomain.luau</code>
+<ul>
+<li class="">Pure recipe/mixing/name logic.</li>
+</ul>
+</li>
+<li class=""><code>DrinkService/DrinkPlacement.luau</code>
+<ul>
+<li class="">Placement and spawned drink handling.</li>
+</ul>
+</li>
+</ul>
+<p>Client:</p>
+<ul>
+<li class=""><code>DrinkController/init.luau</code>
+<ul>
+<li class="">Setup/GameStart and high-level client state.</li>
+</ul>
+</li>
+<li class=""><code>DrinkController/Input.luau</code>
+<ul>
+<li class="">mouse/touch placement input.</li>
+</ul>
+</li>
+<li class=""><code>DrinkController/Highlights.luau</code>
+<ul>
+<li class="">ingredient/trash/drink highlights.</li>
+</ul>
+</li>
+<li class=""><code>DrinkController/ClientCupState.luau</code>
+<ul>
+<li class="">local state mirrored from server.</li>
+</ul>
+</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="scan-controller">Scan Controller<a href="#scan-controller" class="hash-link" aria-label="Direct link to Scan Controller" title="Direct link to Scan Controller" translate="no">​</a></h3>
+<p>It already has submodules, but <code>init.luau</code> is still 1,200+ lines. Move more ownership into existing children:</p>
+<ul>
+<li class=""><code>Input</code> should own all input bindings and device mode.</li>
+<li class=""><code>CursorManager</code> should own cursor lock/sticky behavior.</li>
+<li class=""><code>TargetManager</code> should own candidates/raycast/scannables.</li>
+<li class=""><code>EffectsManager</code> should own depth-of-field, sounds, highlights, scanner UI effects.</li>
+<li class=""><code>ScanController</code> should orchestrate state and call the Mince discovery API.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="backpack-controller">Backpack Controller<a href="#backpack-controller" class="hash-link" aria-label="Direct link to Backpack Controller" title="Direct link to Backpack Controller" translate="no">​</a></h3>
+<p>Backpack is currently the largest client system.</p>
+<p>Recommended split:</p>
+<ul>
+<li class=""><code>BackpackState</code></li>
+<li class=""><code>SlotModel</code></li>
+<li class=""><code>HotbarView</code></li>
+<li class=""><code>InventoryView</code></li>
+<li class=""><code>DragDrop</code></li>
+<li class=""><code>GamepadNavigation</code></li>
+<li class=""><code>VRBackpackAdapter</code></li>
+<li class=""><code>ToolBinding</code></li>
+</ul>
+<p>Because this resembles a custom CoreGui replacement, refactor incrementally with screenshots/playtests after each slice.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="mince-usage-rules-to-adopt">Mince Usage Rules To Adopt<a href="#mince-usage-rules-to-adopt" class="hash-link" aria-label="Direct link to Mince Usage Rules To Adopt" title="Direct link to Mince Usage Rules To Adopt" translate="no">​</a></h2>
+<ol>
+<li class="">Top-level Mince modules return a table with <code>Name</code>, optional <code>LoadOrder</code>, <code>Setup</code>, and optional <code>GameStart</code>.</li>
+<li class=""><code>Setup</code> registers remotes, states, components, and local connections only.</li>
+<li class=""><code>GameStart</code> performs cross-module work.</li>
+<li class="">Use <code>Mince:GetEvent</code> for fire-and-forget signals.</li>
+<li class="">Use <code>Mince:GetFunction</code> for request/response flows.</li>
+<li class="">Use <code>Mince:GetState</code> for durable replicated values.</li>
+<li class="">Use <code>Mince.Component</code> for CollectionService-tagged world entities.</li>
+<li class="">Do not create raw remotes/functions in feature services.</li>
+<li class="">Do not mutate profile data outside owning services.</li>
+<li class="">Do not rely on <code>_G</code> for framework access.</li>
+</ol>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="phased-refactor-plan">Phased Refactor Plan<a href="#phased-refactor-plan" class="hash-link" aria-label="Direct link to Phased Refactor Plan" title="Direct link to Phased Refactor Plan" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="phase-1-progress">Phase 1 Progress<a href="#phase-1-progress" class="hash-link" aria-label="Direct link to Phase 1 Progress" title="Direct link to Phase 1 Progress" translate="no">​</a></h3>
+<p>Completed locally:</p>
+<ul>
+<li class=""><code>PurchasePrompt</code> now uses <code>Mince:GetFunction(&quot;PurchasePrompt&quot;)</code>.</li>
+<li class=""><code>CurrencyService:SpendEcoPoints</code> owns EcoPoint spending, state sync, and economy analytics.</li>
+<li class=""><code>StoreService:HandlePurchase</code> now spends Credits and EcoPoints through <code>CurrencyService</code>.</li>
+<li class=""><code>Mince.FailedModules</code> records require failures and reports a load summary.</li>
+<li class=""><code>PlayerDataManager</code> now exposes <code>GetSection</code>, <code>MarkDirty</code>, and <code>Patch</code> for section-owned profile updates.</li>
+<li class=""><code>Settings</code> now writes through <code>PlayerDataManager:Patch</code>.</li>
+<li class="">Moonwave generation now includes <code>StoreService</code> and <code>PurchaseService</code>.</li>
+</ul>
+<p>Still open:</p>
+<ul>
+<li class="">Define whether Studio should fail fast on <code>Mince.FailedModules</code>.</li>
+<li class="">Add typed event middleware for <code>Mince:GetEvent</code>.</li>
+<li class="">Add dependency metadata or sequential setup groups for modules with hard startup dependencies.</li>
+<li class="">Migrate remaining direct profile writers to <code>PlayerDataManager:Patch</code> or domain-owned services.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="phase-1-safety-and-consistency">Phase 1: Safety And Consistency<a href="#phase-1-safety-and-consistency" class="hash-link" aria-label="Direct link to Phase 1: Safety And Consistency" title="Direct link to Phase 1: Safety And Consistency" translate="no">​</a></h3>
+<ul>
+<li class="">Replace <code>PurchasePrompt</code> raw RemoteFunction with <code>Mince:GetFunction</code>.</li>
+<li class="">Add <code>CurrencyService:SpendEcoPoints</code>.</li>
+<li class="">Change StoreService to spend through CurrencyService.</li>
+<li class="">Add <code>Mince.FailedModules</code> and a Studio hard warning/fail mode.</li>
+<li class="">Document <code>LoadOrder</code> semantics.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="phase-2-data-ownership">Phase 2: Data Ownership<a href="#phase-2-data-ownership" class="hash-link" aria-label="Direct link to Phase 2: Data Ownership" title="Direct link to Phase 2: Data Ownership" translate="no">​</a></h3>
+<ul>
+<li class="">Add <code>PlayerDataManager:Patch</code>.</li>
+<li class="">Move <code>OwnedItems</code> mutation into <code>InventoryService</code>.</li>
+<li class="">Move <code>GearStats</code> calculation into <code>GearStatsService</code>.</li>
+<li class="">Move discovery/settings/profile section writes behind section APIs.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="phase-3-feature-decomposition">Phase 3: Feature Decomposition<a href="#phase-3-feature-decomposition" class="hash-link" aria-label="Direct link to Phase 3: Feature Decomposition" title="Direct link to Phase 3: Feature Decomposition" translate="no">​</a></h3>
+<ul>
+<li class="">Split StoreService and DrinkService first; they are high-value and have clear boundaries.</li>
+<li class="">Split ScanController and BackpackController after behavior snapshots exist.</li>
+<li class="">Move repeated UI/highlight/input logic into small reusable modules.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="phase-4-framework-cleanup">Phase 4: Framework Cleanup<a href="#phase-4-framework-cleanup" class="hash-link" aria-label="Direct link to Phase 4: Framework Cleanup" title="Direct link to Phase 4: Framework Cleanup" translate="no">​</a></h3>
+<ul>
+<li class="">Rewrite <code>Mince.Component</code> to avoid <code>_G</code>.</li>
+<li class="">Add event middleware.</li>
+<li class="">Add dependency metadata or sequential setup groups.</li>
+<li class="">Normalize component lifecycle method names.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="documentation-targets">Documentation Targets<a href="#documentation-targets" class="hash-link" aria-label="Direct link to Documentation Targets" title="Direct link to Documentation Targets" translate="no">​</a></h2>
+<p>The next Moonwave documentation pass should cover these modules first:</p>
+<ul>
+<li class=""><code>Mince</code> and its addons.</li>
+<li class=""><code>PlayerDataManager</code>.</li>
+<li class=""><code>CurrencyService</code>.</li>
+<li class=""><code>StoreService</code>.</li>
+<li class=""><code>PurchaseService</code>.</li>
+<li class=""><code>ToolService</code>.</li>
+<li class=""><code>DrinkService</code>.</li>
+<li class=""><code>DiscoverySystem</code>.</li>
+<li class=""><code>ScanController</code>.</li>
+<li class=""><code>BackpackController</code> public API after it is split.</li>
+</ul></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/observatory/docs/creature-animation-lod-plan"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Creature LOD plan</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#runtime-flow" class="table-of-contents__link toc-highlight">Runtime Flow</a></li><li><a href="#high-priority-findings" class="table-of-contents__link toc-highlight">High Priority Findings</a><ul><li><a href="#1-profile-data-has-too-many-writers" class="table-of-contents__link toc-highlight">1. Profile Data Has Too Many Writers</a></li><li><a href="#2-storeservice-bypasses-currencyservice-spending" class="table-of-contents__link toc-highlight">2. StoreService Bypasses CurrencyService Spending</a></li><li><a href="#3-purchaseservice-bypasses-mince-remotefunction" class="table-of-contents__link toc-highlight">3. PurchaseService Bypasses Mince RemoteFunction</a></li><li><a href="#4-mince-lifecycle-ordering-is-only-partial" class="table-of-contents__link toc-highlight">4. Mince Lifecycle Ordering Is Only Partial</a></li><li><a href="#5-mince-safe-require-can-hide-broken-modules" class="table-of-contents__link toc-highlight">5. Mince Safe Require Can Hide Broken Modules</a></li><li><a href="#6-component-addon-depends-on-_gminceref" class="table-of-contents__link toc-highlight">6. Component Addon Depends On <code>_G.MinceRef</code></a></li></ul></li><li><a href="#medium-priority-findings" class="table-of-contents__link toc-highlight">Medium Priority Findings</a><ul><li><a href="#1-remote-event-extensions-are-useful-but-under-validated" class="table-of-contents__link toc-highlight">1. Remote Event Extensions Are Useful But Under-Validated</a></li><li><a href="#2-state-replication-is-underused" class="table-of-contents__link toc-highlight">2. State Replication Is Underused</a></li><li><a href="#3-feature-boundaries-are-blurred" class="table-of-contents__link toc-highlight">3. Feature Boundaries Are Blurred</a></li></ul></li><li><a href="#suggested-modularization" class="table-of-contents__link toc-highlight">Suggested Modularization</a><ul><li><a href="#economy-and-store" class="table-of-contents__link toc-highlight">Economy And Store</a></li><li><a href="#purchases" class="table-of-contents__link toc-highlight">Purchases</a></li><li><a href="#player-data" class="table-of-contents__link toc-highlight">Player Data</a></li><li><a href="#drink-system" class="table-of-contents__link toc-highlight">Drink System</a></li><li><a href="#scan-controller" class="table-of-contents__link toc-highlight">Scan Controller</a></li><li><a href="#backpack-controller" class="table-of-contents__link toc-highlight">Backpack Controller</a></li></ul></li><li><a href="#mince-usage-rules-to-adopt" class="table-of-contents__link toc-highlight">Mince Usage Rules To Adopt</a></li><li><a href="#phased-refactor-plan" class="table-of-contents__link toc-highlight">Phased Refactor Plan</a><ul><li><a href="#phase-1-progress" class="table-of-contents__link toc-highlight">Phase 1 Progress</a></li><li><a href="#phase-1-safety-and-consistency" class="table-of-contents__link toc-highlight">Phase 1: Safety And Consistency</a></li><li><a href="#phase-2-data-ownership" class="table-of-contents__link toc-highlight">Phase 2: Data Ownership</a></li><li><a href="#phase-3-feature-decomposition" class="table-of-contents__link toc-highlight">Phase 3: Feature Decomposition</a></li><li><a href="#phase-4-framework-cleanup" class="table-of-contents__link toc-highlight">Phase 4: Framework Cleanup</a></li></ul></li><li><a href="#documentation-targets" class="table-of-contents__link toc-highlight">Documentation Targets</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Aquatica</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://www.roblox.com/games/78959878729166/Aquatica-Observatory" target="_blank" rel="noopener noreferrer" class="footer__link-item">Play on Roblox<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://velumix.github.io/#observatory" target="_blank" rel="noopener noreferrer" class="footer__link-item">Engineering portfolio<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Aquatica Observatory engineering documentation.</div></div></div></footer></div>
+</body>
+</html>
