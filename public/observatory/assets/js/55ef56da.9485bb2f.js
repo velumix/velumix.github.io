@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[22852],{44521:e=>{e.exports=JSON.parse('{"functions":[],"properties":[],"types":[],"name":"InputMatch","desc":"Source: `game/src/ReplicatedStorage/Runtime/Config/InputMatch.luau`","tags":["Replicated configuration"],"source":{"line":7,"path":"moonwave-api/InputMatch.luau"}}')}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[48361],{39009:e=>{e.exports=JSON.parse('{"functions":[],"properties":[],"types":[],"name":"RunnerClient_server","desc":"Source: `game/src/ReplicatedStorage/Modules/Mince/Addons/agent/RunnerClient.server.luau`","tags":["Mince"],"source":{"line":7,"path":"moonwave-api/RunnerClient_server.luau"}}')}}]);

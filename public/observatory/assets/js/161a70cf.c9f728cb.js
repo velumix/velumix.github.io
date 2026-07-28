@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[11678],{32969:e=>{e.exports=JSON.parse('{"functions":[],"properties":[],"types":[],"name":"Freecam","desc":"Source: `game/src/ReplicatedStorage/Runtime/Config/Passes/FreecamPass.luau`","tags":["Replicated configuration"],"source":{"line":7,"path":"moonwave-api/Freecam.luau"}}')}}]);

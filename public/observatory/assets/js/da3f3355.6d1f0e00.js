@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[50993],{66195:e=>{e.exports=JSON.parse('{"functions":[],"properties":[],"types":[],"name":"Rarities","desc":"Source: `game/src/ReplicatedStorage/Runtime/Config/Shared/Rarities.luau`","tags":["Replicated configuration"],"source":{"line":7,"path":"moonwave-api/Rarities.luau"}}')}}]);

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[54503],{3783:e=>{e.exports=JSON.parse('{"functions":[],"properties":[],"types":[],"name":"Core_Progression","desc":"Source: `game/src/ReplicatedStorage/Runtime/Config/Shared/Achievements.luau`","tags":["Replicated configuration"],"source":{"line":7,"path":"moonwave-api/Core_Progression.luau"}}')}}]);

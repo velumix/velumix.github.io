@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[65757],{78300:e=>{e.exports=JSON.parse('{"functions":[],"properties":[],"types":[],"name":"Button","desc":"Source: `game/src/ReplicatedStorage/Runtime/Source/BindManager/Button.luau`","tags":["Input"],"realm":["Client"],"source":{"line":8,"path":"moonwave-api/Button.luau"}}')}}]);

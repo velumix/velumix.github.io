@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[92299],{38823:e=>{e.exports=JSON.parse('{"functions":[],"properties":[],"types":[],"name":"character","desc":"Source: `game/src/ReplicatedStorage/Modules/Mince/Addons/character.luau`","tags":["Mince"],"source":{"line":7,"path":"moonwave-api/character.luau"}}')}}]);

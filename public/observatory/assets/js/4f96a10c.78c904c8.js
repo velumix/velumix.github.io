@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[40701],{74381:e=>{e.exports=JSON.parse('{"functions":[],"properties":[],"types":[],"name":"MicroID","desc":"Source: `game/src/ReplicatedStorage/Modules/Mince/MicroID.luau`","tags":["Mince"],"source":{"line":7,"path":"moonwave-api/MicroID.luau"}}')}}]);

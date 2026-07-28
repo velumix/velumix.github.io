@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[71226],{96481:e=>{e.exports=JSON.parse('{"functions":[],"properties":[],"types":[],"name":"bytenet","desc":"Source: `game/src/ReplicatedStorage/Modules/Mince/Addons/bytenet.luau`","tags":["Mince"],"source":{"line":7,"path":"moonwave-api/bytenet.luau"}}')}}]);

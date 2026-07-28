@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[50025],{31471:e=>{e.exports=JSON.parse('{"functions":[],"properties":[],"types":[],"name":"BoidPackets","desc":"Source: `game/src/ReplicatedStorage/Modules/BoidPackets.luau`","tags":["Shared runtime"],"source":{"line":7,"path":"moonwave-api/BoidPackets.luau"}}')}}]);

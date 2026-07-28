@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[99925],{17135:e=>{e.exports=JSON.parse('{"functions":[],"properties":[],"types":[],"name":"Debris","desc":"Source: `game/src/ReplicatedStorage/Runtime/Config/Shared/Debris.luau`","tags":["Replicated configuration"],"source":{"line":7,"path":"moonwave-api/Debris.luau"}}')}}]);

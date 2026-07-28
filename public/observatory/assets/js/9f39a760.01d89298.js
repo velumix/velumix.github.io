@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[84356],{38415:e=>{e.exports=JSON.parse('{"functions":[],"properties":[],"types":[],"name":"Client","desc":"Source: `game/src/ReplicatedStorage/Modules/Network/Client.luau`","tags":["Network"],"source":{"line":7,"path":"moonwave-api/Client.luau"}}')}}]);

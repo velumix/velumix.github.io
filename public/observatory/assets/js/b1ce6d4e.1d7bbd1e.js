@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[37831],{21743:e=>{e.exports=JSON.parse('{"functions":[],"properties":[],"types":[],"name":"DepthIterator","desc":"Source: `game/src/ReplicatedStorage/Modules/Mince/DepthIterator.luau`","tags":["Mince"],"source":{"line":7,"path":"moonwave-api/DepthIterator.luau"}}')}}]);

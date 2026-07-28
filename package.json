@@ -7,7 +7,9 @@
     "build": "vinext build",
     "start": "vinext start",
     "fetch:roblox": "node scripts/fetch-roblox-media.mjs",
-    "build:pages": "npm run fetch:roblox && vite build --config vite.pages.config.ts"
+    "build:pages": "npm run fetch:roblox && vite build --config vite.pages.config.ts",
+    "check:observatory-docs": "node scripts/check-observatory-docs.mjs",
+    "check:observatory-browser": "node scripts/check-observatory-browser.mjs"
   },
   "dependencies": {
     "react": "^19.2.0",
