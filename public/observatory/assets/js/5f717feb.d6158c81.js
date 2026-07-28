@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[88992],{36585:e=>{e.exports=JSON.parse('{"functions":[],"properties":[],"types":[],"name":"DPVService","desc":"Source: `game/src/ServerScriptService/Runtime/Source/Services/DPVService.luau`","tags":["Server services"],"realm":["Server"],"source":{"line":8,"path":"moonwave-api/DPVService.luau"}}')}}]);

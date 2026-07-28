@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[33965],{14751:e=>{e.exports=JSON.parse('{"functions":[],"properties":[],"types":[],"name":"WaterTextures","desc":"Source: `game/src/ReplicatedStorage/Runtime/Source/Components/Caustics/WaterTextures.luau`","tags":["Shared components"],"source":{"line":7,"path":"moonwave-api/WaterTextures.luau"}}')}}]);

@@ -1,0 +1,1899 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-shared-runtime" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.10.1">
+<title data-rh="true">Shared runtime | Aquatica Observatory</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:url" content="https://velumix.github.io/observatory/docs/shared-runtime"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Shared runtime | Aquatica Observatory"><meta data-rh="true" name="description" content="Shared components, gameplay modules, utilities, Mince, and the network wrapper live here."><meta data-rh="true" property="og:description" content="Shared components, gameplay modules, utilities, Mince, and the network wrapper live here."><link data-rh="true" rel="canonical" href="https://velumix.github.io/observatory/docs/shared-runtime"><link data-rh="true" rel="alternate" href="https://velumix.github.io/observatory/docs/shared-runtime" hreflang="en"><link data-rh="true" rel="alternate" href="https://velumix.github.io/observatory/docs/shared-runtime" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Shared runtime","item":"https://velumix.github.io/observatory/docs/shared-runtime"}]}</script><link rel="stylesheet" href="/observatory/assets/css/styles.5ec48d9a.css">
+<script src="/observatory/assets/js/runtime~main.334663ec.js" defer="defer"></script>
+<script src="/observatory/assets/js/main.a12e594e.js" defer="defer"></script>
+</head>
+<body>
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light")),document.documentElement.setAttribute("data-theme-choice",t||"system")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/observatory/"><b class="navbar__title text--truncate">Aquatica Observatory</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/observatory/docs/intro">Docs</a><a class="navbar__item navbar__link" href="/observatory/api/">API</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><div class="navbar__search"><span aria-label="expand searchbar" role="button" class="search-icon" tabindex="0"></span><input id="search_input_react" type="search" placeholder="Loading..." aria-label="Search" class="navbar__search-input search-bar" disabled=""></div></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/observatory/docs/intro"><span title="Start here" class="linkLabel_WmDU">Start here</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/observatory/docs/server-runtime"><span title="Server runtime" class="linkLabel_WmDU">Server runtime</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/observatory/docs/client-runtime"><span title="Client runtime" class="linkLabel_WmDU">Client runtime</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" href="/observatory/docs/shared-runtime"><span title="Shared runtime" class="linkLabel_WmDU">Shared runtime</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/observatory/docs/networking"><span title="Networking" class="linkLabel_WmDU">Networking</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/observatory/docs/configuration"><span title="Configuration" class="linkLabel_WmDU">Configuration</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/observatory/docs/content"><span title="Game content" class="linkLabel_WmDU">Game content</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/observatory/docs/source-index"><span title="Source index" class="linkLabel_WmDU">Source index</span></a></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/observatory/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Shared runtime</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Shared runtime</h1></header>
+<p>Shared components, gameplay modules, utilities, Mince, and the network wrapper live here.</p>
+<h1>Gameplay</h1>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="charactercontroller">CharacterController<a href="#charactercontroller" class="hash-link" aria-label="Direct link to CharacterController" title="Direct link to CharacterController" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/Source/Gameplay/CharacterController.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> <code>CharacterController</code></li>
+<li class=""><strong>Lifecycle:</strong> <code>Setup</code></li>
+<li class=""><strong>Roblox services:</strong> <code>Players</code>, <code>ReplicatedStorage</code>, <code>RunService</code>, <code>UserInputService</code></li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods">Methods<a href="#methods" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>CharacterController:SetEnabled(Bool)</code></li>
+<li class=""><code>CharacterController:ForceUnseat()</code></li>
+<li class=""><code>CharacterController:Setup()</code></li>
+<li class=""><code>CharacterController:Start()</code></li>
+<li class=""><code>CharacterController:StopAll()</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="effects">Effects<a href="#effects" class="hash-link" aria-label="Direct link to Effects" title="Direct link to Effects" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/Source/Gameplay/Effects/init.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> <code>__Attachment</code></li>
+<li class=""><strong>Lifecycle:</strong> <code>Setup</code></li>
+<li class=""><strong>Roblox services:</strong> <code>Debris</code>, <code>Players</code>, <code>ReplicatedStorage</code>, <code>RunService</code>, <code>TweenService</code></li>
+<li class=""><strong>Mince modules:</strong> <code>InterfaceHandler</code>, <code>Settings</code>, <code>SoundHandler</code></li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-1">Methods<a href="#methods-1" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>Effects.CameraEffectDisabled()</code></li>
+<li class=""><code>Effects.SetCameraEffectsEnabled(Enabled)</code></li>
+<li class=""><code>Effects.PlayBlackout(Time)</code></li>
+<li class=""><code>Effects.ImageEffect()</code></li>
+<li class=""><code>Effects.ScarySpider()</code></li>
+<li class=""><code>Effects.PopConfetti(Tool)</code></li>
+<li class=""><code>Effects.FocusEffect(BasePart, Duration)</code></li>
+<li class=""><code>Effects.SharpCameraEffect(Properties, Duration, PopDuration)</code></li>
+<li class=""><code>Effects.CorrectionSharpEffect(Properties, Duration, PopDuration, MidFn)</code></li>
+<li class=""><code>Effects.ColorEffect(Color : Color3, Duration)</code></li>
+<li class=""><code>Effects.BrightEffect(Brightness : number, Duration)</code></li>
+<li class=""><code>Effects.GetRawAttachment(BasePart : BasePart)</code></li>
+<li class=""><code>Effects.PlaySound(...)</code></li>
+<li class=""><code>Effects.SpawnEffectset(Player, EffectName)</code></li>
+<li class=""><code>Effect.SpawnNewEffect(EffectName, PositionOrPart)</code></li>
+<li class=""><code>Effects.SpawnEffect(EffectName,Position,...)</code></li>
+<li class=""><code>Effects.Init()</code></li>
+<li class=""><code>Effects.Emit(Part)</code></li>
+<li class=""><code>Effects.SpawnFirecrackers(FirecrackerGroup: Model)</code></li>
+<li class=""><code>Effects.SpawnPsudeoFirework1(Position : Position)</code></li>
+<li class=""><code>Effects.SpawnFirework(MotarTarget : BasePart)</code></li>
+<li class=""><code>Effects.SoulAura(Player : Player)</code></li>
+<li class=""><code>Effects.Invis(Player : Player)</code></li>
+<li class=""><code>Effects.CloneStaff(Hit: CFrame)</code></li>
+<li class=""><code>Effects.RefreshStaff(Hit: CFrame)</code></li>
+<li class=""><code>Effects.YarnCat(Player : Player)</code></li>
+<li class=""><code>Effects.Fish(Player : Player)</code></li>
+<li class=""><code>Effects.ApplyAura(Player : Player, AuraName : string)</code></li>
+<li class=""><code>Effects.Spark(Player : Player)</code></li>
+<li class=""><code>Effects.WaterPortal(Player : Player)</code></li>
+<li class=""><code>Effects.OpenGate(Player : Player)</code></li>
+<li class=""><code>Effects:__init()</code></li>
+<li class=""><code>Effects.Setup()</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="oldparticlesource">OldParticleSource<a href="#oldparticlesource" class="hash-link" aria-label="Direct link to OldParticleSource" title="Direct link to OldParticleSource" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/Source/Gameplay/Effects/OldParticleSource.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> <code>ParticleSource</code></li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> <code>Debris</code></li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-2">Methods<a href="#methods-2" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>ParticleSource.Create(Particle : ParticleEmitter,Position,Size,EmitCount)</code></li>
+<li class=""><code>ParticleSource.Emit(Part, ManualRate, PlaySounds)</code></li>
+<li class=""><code>ParticleSource.CreateGroup(Attachment : Attachment,AttachPart : BasePart, EmitCount)</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="interactablehandler">InteractableHandler<a href="#interactablehandler" class="hash-link" aria-label="Direct link to InteractableHandler" title="Direct link to InteractableHandler" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/Source/Gameplay/InteractableHandler.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> <code>InteractableHandler</code></li>
+<li class=""><strong>Lifecycle:</strong> <code>Setup</code></li>
+<li class=""><strong>Roblox services:</strong> <code>Players</code>, <code>ReplicatedStorage</code>, <code>RunService</code>, <code>UserInputService</code>, <code>VRService</code></li>
+<li class=""><strong>Mince modules:</strong> <code>BindManager</code>, <code>InterfaceHandler</code></li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-3">Methods<a href="#methods-3" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>Interactable.new()</code></li>
+<li class=""><code>Interactable:Init()</code></li>
+<li class=""><code>Interactable:CallControl(Index, ...)</code></li>
+<li class=""><code>Interactable:Control(Index, Method)</code></li>
+<li class=""><code>Interactable:HasControlIndex(Index)</code></li>
+<li class=""><code>InteractableHandler.newInteractable(HoverName : string, HitPartOrParts : {Part} | Part, HighlightPart)</code></li>
+<li class=""><code>InteractableHandler:Update(DeltaTime : number)</code></li>
+<li class=""><code>InteractableHandler:InvalidateNew(Interactable, Alt1)</code></li>
+<li class=""><code>InteractableHandler:SelectNew(Interactable)</code></li>
+<li class=""><code>InteractableHandler:ClearInvalidation()</code></li>
+<li class=""><code>InteractableHandler:Unselect()</code></li>
+<li class=""><code>InteractableHandler:BeginInteractionWithSelection()</code></li>
+<li class=""><code>InteractableHandler:DestroyReigstry(HitPart : BasePart)</code></li>
+<li class=""><code>InteractableHandler:RegisterNewHitPartWithInteractable(HitPart : BasePart, Interactable)</code></li>
+<li class=""><code>InteractableHandler:NewInteractableBlocker(HitPart)</code></li>
+<li class=""><code>InteractableHandler:BindToInteract(Priority : number, CallbackFn)</code></li>
+<li class=""><code>InteractableHandler:TriggerInteraction()</code></li>
+<li class=""><code>InteractableHandler:Interact()</code></li>
+<li class=""><code>InteractableHandler:NewCharacter(Character : Model)</code></li>
+<li class=""><code>InteractableHandler:__SetupConnections()</code></li>
+<li class=""><code>InteractableHandler:__SetupStuffs()</code></li>
+<li class=""><code>InteractableHandler:Setup()</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="interactindicator">InteractIndicator<a href="#interactindicator" class="hash-link" aria-label="Direct link to InteractIndicator" title="Direct link to InteractIndicator" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/Source/Gameplay/InteractIndicator/init.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> <code>Players</code>, <code>ReplicatedStorage</code>, <code>RunService</code>, <code>TweenService</code></li>
+<li class=""><strong>Mince modules:</strong> <code>UpdateStream</code></li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-4">Methods<a href="#methods-4" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>InteractIndicator.new(...)</code></li>
+<li class=""><code>InteractIndicator:Init(BasePart)</code></li>
+<li class=""><code>InteractIndicator:Update(DeltaTime)</code></li>
+<li class=""><code>InteractIndicator:ClearUpdate()</code></li>
+<li class=""><code>InteractIndicator:StartUpdate()</code></li>
+<li class=""><code>InteractIndicator:Start(Ignore)</code></li>
+<li class=""><code>InteractIndicator:Stop(Ignore)</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="camerautils">CameraUtils<a href="#camerautils" class="hash-link" aria-label="Direct link to CameraUtils" title="Direct link to CameraUtils" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/Source/Gameplay/SequenceHandler/CameraUtils.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> <code>ReplicatedStorage</code>, <code>RunService</code>, <code>Workspace</code></li>
+<li class=""><strong>Mince modules:</strong> <code>SequenceHandler</code></li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-5">Methods<a href="#methods-5" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<p><em>No table methods are declared in this file.</em></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="sequencehandler">SequenceHandler<a href="#sequencehandler" class="hash-link" aria-label="Direct link to SequenceHandler" title="Direct link to SequenceHandler" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/Source/Gameplay/SequenceHandler/init.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> <code>Setup</code></li>
+<li class=""><strong>Roblox services:</strong> <code>Players</code>, <code>ReplicatedFirst</code>, <code>ReplicatedStorage</code>, <code>RunService</code>, <code>TweenService</code>, <code>Workspace</code></li>
+<li class=""><strong>Mince modules:</strong> <code>CharacterController</code>, <code>InterfaceHandler</code></li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-6">Methods<a href="#methods-6" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>SequenceHandler:PlayScene(SceneName : string)</code></li>
+<li class=""><code>SequenceHandler:ConnectBeginnings()</code></li>
+<li class=""><code>SequenceHandler:StartCinematicBars()</code></li>
+<li class=""><code>SequenceHandler:StopCinematicBars()</code></li>
+<li class=""><code>SequenceHandler:LockCharacter()</code></li>
+<li class=""><code>SequenceHandler:WhenStarted(SequenceIndex, SequenceHandlerFn)</code></li>
+<li class=""><code>SequenceHandler:CallSequence(SequenceIndex, WhenCompleted)</code></li>
+<li class=""><code>SequenceHandler:Setup()</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="testsequence">TestSequence<a href="#testsequence" class="hash-link" aria-label="Direct link to TestSequence" title="Direct link to TestSequence" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/Source/Gameplay/Sequences/TestSequence.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> <code>Setup</code></li>
+<li class=""><strong>Roblox services:</strong> <code>ReplicatedStorage</code></li>
+<li class=""><strong>Mince modules:</strong> <code>SequenceHandler</code>, <code>SoundHandler</code></li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-7">Methods<a href="#methods-7" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>SequenceController.DoSequence(EndSequence)</code></li>
+<li class=""><code>SequenceController:Setup()</code></li>
+</ul>
+<h1>Mince</h1>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="agent">agent<a href="#agent" class="hash-link" aria-label="Direct link to agent" title="Direct link to agent" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Modules/Mince/Addons/agent/init.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> <code>Response</code></li>
+<li class=""><strong>Lifecycle:</strong> <code>Destroy</code></li>
+<li class=""><strong>Roblox services:</strong> <code>Players</code>, <code>RunService</code>, <code>SharedTableRegistry</code></li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-8">Methods<a href="#methods-8" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>AgentClass.New(...)</code></li>
+<li class=""><code>InstanceProxy:AssignInstance(Key, TargetInstance)</code></li>
+<li class=""><code>InstanceProxy:Destroy()</code></li>
+<li class=""><code>AgentAddon.Identity(ThisIdentity)</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="runnerclientserver">RunnerClient.server<a href="#runnerclientserver" class="hash-link" aria-label="Direct link to RunnerClient.server" title="Direct link to RunnerClient.server" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Modules/Mince/Addons/agent/RunnerClient.server.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> <code>RunService</code>, <code>SharedTableRegistry</code></li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-9">Methods<a href="#methods-9" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<p><em>No table methods are declared in this file.</em></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="runnerserverserver">RunnerServer.server<a href="#runnerserverserver" class="hash-link" aria-label="Direct link to RunnerServer.server" title="Direct link to RunnerServer.server" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Modules/Mince/Addons/agent/RunnerServer.server.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> <code>RunService</code>, <code>SharedTableRegistry</code></li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-10">Methods<a href="#methods-10" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<p><em>No table methods are declared in this file.</em></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="bytenet">bytenet<a href="#bytenet" class="hash-link" aria-label="Direct link to bytenet" title="Direct link to bytenet" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Modules/Mince/Addons/bytenet.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> <code>ReplicatedStorage</code>, <code>RunService</code></li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-11">Methods<a href="#methods-11" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<p><em>No table methods are declared in this file.</em></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="character">character<a href="#character" class="hash-link" aria-label="Direct link to character" title="Direct link to character" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Modules/Mince/Addons/character.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> <code>Players</code></li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-12">Methods<a href="#methods-12" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<p><em>No table methods are declared in this file.</em></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="component">component<a href="#component" class="hash-link" aria-label="Direct link to component" title="Direct link to component" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Modules/Mince/Addons/component.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> <code>CollectionService</code>, <code>Workspace</code></li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-13">Methods<a href="#methods-13" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>MinceComponent.newComponent(ModuleContainer)</code></li>
+<li class=""><code>MinceComponent:CallTable(CallMethod)</code></li>
+<li class=""><code>MinceComponent:__ConnectCommunicationMethods(SubComponent)</code></li>
+<li class=""><code>MinceComponent:__CreateCommunicationMethods()</code></li>
+<li class=""><code>MinceComponent:__Create(ModuleContainer)</code></li>
+<li class=""><code>MinceComponent:CallExisting(Index, CompInstance, ...)</code></li>
+<li class=""><code>MinceComponent:NewSubComponent(ThisInstance)</code></li>
+<li class=""><code>MinceComponent:InstanceRemoved(ThisInstance : Instance)</code></li>
+<li class=""><code>MinceComponent:CheckIfHasValidParentsToInsert(ThisInstance)</code></li>
+<li class=""><code>MinceComponent:InstanceAddedOrExisted(ThisInstance : Instance, Existed : boolean?)</code></li>
+<li class=""><code>MinceComponent:RemoveFromRegistry(ThisInstance : Instance)</code></li>
+<li class=""><code>MinceComponent:Get(ThisInstance)</code></li>
+<li class=""><code>MinceComponent:GetAll()</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="cursorclickeffect">cursorclickeffect<a href="#cursorclickeffect" class="hash-link" aria-label="Direct link to cursorclickeffect" title="Direct link to cursorclickeffect" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Modules/Mince/Addons/cursorclickeffect.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> <code>CursorClickEffects</code></li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> <code>Players</code>, <code>ReplicatedStorage</code>, <code>TweenService</code></li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-14">Methods<a href="#methods-14" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>CursorClickEffect:SetTargetGui(targetGui)</code></li>
+<li class=""><code>CursorClickEffect:IsEnabled()</code></li>
+<li class=""><code>CursorClickEffect:CreateEffectLayer()</code></li>
+<li class=""><code>CursorClickEffect:Emit(position)</code></li>
+<li class=""><code>CursorClickEffect:Start()</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="remote">remote<a href="#remote" class="hash-link" aria-label="Direct link to remote" title="Direct link to remote" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Modules/Mince/Addons/remote.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> —</li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-15">Methods<a href="#methods-15" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>ServerRemote:GetEvent(value : any, ...)</code></li>
+<li class=""><code>ServerRemote.newEvent(index : string, ...)</code></li>
+<li class=""><code>ServerRemote:__Create(RegisterIndex, Unreliable : boolean)</code></li>
+<li class=""><code>ServerRemote:UponRemoteEvent(...)</code></li>
+<li class=""><code>ServerRemote:Fire(Player : Player, ...)</code></li>
+<li class=""><code>ServerRemote:FireAll(...)</code></li>
+<li class=""><code>ServerRemote:Extend(Name : string)</code></li>
+<li class=""><code>RemoteExtender:Fire(Player : Player, ...)</code></li>
+<li class=""><code>RemoteExtender:FireAll(...)</code></li>
+<li class=""><code>ClientRemote:GetEvent(value : any)</code></li>
+<li class=""><code>ClientRemote.newEvent(index : string, ...)</code></li>
+<li class=""><code>ClientRemote:__Create(RegisterIndex, Unreliable : boolean)</code></li>
+<li class=""><code>ClientRemote:UponRemoteEvent(...)</code></li>
+<li class=""><code>ClientRemote:Fire(...)</code></li>
+<li class=""><code>ClientRemote:Extend(Name : string)</code></li>
+<li class=""><code>RemoteExtender:Fire(...)</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="remotefunc">remotefunc<a href="#remotefunc" class="hash-link" aria-label="Direct link to remotefunc" title="Direct link to remotefunc" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Modules/Mince/Addons/remotefunc.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> —</li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-16">Methods<a href="#methods-16" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>ServerRemote:GetFunction(value : any)</code></li>
+<li class=""><code>ServerRemote.newFunction(index : string, ...)</code></li>
+<li class=""><code>ServerRemote:__Create(RegisterIndex)</code></li>
+<li class=""><code>ServerRemote:UponInvoke(...)</code></li>
+<li class=""><code>ServerRemote:Invoke(Player, ...)</code></li>
+<li class=""><code>ServerRemote:OnInvoke()</code></li>
+<li class=""><code>ServerRemote:Add(Middleware)</code></li>
+<li class=""><code>ClientRemote:GetFunction(value : any)</code></li>
+<li class=""><code>ClientRemote.newFunction(index : string, ...)</code></li>
+<li class=""><code>ClientRemote:__Create(RegisterIndex)</code></li>
+<li class=""><code>ClientRemote:UponInvoke(...)</code></li>
+<li class=""><code>ClientRemote:Invoke(...)</code></li>
+<li class=""><code>ClientRemote:OnInvoke()</code></li>
+<li class=""><code>ClientRemote:Add(Middleware)</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="clientstate">ClientState<a href="#clientstate" class="hash-link" aria-label="Direct link to ClientState" title="Direct link to ClientState" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Modules/Mince/Addons/state/ClientState.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> —</li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-17">Methods<a href="#methods-17" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>ClientState:GetState(Value)</code></li>
+<li class=""><code>ClientState.NewState(Index)</code></li>
+<li class=""><code>StateWatcherTable:__index(Index)</code></li>
+<li class=""><code>StateWatcherTable:__newindex(Index, Value)</code></li>
+<li class=""><code>StateWatcherTable:__iter()</code></li>
+<li class=""><code>StateWatcherTable:__call(MethodToCall)</code></li>
+<li class=""><code>ClientState:__Create(RegisterIndex)</code></li>
+<li class=""><code>ClientState:Disconnect()</code></li>
+<li class=""><code>ClientState:RequestStateData()</code></li>
+<li class=""><code>ClientState:RequestSet(Index, NewValue)</code></li>
+<li class=""><code>ClientState:__ValueChanged(Index, Value)</code></li>
+<li class=""><code>ClientState:Observe(Index, Callback)</code></li>
+<li class=""><code>Observer:Disconnect()</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="state">state<a href="#state" class="hash-link" aria-label="Direct link to state" title="Direct link to state" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Modules/Mince/Addons/state/init.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> —</li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-18">Methods<a href="#methods-18" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<p><em>No table methods are declared in this file.</em></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="serverstate">ServerState<a href="#serverstate" class="hash-link" aria-label="Direct link to ServerState" title="Direct link to ServerState" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Modules/Mince/Addons/state/ServerState.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> <code>Request</code></li>
+<li class=""><strong>Lifecycle:</strong> <code>Destroy</code></li>
+<li class=""><strong>Roblox services:</strong> <code>HttpService</code></li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-19">Methods<a href="#methods-19" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>ServerState:GetState(Value)</code></li>
+<li class=""><code>ServerState.NewState(Index)</code></li>
+<li class=""><code>StateWatcherTable:__index(Index)</code></li>
+<li class=""><code>StateWatcherTable:__newindex(Index, Value)</code></li>
+<li class=""><code>StateWatcherTable:__iter()</code></li>
+<li class=""><code>StateWatcherTable:__tostring()</code></li>
+<li class=""><code>StateWatcherTable:__call(MethodToCall)</code></li>
+<li class=""><code>ServerState:__Create(RegisterIndex)</code></li>
+<li class=""><code>ServerState:GetRawData()</code></li>
+<li class=""><code>ServerState:__DataRequested(Player)</code></li>
+<li class=""><code>ServerState:__IndexSetRequested(Player, Index, NewValue)</code></li>
+<li class=""><code>ServerState:Destroy()</code></li>
+<li class=""><code>ServerState:RegisterSetHandler(Index, RequestFunction)</code></li>
+<li class=""><code>ServerState:__ValueChanged(Index, Value)</code></li>
+<li class=""><code>ServerState:SetAudience(PlayerList)</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="tableutil">TableUtil<a href="#tableutil" class="hash-link" aria-label="Direct link to TableUtil" title="Direct link to TableUtil" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Modules/Mince/Addons/state/TableUtil.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> <code>HttpService</code></li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-20">Methods<a href="#methods-20" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>TUtil.Copy(t, deep)</code></li>
+<li class=""><code>TUtil.RecursiveRemoveIndex(IndexToRemove, Proxy)</code></li>
+<li class=""><code>TUtil.GetPath(Path: Path, TableToSearch: { any })</code></li>
+<li class=""><code>TUtil.FirstPartOfArrayMatches(Array1, Array2)</code></li>
+<li class=""><code>TUtil.SerializeArray(Array)</code></li>
+<li class=""><code>TUtil.UnserializeArray(Array)</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="taskscheduler">taskscheduler<a href="#taskscheduler" class="hash-link" aria-label="Direct link to taskscheduler" title="Direct link to taskscheduler" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Modules/Mince/Addons/taskscheduler.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> <code>RunService</code></li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-21">Methods<a href="#methods-21" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>TaskScheduler.new(config)</code></li>
+<li class=""><code>TaskScheduler:enqueue(callback, priority, name)</code></li>
+<li class=""><code>TaskScheduler:enqueueBatch(callbacks, priority, basePrefix)</code></li>
+<li class=""><code>TaskScheduler:enqueueWorker(worker, method, args, priority, name)</code></li>
+<li class=""><code>TaskScheduler:enqueueParallel(method, args, priority, name)</code></li>
+<li class=""><code>TaskScheduler:cancel(scheduledTask)</code></li>
+<li class=""><code>TaskScheduler:clear()</code></li>
+<li class=""><code>TaskScheduler:getQueueSize()</code></li>
+<li class=""><code>TaskScheduler:getQueueSizeByPriority(priority)</code></li>
+<li class=""><code>TaskScheduler:_replenishRateTokens(now)</code></li>
+<li class=""><code>TaskScheduler:_pop(queue)</code></li>
+<li class=""><code>TaskScheduler:_queueDueRecurring(now)</code></li>
+<li class=""><code>TaskScheduler:process()</code></li>
+<li class=""><code>TaskScheduler:start()</code></li>
+<li class=""><code>TaskScheduler:stop()</code></li>
+<li class=""><code>TaskScheduler:destroy()</code></li>
+<li class=""><code>TaskScheduler:pause(shouldPause)</code></li>
+<li class=""><code>TaskScheduler:spawn(callback, priority, name)</code></li>
+<li class=""><code>TaskScheduler:defer(callback, name)</code></li>
+<li class=""><code>TaskScheduler:delay(callback, delaySeconds, priority, name)</code></li>
+<li class=""><code>TaskScheduler:every(intervalSeconds, callback, priority, name, runImmediately)</code></li>
+<li class=""><code>TaskScheduler:getMetrics()</code></li>
+<li class=""><code>TaskScheduler:printMetrics()</code></li>
+<li class=""><code>Scheduler.createScheduler(config)</code></li>
+<li class=""><code>Scheduler.new(config)</code></li>
+<li class=""><code>Scheduler.GetSchedulers()</code></li>
+<li class=""><code>Scheduler.getDefault(config)</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="worker">worker<a href="#worker" class="hash-link" aria-label="Direct link to worker" title="Direct link to worker" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Modules/Mince/Addons/worker/init.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> <code>SourceModule</code></li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> <code>Players</code>, <code>RunService</code>, <code>SharedTableRegistry</code></li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-22">Methods<a href="#methods-22" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>Proxy:AwaitAll()</code></li>
+<li class=""><code>WorkerAddon.Identity(ThisIdentity)</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="runnerclientserver-1">RunnerClient.server<a href="#runnerclientserver-1" class="hash-link" aria-label="Direct link to RunnerClient.server" title="Direct link to RunnerClient.server" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Modules/Mince/Addons/worker/RunnerClient.server.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> <code>SharedTableRegistry</code></li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-23">Methods<a href="#methods-23" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<p><em>No table methods are declared in this file.</em></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="runnerserverserver-1">RunnerServer.server<a href="#runnerserverserver-1" class="hash-link" aria-label="Direct link to RunnerServer.server" title="Direct link to RunnerServer.server" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Modules/Mince/Addons/worker/RunnerServer.server.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> <code>SharedTableRegistry</code></li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-24">Methods<a href="#methods-24" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<p><em>No table methods are declared in this file.</em></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="crypto">Crypto<a href="#crypto" class="hash-link" aria-label="Direct link to Crypto" title="Direct link to Crypto" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Modules/Mince/Crypto.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> —</li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-25">Methods<a href="#methods-25" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>Crypto:NewKey(Key)</code></li>
+<li class=""><code>Key:Serialize()</code></li>
+<li class=""><code>Crypto:ParseKey(RawKey)</code></li>
+<li class=""><code>Crypto:GenKey()</code></li>
+<li class=""><code>Crypto:String(Key, BaseString)</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="depthiterator">DepthIterator<a href="#depthiterator" class="hash-link" aria-label="Direct link to DepthIterator" title="Direct link to DepthIterator" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Modules/Mince/DepthIterator.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> —</li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-26">Methods<a href="#methods-26" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<p><em>No table methods are declared in this file.</em></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="identity">Identity<a href="#identity" class="hash-link" aria-label="Direct link to Identity" title="Direct link to Identity" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Modules/Mince/Identity.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> <code>RunService</code></li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-27">Methods<a href="#methods-27" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<p><em>No table methods are declared in this file.</em></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="mince-1">Mince<a href="#mince-1" class="hash-link" aria-label="Direct link to Mince" title="Direct link to Mince" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Modules/Mince/init.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> <code>Players</code></li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-28">Methods<a href="#methods-28" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>Mince:Start()</code></li>
+<li class=""><code>Mince:Get(Name)</code></li>
+<li class=""><code>Mince:LoadModules(ModuleFolder : Folder)</code></li>
+<li class=""><code>Mince:LoadConfig(ConfigFolder : Folder)</code></li>
+<li class=""><code>Mince:WaitUntilHandshake(Player : Player)</code></li>
+<li class=""><code>Mince:GetHandshake(Player : Player)</code></li>
+<li class=""><code>Mince:SetIdentityStatus(Boolean : boolean)</code></li>
+<li class=""><code>Mince:WhenStart(UponReady : ()</code></li>
+<li class=""><code>Mince:WaitUntilSetup(Identity)</code></li>
+<li class=""><code>Mince:__SafeRequire(ModuleScript : ModuleScript)</code></li>
+<li class=""><code>Mince:__IterateRules(AnInstance, IterateFn : (ModuleScript : ModuleScript)</code></li>
+<li class=""><code>Mince:__WaitInstAttrTrueChange(ConfigInstance, Index)</code></li>
+<li class=""><code>Mince:MountAddonModule(AddonModuleScript : ModuleScript)</code></li>
+<li class=""><code>Mince:SetupMince()</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="inspect">inspect<a href="#inspect" class="hash-link" aria-label="Direct link to inspect" title="Direct link to inspect" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Modules/Mince/inspect.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> —</li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-29">Methods<a href="#methods-29" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>Inspector:getId(v)</code></li>
+<li class=""><code>Inspector:putValue(v)</code></li>
+<li class=""><code>inspect.inspect(root, options)</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="microid">MicroID<a href="#microid" class="hash-link" aria-label="Direct link to MicroID" title="Direct link to MicroID" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Modules/Mince/MicroID.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> —</li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-30">Methods<a href="#methods-30" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<p><em>No table methods are declared in this file.</em></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="rbnsr">rbnsr<a href="#rbnsr" class="hash-link" aria-label="Direct link to rbnsr" title="Direct link to rbnsr" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Modules/Mince/rbnsr.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> —</li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-31">Methods<a href="#methods-31" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<p><em>No table methods are declared in this file.</em></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="refmutate">RefMutate<a href="#refmutate" class="hash-link" aria-label="Direct link to RefMutate" title="Direct link to RefMutate" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Modules/Mince/RefMutate.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> —</li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-32">Methods<a href="#methods-32" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>RefMutate.Typeof(Value : any)</code></li>
+<li class=""><code>RefMutate.Convert(Value : any)</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="remote-1">Remote<a href="#remote-1" class="hash-link" aria-label="Direct link to Remote" title="Direct link to Remote" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Modules/Mince/Remote.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> —</li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-33">Methods<a href="#methods-33" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>Remote.new()</code></li>
+<li class=""><code>Remote:__Create()</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="signal">Signal<a href="#signal" class="hash-link" aria-label="Direct link to Signal" title="Direct link to Signal" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Modules/Mince/Signal.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> —</li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-34">Methods<a href="#methods-34" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>Signal.new()</code></li>
+<li class=""><code>Signal:Wait()</code></li>
+<li class=""><code>Signal:Once(F)</code></li>
+<li class=""><code>Signal:DisconnectAll()</code></li>
+<li class=""><code>Signal:Connect(F)</code></li>
+<li class=""><code>Signal:Fire(...)</code></li>
+<li class=""><code>Signal:FireImmediate(...)</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="typecheck">TypeCheck<a href="#typecheck" class="hash-link" aria-label="Direct link to TypeCheck" title="Direct link to TypeCheck" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Modules/Mince/TypeCheck.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> —</li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-35">Methods<a href="#methods-35" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>TypeCheck.Init()</code></li>
+<li class=""><code>TypeCheck.Set(Name,Value)</code></li>
+</ul>
+<h1>Network</h1>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="client">Client<a href="#client" class="hash-link" aria-label="Direct link to Client" title="Direct link to Client" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Modules/Network/Client.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> —</li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-36">Methods<a href="#methods-36" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<p><em>No table methods are declared in this file.</em></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="network-1">Network<a href="#network-1" class="hash-link" aria-label="Direct link to Network" title="Direct link to Network" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Modules/Network/init.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> <code>Players</code></li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-37">Methods<a href="#methods-37" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<p><em>No table methods are declared in this file.</em></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="remotes">Remotes<a href="#remotes" class="hash-link" aria-label="Direct link to Remotes" title="Direct link to Remotes" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Modules/Network/Remotes.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> <code>Reliable</code></li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> —</li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-38">Methods<a href="#methods-38" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<p><em>No table methods are declared in this file.</em></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="server">Server<a href="#server" class="hash-link" aria-label="Direct link to Server" title="Direct link to Server" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Modules/Network/Server.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> <code>Players</code></li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-39">Methods<a href="#methods-39" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<p><em>No table methods are declared in this file.</em></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="types">Types<a href="#types" class="hash-link" aria-label="Direct link to Types" title="Direct link to Types" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Modules/Network/Types.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> —</li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-40">Methods<a href="#methods-40" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<p><em>No table methods are declared in this file.</em></p>
+<h1>Runtime utilities</h1>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="analyticstracker">AnalyticsTracker<a href="#analyticstracker" class="hash-link" aria-label="Direct link to AnalyticsTracker" title="Direct link to AnalyticsTracker" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/Source/Utility/AnalyticsTracker.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> <code>Setup</code></li>
+<li class=""><strong>Roblox services:</strong> <code>ReplicatedStorage</code></li>
+<li class=""><strong>Mince modules:</strong> <code>InterfaceHandler</code></li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> <code>Analytics</code></li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-41">Methods<a href="#methods-41" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>AnalyticsTracker:InterfaceOpened(InterfaceName, IsOpen)</code></li>
+<li class=""><code>AnalyticsTracker:OpenInterfaceSignal(InterfaceName)</code></li>
+<li class=""><code>AnalyticsTracker:TrackThisRecord(RecordName, ManualDelay)</code></li>
+<li class=""><code>AnalyticsTracker.Setup()</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="maid">Maid<a href="#maid" class="hash-link" aria-label="Direct link to Maid" title="Direct link to Maid" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/Source/Utility/Maid.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> <code>Destroy</code></li>
+<li class=""><strong>Roblox services:</strong> <code>RunService</code></li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-42">Methods<a href="#methods-42" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>Trove.new()</code></li>
+<li class=""><code>tbl:Destroy()</code></li>
+<li class=""><code>tbl:DoSomething()</code></li>
+<li class=""><code>Trove.Add(self: TroveInternal, object: Trackable, cleanupMethod: string?)</code></li>
+<li class=""><code>Trove.Clone(self: TroveInternal, instance: Instance)</code></li>
+<li class=""><code>Trove.Connect(self: TroveInternal, signal: SignalLike, fn: (...any)</code></li>
+<li class=""><code>Trove.BindToRenderStep(self: TroveInternal, name: string, priority: number, fn: (dt: number)</code></li>
+<li class=""><code>Trove.AddPromise(self: TroveInternal, promise: PromiseLike)</code></li>
+<li class=""><code>Trove.Remove(self: TroveInternal, object: Trackable)</code></li>
+<li class=""><code>Trove.Extend(self: TroveInternal)</code></li>
+<li class=""><code>Trove.Clean(self: TroveInternal)</code></li>
+<li class=""><code>Trove._findAndRemoveFromObjects(self: TroveInternal, object: any, cleanup: boolean)</code></li>
+<li class=""><code>Trove._cleanupObject(_self: TroveInternal, object: any, cleanupMethod: string?)</code></li>
+<li class=""><code>Trove.AttachToInstance(self: TroveInternal, instance: Instance)</code></li>
+<li class=""><code>Trove.Destroy(self: TroveInternal)</code></li>
+<li class=""><code>Trove.Sweep(self: TroveInternal)</code></li>
+<li class=""><code>Trove.Mark(self: TroveInternal, ...)</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="productscraper">ProductScraper<a href="#productscraper" class="hash-link" aria-label="Direct link to ProductScraper" title="Direct link to ProductScraper" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/Source/Utility/ProductScraper.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> <code>MarketplaceService</code>, <code>Players</code>, <code>ReplicatedStorage</code></li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-43">Methods<a href="#methods-43" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>ProductScraper:GetUserName(UserID : number, CallbackFn)</code></li>
+<li class=""><code>ProductScraper:PlayerOwnsGamePass(GamePassID : number, CallbackFn)</code></li>
+<li class=""><code>ProductScraper:WhenProductInfo(AssetID : number, InfoType : Enum.InfoType?, CallbackFn : (ProductInfo)</code></li>
+<li class=""><code>ProductScraper:Init()</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="settingsvolumecontrol">SettingsVolumeControl<a href="#settingsvolumecontrol" class="hash-link" aria-label="Direct link to SettingsVolumeControl" title="Direct link to SettingsVolumeControl" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/Source/Utility/SettingsVolumeControl.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> <code>Setup</code></li>
+<li class=""><strong>Roblox services:</strong> <code>ReplicatedStorage</code></li>
+<li class=""><strong>Mince modules:</strong> <code>Settings</code>, <code>SoundHandler</code></li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-44">Methods<a href="#methods-44" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>Connec:Setup()</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="updatestream">UpdateStream<a href="#updatestream" class="hash-link" aria-label="Direct link to UpdateStream" title="Direct link to UpdateStream" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/Source/Utility/UpdateStream.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> <code>Setup</code></li>
+<li class=""><strong>Roblox services:</strong> <code>Players</code>, <code>ReplicatedStorage</code>, <code>RunService</code>, <code>Workspace</code></li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-45">Methods<a href="#methods-45" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>UpdateStream:Register(Component, Part : Part | Model)</code></li>
+<li class=""><code>UpdateStream:Remove(Component)</code></li>
+<li class=""><code>UpdateStream:UpdateAll(DeltaTime)</code></li>
+<li class=""><code>UpdateStream.NewCharacter(Character)</code></li>
+<li class=""><code>UpdateStream:Setup()</code></li>
+</ul>
+<h1>Shared components</h1>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="blender">Blender<a href="#blender" class="hash-link" aria-label="Direct link to Blender" title="Direct link to Blender" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/Source/Components/Blender.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> <code>Setup</code></li>
+<li class=""><strong>Roblox services:</strong> <code>Players</code>, <code>ReplicatedStorage</code></li>
+<li class=""><strong>Mince modules:</strong> <code>InteractIndicator</code></li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-46">Methods<a href="#methods-46" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>Blender:Construct()</code></li>
+<li class=""><code>Blender:OnInteract()</code></li>
+<li class=""><code>Blender:Setup()</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="caustics">Caustics<a href="#caustics" class="hash-link" aria-label="Direct link to Caustics" title="Direct link to Caustics" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/Source/Components/Caustics/init.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> <code>CausticsClientOnly</code></li>
+<li class=""><strong>Lifecycle:</strong> <code>Setup</code></li>
+<li class=""><strong>Roblox services:</strong> <code>ContentProvider</code>, <code>Players</code>, <code>ReplicatedStorage</code>, <code>RunService</code></li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-47">Methods<a href="#methods-47" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>Caustics:Setup()</code></li>
+<li class=""><code>Caustics:Construct()</code></li>
+<li class=""><code>Caustics:Removing()</code></li>
+<li class=""><code>Caustics:Stop()</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="watertextures">WaterTextures<a href="#watertextures" class="hash-link" aria-label="Direct link to WaterTextures" title="Direct link to WaterTextures" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/Source/Components/Caustics/WaterTextures.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> —</li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-48">Methods<a href="#methods-48" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<p><em>No table methods are declared in this file.</em></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="animations">Animations<a href="#animations" class="hash-link" aria-label="Direct link to Animations" title="Direct link to Animations" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/Source/Components/ChairComponent/Animations.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> —</li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-49">Methods<a href="#methods-49" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<p><em>No table methods are declared in this file.</em></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="chaircomponent">ChairComponent<a href="#chaircomponent" class="hash-link" aria-label="Direct link to ChairComponent" title="Direct link to ChairComponent" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/Source/Components/ChairComponent/init.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> <code>ReplicatedStorage</code></li>
+<li class=""><strong>Mince modules:</strong> <code>InteractIndicator</code></li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-50">Methods<a href="#methods-50" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>ChairComponent:Construct()</code></li>
+<li class=""><code>ChairComponent:Removing()</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="creatures">Creatures<a href="#creatures" class="hash-link" aria-label="Direct link to Creatures" title="Direct link to Creatures" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/Source/Components/Creatures.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> <code>ReplicatedStorage</code></li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-51">Methods<a href="#methods-51" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>Creatures:Construct()</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="doorcomponent">DoorComponent<a href="#doorcomponent" class="hash-link" aria-label="Direct link to DoorComponent" title="Direct link to DoorComponent" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/Source/Components/DoorComponent.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> <code>Players</code>, <code>ReplicatedStorage</code></li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-52">Methods<a href="#methods-52" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>DoorComponent:CloseDoor(Direction)</code></li>
+<li class=""><code>DoorComponent:OpenDoor(Direction)</code></li>
+<li class=""><code>DoorComponent:ManuallyDetectTouching()</code></li>
+<li class=""><code>DoorComponent:HandleTouch(Part)</code></li>
+<li class=""><code>DoorComponent:Construct()</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="doubledpv">DoubleDPV<a href="#doubledpv" class="hash-link" aria-label="Direct link to DoubleDPV" title="Direct link to DoubleDPV" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/Source/Components/DoubleDPV.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> <code>Animations</code></li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> <code>ReplicatedStorage</code>, <code>RunService</code></li>
+<li class=""><strong>Mince modules:</strong> <code>SwimmingController</code></li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> <code>DoubleDPV</code></li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-53">Methods<a href="#methods-53" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>DoubleDPV:LoadAnimations()</code></li>
+<li class=""><code>DoubleDPV:UnloadAnimations()</code></li>
+<li class=""><code>DoubleDPV:StopAnimations()</code></li>
+<li class=""><code>DoubleDPV:PlayAnimations()</code></li>
+<li class=""><code>DoubleDPV:AttachMotorSound(parentPart)</code></li>
+<li class=""><code>DoubleDPV:DestroyMotorSound()</code></li>
+<li class=""><code>DoubleDPV:UpdateMotorSound(speedRatio, deltaTime)</code></li>
+<li class=""><code>DoubleDPV:InitMotors()</code></li>
+<li class=""><code>DoubleDPV:ResetMotors()</code></li>
+<li class=""><code>DoubleDPV:UpdateMotors(deltaTime, speed)</code></li>
+<li class=""><code>DoubleDPV:StartAnimationUpdate()</code></li>
+<li class=""><code>DoubleDPV:StopAnimationUpdate()</code></li>
+<li class=""><code>DoubleDPV:OnSwimmingChanged()</code></li>
+<li class=""><code>DoubleDPV:StartHeadingUpdates()</code></li>
+<li class=""><code>DoubleDPV:StopHeadingUpdates()</code></li>
+<li class=""><code>DoubleDPV:OnEquipped()</code></li>
+<li class=""><code>DoubleDPV:OnUnequipped()</code></li>
+<li class=""><code>DoubleDPV:Construct()</code></li>
+<li class=""><code>DoubleDPV:Destruct()</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="elevator">Elevator<a href="#elevator" class="hash-link" aria-label="Direct link to Elevator" title="Direct link to Elevator" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/Source/Components/Elevator.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> <code>DeepSeaPreviewColorCorrection</code></li>
+<li class=""><strong>Lifecycle:</strong> <code>GameStart</code></li>
+<li class=""><strong>Roblox services:</strong> <code>Lighting</code>, <code>ReplicatedStorage</code></li>
+<li class=""><strong>Mince modules:</strong> <code>InteractIndicator</code></li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> <code>Swim</code></li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-54">Methods<a href="#methods-54" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>CameraPart:Construct()</code></li>
+<li class=""><code>Elevator:GameStart()</code></li>
+<li class=""><code>Elevator:GetCurrentFloor()</code></li>
+<li class=""><code>Elevator:ShowElevatorScreen()</code></li>
+<li class=""><code>Elevator:Construct()</code></li>
+<li class=""><code>self:OnPromptTriggered()</code></li>
+<li class=""><code>Elevator:TeleportToLocation(locationName)</code></li>
+<li class=""><code>Elevator:TriggerDive(locationName)</code></li>
+<li class=""><code>Elevator:PreviewArea(locationName)</code></li>
+<li class=""><code>Elevator:_applyPreviewEnvironment(locationName, cameraPart)</code></li>
+<li class=""><code>Elevator:_restorePreviewEnvironment()</code></li>
+<li class=""><code>Elevator:Destroying()</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="emitter">Emitter<a href="#emitter" class="hash-link" aria-label="Direct link to Emitter" title="Direct link to Emitter" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/Source/Components/Emitter.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> <code>Players</code>, <code>ReplicatedStorage</code></li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-55">Methods<a href="#methods-55" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>Emitter:Construct()</code></li>
+<li class=""><code>Emitter:Removing()</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="exhibit">Exhibit<a href="#exhibit" class="hash-link" aria-label="Direct link to Exhibit" title="Direct link to Exhibit" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/Source/Components/Exhibit.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> <code>ExhibitController</code></li>
+<li class=""><strong>Lifecycle:</strong> <code>GameStart</code>, <code>Setup</code></li>
+<li class=""><strong>Roblox services:</strong> <code>CollectionService</code>, <code>Players</code>, <code>ReplicatedStorage</code>, <code>RunService</code>, <code>TweenService</code>, <code>UserInputService</code></li>
+<li class=""><strong>Mince modules:</strong> <code>CameraControlManager</code>, <code>DiscoveryManager</code>, <code>InteractIndicator</code></li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> <code>DiscoverySystem</code></li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-56">Methods<a href="#methods-56" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>ExhibitController:Setup()</code></li>
+<li class=""><code>ExhibitController:GameStart()</code></li>
+<li class=""><code>ExhibitController:GetAllExhibits()</code></li>
+<li class=""><code>ExhibitController:GetExhibitByInstance(instance)</code></li>
+<li class=""><code>ExhibitController:IsPlayerInExhibit(player)</code></li>
+<li class=""><code>Exhibit:_disconnectCameraConnections()</code></li>
+<li class=""><code>Exhibit:_suspendForExternalControl(controllerName)</code></li>
+<li class=""><code>Exhibit:PanCamera(dt: number)</code></li>
+<li class=""><code>Exhibit:ChangeGlassCollisionGroup(Group)</code></li>
+<li class=""><code>Exhibit:FocusExhibit()</code></li>
+<li class=""><code>Exhibit:FocusCharacter()</code></li>
+<li class=""><code>Exhibit:ZoomCamera(scrollDelta)</code></li>
+<li class=""><code>Exhibit:GetExhibitInfo()</code></li>
+<li class=""><code>Exhibit:RecordExhibitDiscovery()</code></li>
+<li class=""><code>Exhibit:ResetCameraPosition()</code></li>
+<li class=""><code>Exhibit:Disconnect(Target)</code></li>
+<li class=""><code>Exhibit:_pauseExhibitCamera()</code></li>
+<li class=""><code>Exhibit:_resumeExhibitCamera()</code></li>
+<li class=""><code>Exhibit:Construct()</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="fishcomponent">FishComponent<a href="#fishcomponent" class="hash-link" aria-label="Direct link to FishComponent" title="Direct link to FishComponent" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/Source/Components/FishComponent.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> <code>ReplicatedStorage</code></li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong>   —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-57">Methods<a href="#methods-57" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<p><em>No table methods are declared in this file.</em></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="globaleventdisplay">GlobalEventDisplay<a href="#globaleventdisplay" class="hash-link" aria-label="Direct link to GlobalEventDisplay" title="Direct link to GlobalEventDisplay" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/Source/Components/GlobalEventDisplay.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> <code>GameDesignStyle</code></li>
+<li class=""><strong>Lifecycle:</strong> <code>Destroy</code></li>
+<li class=""><strong>Roblox services:</strong> <code>ReplicatedStorage</code>, <code>RunService</code>, <code>TweenService</code></li>
+<li class=""><strong>Mince modules:</strong> <code>DiscoveryManager</code>, <code>PhenomenonController</code></li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-58">Methods<a href="#methods-58" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>GlobalEventDisplay:_getServerNowUtc()</code></li>
+<li class=""><code>GlobalEventDisplay:_connect(signal, callback)</code></li>
+<li class=""><code>GlobalEventDisplay:Construct()</code></li>
+<li class=""><code>GlobalEventDisplay:Stop()</code></li>
+<li class=""><code>GlobalEventDisplay:Destroy()</code></li>
+<li class=""><code>GlobalEventDisplay:BuildInterface()</code></li>
+<li class=""><code>GlobalEventDisplay:RefreshLabels()</code></li>
+<li class=""><code>GlobalEventDisplay:_clearTimeline()</code></li>
+<li class=""><code>GlobalEventDisplay:RebuildTimeline()</code></li>
+<li class=""><code>GlobalEventDisplay:CreateEventBlock(phenomenon)</code></li>
+<li class=""><code>GlobalEventDisplay:_setActiveBlock(phenomenon)</code></li>
+<li class=""><code>GlobalEventDisplay:UpdatePlayback()</code></li>
+<li class=""><code>GlobalEventDisplay:UpdateCurrentEvent(text, color)</code></li>
+<li class=""><code>GlobalEventDisplay:GetRarityColor(rarity)</code></li>
+<li class=""><code>GlobalEventDisplay:_requestDiscoveries()</code></li>
+<li class=""><code>GlobalEventDisplay:_isDiscovered(eventInfo)</code></li>
+<li class=""><code>GlobalEventDisplay:_getDisplayName(eventInfo)</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="hatch">Hatch<a href="#hatch" class="hash-link" aria-label="Direct link to Hatch" title="Direct link to Hatch" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/Source/Components/Hatch.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> <code>GameStart</code>, <code>Setup</code></li>
+<li class=""><strong>Roblox services:</strong> <code>CollectionService</code>, <code>Players</code>, <code>ReplicatedStorage</code>, <code>RunService</code></li>
+<li class=""><strong>Mince modules:</strong> <code>Exhibit</code>, <code>InteractIndicator</code>, <code>SwimmingController</code></li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> <code>Swim</code></li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-59">Methods<a href="#methods-59" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>Hatch:Setup()</code></li>
+<li class=""><code>Hatch:GameStart()</code></li>
+<li class=""><code>Hatch:Trigger()</code></li>
+<li class=""><code>Hatch:GetPlayerSide()</code></li>
+<li class=""><code>Hatch:IsPlayerOnReentrySide()</code></li>
+<li class=""><code>Hatch:UpdatePromptState()</code></li>
+<li class=""><code>Hatch:Construct()</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="interactablecomponent">InteractableComponent<a href="#interactablecomponent" class="hash-link" aria-label="Direct link to InteractableComponent" title="Direct link to InteractableComponent" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/Source/Components/InteractableComponent.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> <code>Players</code>, <code>ReplicatedStorage</code></li>
+<li class=""><strong>Mince modules:</strong> <code>InteractableHandler</code></li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-60">Methods<a href="#methods-60" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>InteractableComponent:Construct()</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="interactabletestcomponent">InteractableTestComponent<a href="#interactabletestcomponent" class="hash-link" aria-label="Direct link to InteractableTestComponent" title="Direct link to InteractableTestComponent" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/Source/Components/InteractableTestComponent.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> <code>Players</code>, <code>ReplicatedStorage</code></li>
+<li class=""><strong>Mince modules:</strong> <code>InteractIndicator</code></li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-61">Methods<a href="#methods-61" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>InteractableComponent:Construct()</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="jukeboxclient">JukeboxClient<a href="#jukeboxclient" class="hash-link" aria-label="Direct link to JukeboxClient" title="Direct link to JukeboxClient" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/Source/Components/JukeboxClient.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> <code>Players</code>, <code>ReplicatedStorage</code></li>
+<li class=""><strong>Mince modules:</strong> <code>InteractIndicator</code></li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-62">Methods<a href="#methods-62" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>JukeboxClient:Construct()</code></li>
+<li class=""><code>JukeboxClient:Destruct()</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="markers">Markers<a href="#markers" class="hash-link" aria-label="Direct link to Markers" title="Direct link to Markers" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/Source/Components/Markers.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> <code>MarkersController</code></li>
+<li class=""><strong>Lifecycle:</strong> <code>Destroy</code>, <code>GameStart</code>, <code>Setup</code></li>
+<li class=""><strong>Roblox services:</strong> <code>Players</code>, <code>ReplicatedStorage</code>, <code>RunService</code>, <code>TweenService</code>, <code>Workspace</code></li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-63">Methods<a href="#methods-63" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>MarkersController:Setup()</code></li>
+<li class=""><code>MarkerComponent:Construct()</code></li>
+<li class=""><code>MarkerComponent:Destroy()</code></li>
+<li class=""><code>MarkersController:GameStart()</code></li>
+<li class=""><code>MarkersController:_UpdateIndicatorPositions()</code></li>
+<li class=""><code>MarkersController:GetActiveIndicators()</code></li>
+<li class=""><code>MarkersController:ClearAll()</code></li>
+<li class=""><code>MarkersController:Destroy()</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="npc">Npc<a href="#npc" class="hash-link" aria-label="Direct link to Npc" title="Direct link to Npc" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/Source/Components/Npc.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> <code>CollectionService</code>, <code>Players</code>, <code>ReplicatedStorage</code>, <code>RunService</code>, <code>SoundService</code>, <code>Workspace</code></li>
+<li class=""><strong>Mince modules:</strong> <code>InteractIndicator</code>, <code>UserInterface</code></li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-64">Methods<a href="#methods-64" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>Npc:_setupCommonState()</code></li>
+<li class=""><code>Npc:_shouldSkipConversationPrompt()</code></li>
+<li class=""><code>Npc:Construct()</code></li>
+<li class=""><code>Npc:SetupHeadTracking()</code></li>
+<li class=""><code>Npc:SetRootLock(isLocked)</code></li>
+<li class=""><code>Npc:CheckTrackingRange()</code></li>
+<li class=""><code>Npc:StartTracking()</code></li>
+<li class=""><code>Npc:StopTracking()</code></li>
+<li class=""><code>Npc:UpdateHeadTracking(delta)</code></li>
+<li class=""><code>Npc:Destruct()</code></li>
+<li class=""><code>Npc:_updatePromptAvailability()</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="plushie">Plushie<a href="#plushie" class="hash-link" aria-label="Direct link to Plushie" title="Direct link to Plushie" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/Source/Components/Plushie.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> <code>Players</code>, <code>ReplicatedStorage</code></li>
+<li class=""><strong>Mince modules:</strong> <code>CharacterController</code></li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-65">Methods<a href="#methods-65" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>PlushieTool:LoadAnimations()</code></li>
+<li class=""><code>PlushieTool:UnloadAnimations()</code></li>
+<li class=""><code>PlushieTool:PlayHoldout()</code></li>
+<li class=""><code>PlushieTool:StopHoldout()</code></li>
+<li class=""><code>PlushieTool:StopAllAnimations()</code></li>
+<li class=""><code>PlushieTool:FinishActivation()</code></li>
+<li class=""><code>PlushieTool:BeginLoop()</code></li>
+<li class=""><code>PlushieTool:BeginEnd()</code></li>
+<li class=""><code>PlushieTool:QueueLoop()</code></li>
+<li class=""><code>PlushieTool:QueueHoldout()</code></li>
+<li class=""><code>PlushieTool:OnActivated()</code></li>
+<li class=""><code>PlushieTool:OnDeactivated()</code></li>
+<li class=""><code>PlushieTool:OnEquipped()</code></li>
+<li class=""><code>PlushieTool:OnUnequipped()</code></li>
+<li class=""><code>PlushieTool:Construct()</code></li>
+<li class=""><code>PlushieTool:Destruct()</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="popup">Popup<a href="#popup" class="hash-link" aria-label="Direct link to Popup" title="Direct link to Popup" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/Source/Components/Popup.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> <code>Players</code>, <code>ReplicatedStorage</code></li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-66">Methods<a href="#methods-66" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>Popup:Construct()</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="scooter">Scooter<a href="#scooter" class="hash-link" aria-label="Direct link to Scooter" title="Direct link to Scooter" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/Source/Components/Scooter.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> <code>MotorLoop</code></li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> <code>Players</code>, <code>ReplicatedStorage</code>, <code>RunService</code>, <code>TweenService</code></li>
+<li class=""><strong>Mince modules:</strong> <code>CharacterController</code>, <code>SwimmingController</code></li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> <code>Scooter</code></li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-67">Methods<a href="#methods-67" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>Scooter:LoadAnimations()</code></li>
+<li class=""><code>Scooter:UnloadAnimations()</code></li>
+<li class=""><code>Scooter:PlayAnimations()</code></li>
+<li class=""><code>Scooter:StopAnimations()</code></li>
+<li class=""><code>Scooter:UpdateGripTilt(rootPart, velocity, speed)</code></li>
+<li class=""><code>Scooter:UpdatePlayerTilt(rootPart, velocity, speed)</code></li>
+<li class=""><code>Scooter:UpdateMotorAndEmitter(currentSpeed)</code></li>
+<li class=""><code>Scooter:UpdateRotationTarget(targetRotationSpeed)</code></li>
+<li class=""><code>Scooter:AttachMotorSound()</code></li>
+<li class=""><code>Scooter:DestroyMotorSound()</code></li>
+<li class=""><code>Scooter:UpdateMotorSound(speedRatio)</code></li>
+<li class=""><code>Scooter:OnSwimmingChanged()</code></li>
+<li class=""><code>Scooter:OnEquipped()</code></li>
+<li class=""><code>Scooter:OnUnequipped()</code></li>
+<li class=""><code>Scooter:EnableScooterBoost()</code></li>
+<li class=""><code>Scooter:DisableScooterBoost()</code></li>
+<li class=""><code>Scooter:EnableOrientation()</code></li>
+<li class=""><code>Scooter:StartAnimationUpdate()</code></li>
+<li class=""><code>Scooter:StopAnimationUpdate()</code></li>
+<li class=""><code>Scooter:OnCharacterAdded(character)</code></li>
+<li class=""><code>Scooter:Construct()</code></li>
+<li class=""><code>Scooter:Destruct()</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="selectable">Selectable<a href="#selectable" class="hash-link" aria-label="Direct link to Selectable" title="Direct link to Selectable" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/Source/Components/Selectable.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> <code>ReplicatedStorage</code></li>
+<li class=""><strong>Mince modules:</strong> <code>SelectionController</code></li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-68">Methods<a href="#methods-68" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>Selectable:Construct()</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="shopnpc">ShopNpc<a href="#shopnpc" class="hash-link" aria-label="Direct link to ShopNpc" title="Direct link to ShopNpc" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/Source/Components/ShopNpc.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> <code>ShopNpcPrompt</code></li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> <code>Players</code>, <code>ReplicatedStorage</code>, <code>UserInputService</code></li>
+<li class=""><strong>Mince modules:</strong> <code>FocusCameraController</code>, <code>InteractIndicator</code></li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-69">Methods<a href="#methods-69" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>ShopNpc:Construct()</code></li>
+<li class=""><code>ShopNpc:GetCameraOptions()</code></li>
+<li class=""><code>ShopNpc:Focus()</code></li>
+<li class=""><code>ShopNpc:Release(instant)</code></li>
+<li class=""><code>ShopNpc:Removing()</code></li>
+<li class=""><code>ShopNpc:Destroying()</code></li>
+<li class=""><code>ShopNpc.FocusModel(model)</code></li>
+<li class=""><code>ShopNpc.ReleaseModel(model, instant)</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="tail">Tail<a href="#tail" class="hash-link" aria-label="Direct link to Tail" title="Direct link to Tail" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/Source/Components/Tail/init.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> <code>TailWeld</code></li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> <code>CollectionService</code>, <code>Players</code>, <code>ReplicatedStorage</code>, <code>RunService</code></li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-70">Methods<a href="#methods-70" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>Tail:Construct()</code></li>
+<li class=""><code>Tail:_SetupCleanup()</code></li>
+<li class=""><code>Tail:_SetupInfluence()</code></li>
+<li class=""><code>Tail:_SetupBones()</code></li>
+<li class=""><code>Tail:_SetupWeld()</code></li>
+<li class=""><code>Tail:_SetupAnimations()</code></li>
+<li class=""><code>Tail:_PlayState(state, speed)</code></li>
+<li class=""><code>Tail:_UpdateSpeed(speed)</code></li>
+<li class=""><code>Tail:_OnRenderStepped(dt)</code></li>
+<li class=""><code>Tail:_ApplyInfluence(influence, dt)</code></li>
+<li class=""><code>Tail:StopAllAnimations(fadeTime)</code></li>
+<li class=""><code>Tail:Destruct()</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="basetail">BaseTail<a href="#basetail" class="hash-link" aria-label="Direct link to BaseTail" title="Direct link to BaseTail" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/Source/Components/Tail/Physics/BaseTail.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> —</li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-71">Methods<a href="#methods-71" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>BaseTail.new(tailController)</code></li>
+<li class=""><code>BaseTail:SmoothValue(current, target, speed, dt)</code></li>
+<li class=""><code>BaseTail:Calculate(dt, speed, velocity, angularVelocity, isSwimming)</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="sharktail">SharkTail<a href="#sharktail" class="hash-link" aria-label="Direct link to SharkTail" title="Direct link to SharkTail" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/Source/Components/Tail/Physics/SharkTail.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> —</li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-72">Methods<a href="#methods-72" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>SharkTail.new(tailController)</code></li>
+<li class=""><code>SharkTail:Calculate(dt, speed, velocity, angularVelocity, isSwimming)</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="standardtail">StandardTail<a href="#standardtail" class="hash-link" aria-label="Direct link to StandardTail" title="Direct link to StandardTail" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/Source/Components/Tail/Physics/StandardTail.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> —</li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-73">Methods<a href="#methods-73" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>StandardTail.new(tailController)</code></li>
+<li class=""><code>StandardTail:Calculate(dt, speed, velocity, angularVelocity)</code></li>
+</ul>
+<h1>Shared runtime</h1>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="boidpackets">BoidPackets<a href="#boidpackets" class="hash-link" aria-label="Direct link to BoidPackets" title="Direct link to BoidPackets" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Modules/BoidPackets.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> <code>ReplicatedStorage</code></li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> <code>Boids.Ready</code>, <code>Boids.TargetBatch</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-74">Methods<a href="#methods-74" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<p><em>No table methods are declared in this file.</em></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="creatureanimationpackets">CreatureAnimationPackets<a href="#creatureanimationpackets" class="hash-link" aria-label="Direct link to CreatureAnimationPackets" title="Direct link to CreatureAnimationPackets" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Modules/CreatureAnimationPackets.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> <code>ReplicatedStorage</code></li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> <code>CreatureAnimations.Ready</code>, <code>CreatureAnimations.Sync</code></li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-75">Methods<a href="#methods-75" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<p><em>No table methods are declared in this file.</em></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="minceloaderserver">MinceLoader.server<a href="#minceloaderserver" class="hash-link" aria-label="Direct link to MinceLoader.server" title="Direct link to MinceLoader.server" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/MinceLoader.server.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> <code>ReplicatedStorage</code></li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-76">Methods<a href="#methods-76" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<p><em>No table methods are declared in this file.</em></p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="soundhandler">SoundHandler<a href="#soundhandler" class="hash-link" aria-label="Direct link to SoundHandler" title="Direct link to SoundHandler" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/Source/SoundHandler.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> <code>Effect</code></li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> <code>ReplicatedStorage</code>, <code>TweenService</code></li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> <code>Sounds</code></li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-77">Methods<a href="#methods-77" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>SoundHandler:StopAllLoopedSounds()</code></li>
+<li class=""><code>SoundHandler:StopLoopedSoundsOnStack()</code></li>
+<li class=""><code>SoundHandler:StopLoop(SourceName)</code></li>
+<li class=""><code>SoundHandler:BeginMusicOverride(SourceName, DuckScale)</code></li>
+<li class=""><code>SoundHandler:EndMusicOverride(SourceName)</code></li>
+<li class=""><code>SoundHandler:LoopSound(SourceName : SourceName)</code></li>
+<li class=""><code>SoundHandler:GetLoop(SourceName : SourceName)</code></li>
+<li class=""><code>SoundHandler:IsExternal(ExternalSound)</code></li>
+<li class=""><code>SoundHandler:PlaySound(SourceName : SourceName | Sound, ModifyFn : (Sound)</code></li>
+<li class=""><code>SoundHandler:PlaySoundAt(SourceName : SourceName, Parent : Instance, ModifyFn : (Sound)</code></li>
+<li class=""><code>SoundHandler:GetSound(SourceName : SourceName, ModifyFn : (Sound)</code></li>
+<li class=""><code>SoundHandler:ModifySoundVolumeOf(SoundGroupName : string, Volume)</code></li>
+<li class=""><code>SoundHandler:CreateSourceFromConfig(SoundTable, SoundGroup)</code></li>
+<li class=""><code>SoundHandler:GetSoundGroup(SoundGroupName : string)</code></li>
+<li class=""><code>SoundHandler:SearchSourceTableGroupForConfig(SourceTableGroup, InheritName, SoundGroup)</code></li>
+<li class=""><code>SoundHandler:SetupSoundGroups()</code></li>
+<li class=""><code>SoundHandler:LoadSoundsFromConfig()</code></li>
+<li class=""><code>SoundHandler:Init()</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="soundhandler-1">SoundHandler<a href="#soundhandler-1" class="hash-link" aria-label="Direct link to SoundHandler" title="Direct link to SoundHandler" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/Source/SoundHandler/init.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> <code>Effect</code></li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> <code>ReplicatedStorage</code>, <code>TweenService</code></li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> <code>Sounds</code></li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-78">Methods<a href="#methods-78" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>SoundHandler:StopAllLoopedSounds()</code></li>
+<li class=""><code>SoundHandler:StopLoopedSoundsOnStack()</code></li>
+<li class=""><code>SoundHandler:StopLoop(SourceName)</code></li>
+<li class=""><code>SoundHandler:BeginMusicOverride(SourceName, DuckScale)</code></li>
+<li class=""><code>SoundHandler:EndMusicOverride(SourceName)</code></li>
+<li class=""><code>SoundHandler:LoopSound(SourceName: SourceName)</code></li>
+<li class=""><code>SoundHandler:GetLoop(SourceName: SourceName)</code></li>
+<li class=""><code>SoundHandler:IsExternal(ExternalSound)</code></li>
+<li class=""><code>SoundHandler:PlaySound(SourceName: SourceName | Sound, ModifyFn: (Sound)</code></li>
+<li class=""><code>SoundHandler:PlaySoundAt(SourceName: SourceName, Parent: Instance, ModifyFn: (Sound)</code></li>
+<li class=""><code>SoundHandler:GetSound(SourceName: SourceName, ModifyFn: (Sound)</code></li>
+<li class=""><code>SoundHandler:ModifySoundVolumeOf(SoundGroupName: string, Volume)</code></li>
+<li class=""><code>SoundHandler:CreateSourceFromConfig(SoundTable, SoundGroup)</code></li>
+<li class=""><code>SoundHandler:GetSoundGroup(SoundGroupName: string)</code></li>
+<li class=""><code>SoundHandler:SearchSourceTableGroupForConfig(SourceTableGroup, InheritName, SoundGroup)</code></li>
+<li class=""><code>SoundHandler:SetupSoundGroups()</code></li>
+<li class=""><code>SoundHandler:LoadSoundsFromConfig()</code></li>
+<li class=""><code>SoundHandler:Init()</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="soundsource">SoundSource<a href="#soundsource" class="hash-link" aria-label="Direct link to SoundSource" title="Direct link to SoundSource" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/Source/SoundHandler/SoundSource.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> <code>ReplicatedStorage</code></li>
+<li class=""><strong>Mince modules:</strong> <code>SoundHandler</code></li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-79">Methods<a href="#methods-79" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>Source.new(ConfigProto, SoundGroup)</code></li>
+<li class=""><code>Source:PlayExternal(ExternalSound : Sound, ModifyFN)</code></li>
+<li class=""><code>Source:PlayNext(ModifyFN)</code></li>
+<li class=""><code>Source:GetExternal(ModifyFN)</code></li>
+<li class=""><code>Source:NameMe()</code></li>
+<li class=""><code>Source:ApplySoundProperties(Sound : Sound, SoundID : Sound.Sound)</code></li>
+<li class=""><code>Source:GetSoundInstance(SoundID : Sound.Sound, DontConnect)</code></li>
+<li class=""><code>Source:GetNextSoundID()</code></li>
+<li class=""><code>Source:GetSoundPosition()</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="soundsource-1">SoundSource<a href="#soundsource-1" class="hash-link" aria-label="Direct link to SoundSource" title="Direct link to SoundSource" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/Source/SoundHandler/SoundSource/init.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> <code>ReplicatedStorage</code></li>
+<li class=""><strong>Mince modules:</strong> <code>SoundHandler</code></li>
+<li class=""><strong>Config reads:</strong> —</li>
+<li class=""><strong>Events:</strong> —</li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-80">Methods<a href="#methods-80" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>Source.new(ConfigProto, SoundGroup)</code></li>
+<li class=""><code>Source:PlayExternal(ExternalSound: Sound, ModifyFN)</code></li>
+<li class=""><code>Source:PlayNext(ModifyFN)</code></li>
+<li class=""><code>Source:GetExternal(ModifyFN)</code></li>
+<li class=""><code>Source:NameMe()</code></li>
+<li class=""><code>Source:ApplySoundProperties(Sound: Sound, SoundID: string)</code></li>
+<li class=""><code>Source:GetSoundInstance(SoundID: string, DontConnect)</code></li>
+<li class=""><code>Source:GetNextSoundID()</code></li>
+<li class=""><code>Source:GetSoundPosition()</code></li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="userprofile">UserProfile<a href="#userprofile" class="hash-link" aria-label="Direct link to UserProfile" title="Direct link to UserProfile" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source:</strong> <code>game/src/ReplicatedStorage/Runtime/Source/UserProfile.luau</code></li>
+<li class=""><strong>Realm:</strong> Shared</li>
+<li class=""><strong>Registered name:</strong> —</li>
+<li class=""><strong>Lifecycle:</strong> —</li>
+<li class=""><strong>Roblox services:</strong> <code>ReplicatedStorage</code>, <code>RunService</code></li>
+<li class=""><strong>Mince modules:</strong> —</li>
+<li class=""><strong>Config reads:</strong> <code>HasRecievedAnUpdate</code>, <code>LocalProfile</code></li>
+<li class=""><strong>Events:</strong> <code>DataPartialSync</code>, <code>DataSync</code></li>
+<li class=""><strong>Functions:</strong> —</li>
+<li class=""><strong>Packets:</strong> —</li>
+<li class=""><strong>Defines packets:</strong> —</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="methods-81">Methods<a href="#methods-81" class="hash-link" aria-label="Direct link to Methods" title="Direct link to Methods" translate="no">​</a></h3>
+<ul>
+<li class=""><code>UserProfile:RequestUpdate(Index)</code></li>
+<li class=""><code>UserProfile.RecievePartialUpdate(ProfilePart)</code></li>
+<li class=""><code>UserProfile.RecieveUpdate(ProfilePart)</code></li>
+<li class=""><code>UserProfile:IndexUpdated(Index)</code></li>
+<li class=""><code>UserProfile:Upon(Index, Callback)</code></li>
+<li class=""><code>UserProfile:GetLocalProfile()</code></li>
+<li class=""><code>UserProfile:WaitUntilLoaded()</code></li>
+<li class=""><code>UserProfile:IsLoaded()</code></li>
+<li class=""><code>UserProfile.Init()</code></li>
+</ul></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/observatory/docs/client-runtime"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Client runtime</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/observatory/docs/networking"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Networking</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#charactercontroller" class="table-of-contents__link toc-highlight">CharacterController</a><ul><li><a href="#methods" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#effects" class="table-of-contents__link toc-highlight">Effects</a><ul><li><a href="#methods-1" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#oldparticlesource" class="table-of-contents__link toc-highlight">OldParticleSource</a><ul><li><a href="#methods-2" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#interactablehandler" class="table-of-contents__link toc-highlight">InteractableHandler</a><ul><li><a href="#methods-3" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#interactindicator" class="table-of-contents__link toc-highlight">InteractIndicator</a><ul><li><a href="#methods-4" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#camerautils" class="table-of-contents__link toc-highlight">CameraUtils</a><ul><li><a href="#methods-5" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#sequencehandler" class="table-of-contents__link toc-highlight">SequenceHandler</a><ul><li><a href="#methods-6" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#testsequence" class="table-of-contents__link toc-highlight">TestSequence</a><ul><li><a href="#methods-7" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#agent" class="table-of-contents__link toc-highlight">agent</a><ul><li><a href="#methods-8" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#runnerclientserver" class="table-of-contents__link toc-highlight">RunnerClient.server</a><ul><li><a href="#methods-9" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#runnerserverserver" class="table-of-contents__link toc-highlight">RunnerServer.server</a><ul><li><a href="#methods-10" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#bytenet" class="table-of-contents__link toc-highlight">bytenet</a><ul><li><a href="#methods-11" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#character" class="table-of-contents__link toc-highlight">character</a><ul><li><a href="#methods-12" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#component" class="table-of-contents__link toc-highlight">component</a><ul><li><a href="#methods-13" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#cursorclickeffect" class="table-of-contents__link toc-highlight">cursorclickeffect</a><ul><li><a href="#methods-14" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#remote" class="table-of-contents__link toc-highlight">remote</a><ul><li><a href="#methods-15" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#remotefunc" class="table-of-contents__link toc-highlight">remotefunc</a><ul><li><a href="#methods-16" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#clientstate" class="table-of-contents__link toc-highlight">ClientState</a><ul><li><a href="#methods-17" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#state" class="table-of-contents__link toc-highlight">state</a><ul><li><a href="#methods-18" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#serverstate" class="table-of-contents__link toc-highlight">ServerState</a><ul><li><a href="#methods-19" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#tableutil" class="table-of-contents__link toc-highlight">TableUtil</a><ul><li><a href="#methods-20" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#taskscheduler" class="table-of-contents__link toc-highlight">taskscheduler</a><ul><li><a href="#methods-21" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#worker" class="table-of-contents__link toc-highlight">worker</a><ul><li><a href="#methods-22" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#runnerclientserver-1" class="table-of-contents__link toc-highlight">RunnerClient.server</a><ul><li><a href="#methods-23" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#runnerserverserver-1" class="table-of-contents__link toc-highlight">RunnerServer.server</a><ul><li><a href="#methods-24" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#crypto" class="table-of-contents__link toc-highlight">Crypto</a><ul><li><a href="#methods-25" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#depthiterator" class="table-of-contents__link toc-highlight">DepthIterator</a><ul><li><a href="#methods-26" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#identity" class="table-of-contents__link toc-highlight">Identity</a><ul><li><a href="#methods-27" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#mince-1" class="table-of-contents__link toc-highlight">Mince</a><ul><li><a href="#methods-28" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#inspect" class="table-of-contents__link toc-highlight">inspect</a><ul><li><a href="#methods-29" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#microid" class="table-of-contents__link toc-highlight">MicroID</a><ul><li><a href="#methods-30" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#rbnsr" class="table-of-contents__link toc-highlight">rbnsr</a><ul><li><a href="#methods-31" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#refmutate" class="table-of-contents__link toc-highlight">RefMutate</a><ul><li><a href="#methods-32" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#remote-1" class="table-of-contents__link toc-highlight">Remote</a><ul><li><a href="#methods-33" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#signal" class="table-of-contents__link toc-highlight">Signal</a><ul><li><a href="#methods-34" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#typecheck" class="table-of-contents__link toc-highlight">TypeCheck</a><ul><li><a href="#methods-35" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#client" class="table-of-contents__link toc-highlight">Client</a><ul><li><a href="#methods-36" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#network-1" class="table-of-contents__link toc-highlight">Network</a><ul><li><a href="#methods-37" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#remotes" class="table-of-contents__link toc-highlight">Remotes</a><ul><li><a href="#methods-38" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#server" class="table-of-contents__link toc-highlight">Server</a><ul><li><a href="#methods-39" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#types" class="table-of-contents__link toc-highlight">Types</a><ul><li><a href="#methods-40" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#analyticstracker" class="table-of-contents__link toc-highlight">AnalyticsTracker</a><ul><li><a href="#methods-41" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#maid" class="table-of-contents__link toc-highlight">Maid</a><ul><li><a href="#methods-42" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#productscraper" class="table-of-contents__link toc-highlight">ProductScraper</a><ul><li><a href="#methods-43" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#settingsvolumecontrol" class="table-of-contents__link toc-highlight">SettingsVolumeControl</a><ul><li><a href="#methods-44" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#updatestream" class="table-of-contents__link toc-highlight">UpdateStream</a><ul><li><a href="#methods-45" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#blender" class="table-of-contents__link toc-highlight">Blender</a><ul><li><a href="#methods-46" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#caustics" class="table-of-contents__link toc-highlight">Caustics</a><ul><li><a href="#methods-47" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#watertextures" class="table-of-contents__link toc-highlight">WaterTextures</a><ul><li><a href="#methods-48" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#animations" class="table-of-contents__link toc-highlight">Animations</a><ul><li><a href="#methods-49" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#chaircomponent" class="table-of-contents__link toc-highlight">ChairComponent</a><ul><li><a href="#methods-50" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#creatures" class="table-of-contents__link toc-highlight">Creatures</a><ul><li><a href="#methods-51" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#doorcomponent" class="table-of-contents__link toc-highlight">DoorComponent</a><ul><li><a href="#methods-52" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#doubledpv" class="table-of-contents__link toc-highlight">DoubleDPV</a><ul><li><a href="#methods-53" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#elevator" class="table-of-contents__link toc-highlight">Elevator</a><ul><li><a href="#methods-54" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#emitter" class="table-of-contents__link toc-highlight">Emitter</a><ul><li><a href="#methods-55" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#exhibit" class="table-of-contents__link toc-highlight">Exhibit</a><ul><li><a href="#methods-56" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#fishcomponent" class="table-of-contents__link toc-highlight">FishComponent</a><ul><li><a href="#methods-57" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#globaleventdisplay" class="table-of-contents__link toc-highlight">GlobalEventDisplay</a><ul><li><a href="#methods-58" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#hatch" class="table-of-contents__link toc-highlight">Hatch</a><ul><li><a href="#methods-59" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#interactablecomponent" class="table-of-contents__link toc-highlight">InteractableComponent</a><ul><li><a href="#methods-60" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#interactabletestcomponent" class="table-of-contents__link toc-highlight">InteractableTestComponent</a><ul><li><a href="#methods-61" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#jukeboxclient" class="table-of-contents__link toc-highlight">JukeboxClient</a><ul><li><a href="#methods-62" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#markers" class="table-of-contents__link toc-highlight">Markers</a><ul><li><a href="#methods-63" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#npc" class="table-of-contents__link toc-highlight">Npc</a><ul><li><a href="#methods-64" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#plushie" class="table-of-contents__link toc-highlight">Plushie</a><ul><li><a href="#methods-65" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#popup" class="table-of-contents__link toc-highlight">Popup</a><ul><li><a href="#methods-66" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#scooter" class="table-of-contents__link toc-highlight">Scooter</a><ul><li><a href="#methods-67" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#selectable" class="table-of-contents__link toc-highlight">Selectable</a><ul><li><a href="#methods-68" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#shopnpc" class="table-of-contents__link toc-highlight">ShopNpc</a><ul><li><a href="#methods-69" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#tail" class="table-of-contents__link toc-highlight">Tail</a><ul><li><a href="#methods-70" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#basetail" class="table-of-contents__link toc-highlight">BaseTail</a><ul><li><a href="#methods-71" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#sharktail" class="table-of-contents__link toc-highlight">SharkTail</a><ul><li><a href="#methods-72" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#standardtail" class="table-of-contents__link toc-highlight">StandardTail</a><ul><li><a href="#methods-73" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#boidpackets" class="table-of-contents__link toc-highlight">BoidPackets</a><ul><li><a href="#methods-74" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#creatureanimationpackets" class="table-of-contents__link toc-highlight">CreatureAnimationPackets</a><ul><li><a href="#methods-75" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#minceloaderserver" class="table-of-contents__link toc-highlight">MinceLoader.server</a><ul><li><a href="#methods-76" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#soundhandler" class="table-of-contents__link toc-highlight">SoundHandler</a><ul><li><a href="#methods-77" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#soundhandler-1" class="table-of-contents__link toc-highlight">SoundHandler</a><ul><li><a href="#methods-78" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#soundsource" class="table-of-contents__link toc-highlight">SoundSource</a><ul><li><a href="#methods-79" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#soundsource-1" class="table-of-contents__link toc-highlight">SoundSource</a><ul><li><a href="#methods-80" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li><li><a href="#userprofile" class="table-of-contents__link toc-highlight">UserProfile</a><ul><li><a href="#methods-81" class="table-of-contents__link toc-highlight">Methods</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Aquatica</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://www.roblox.com/games/78959878729166/Aquatica-Observatory" target="_blank" rel="noopener noreferrer" class="footer__link-item">Play on Roblox<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li><li class="footer__item"><a href="https://velumix.github.io/#observatory" target="_blank" rel="noopener noreferrer" class="footer__link-item">Engineering portfolio<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Aquatica Observatory.</div></div></div></footer></div>
+</body>
+</html>

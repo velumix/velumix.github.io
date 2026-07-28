@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[13552],{65645:e=>{e.exports=JSON.parse('{"functions":[],"properties":[],"types":[],"name":"Explorer_Pass","desc":"Source: `game/src/ReplicatedStorage/Runtime/Config/Passes/ExplorerPass.luau`","tags":["Replicated configuration"],"source":{"line":7,"path":"moonwave-api/Explorer_Pass.luau"}}')}}]);

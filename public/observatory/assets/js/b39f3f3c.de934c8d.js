@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[94158],{90516:e=>{e.exports=JSON.parse('{"functions":[],"properties":[],"types":[],"name":"Binds","desc":"Source: `game/src/ReplicatedStorage/Runtime/Config/Binds.luau`","tags":["Replicated configuration"],"source":{"line":7,"path":"moonwave-api/Binds.luau"}}')}}]);

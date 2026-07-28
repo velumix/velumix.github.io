@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[73200],{42319:e=>{e.exports=JSON.parse('{"functions":[],"properties":[],"types":[],"name":"MinceLoader_server","desc":"Source: `game/src/ReplicatedStorage/Runtime/MinceLoader.server.luau`","tags":["Shared runtime"],"source":{"line":7,"path":"moonwave-api/MinceLoader_server.luau"}}')}}]);

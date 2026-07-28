@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[90180],{46767:e=>{e.exports=JSON.parse('{"functions":[],"properties":[],"types":[],"name":"Recipes","desc":"Source: `game/src/ServerScriptService/Runtime/Source/Services/DrinkService/Recipes.luau`","tags":["Server services"],"realm":["Server"],"source":{"line":8,"path":"moonwave-api/Recipes.luau"}}')}}]);

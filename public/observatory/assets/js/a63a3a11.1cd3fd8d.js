@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[83108],{77959:e=>{e.exports=JSON.parse('{"functions":[],"properties":[],"types":[],"name":"rbnsr","desc":"Source: `game/src/ReplicatedStorage/Modules/Mince/rbnsr.luau`","tags":["Mince"],"source":{"line":7,"path":"moonwave-api/rbnsr.luau"}}')}}]);

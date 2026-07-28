@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[28525],{40010:e=>{e.exports=JSON.parse('{"functions":[],"properties":[],"types":[],"name":"CreatureAnimationPackets","desc":"Source: `game/src/ReplicatedStorage/Modules/CreatureAnimationPackets.luau`","tags":["Shared runtime"],"source":{"line":7,"path":"moonwave-api/CreatureAnimationPackets.luau"}}')}}]);

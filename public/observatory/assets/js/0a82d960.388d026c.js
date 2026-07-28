@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocs=self.webpackChunkdocs||[]).push([[24343],{94029:e=>{e.exports=JSON.parse('{"functions":[],"properties":[],"types":[],"name":"FishComponent","desc":"Source: `game/src/ReplicatedStorage/Runtime/Source/Components/FishComponent.luau`","tags":["Shared components"],"source":{"line":7,"path":"moonwave-api/FishComponent.luau"}}')}}]);
