@@ -7,3 +7,5 @@ out
 *.log
 *-playwright.png
 tsconfig.tsbuildinfo
+.preview
+pages-dist

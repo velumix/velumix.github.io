@@ -92,13 +92,17 @@ async function fetchGame(experience, icons, details, votes) {
           .map((item) => [item.targetId, item.imageUrl]),
       );
     } catch (error) {
-      console.warn(`Thumbnails unavailable for ${experience.name}: ${error.message}`);
+      console.warn(
+        `Thumbnails unavailable for ${experience.name}: ${error.message}`,
+      );
     }
   }
 
   const detail = details.get(experience.universeId);
   const vote = votes.get(experience.universeId);
-  const videoItem = approved.find((item) => item.assetType === "GamePreviewVideo");
+  const videoItem = approved.find(
+    (item) => item.assetType === "GamePreviewVideo",
+  );
   const streamUrl = await resolveVideoUrl(videoItem?.videoId);
 
   return {
@@ -149,7 +153,9 @@ async function main() {
         "&returnPolicy=PlaceHolder&size=512x512&format=Png&isCircular=false",
     ),
     getJson(`https://games.roblox.com/v1/games?universeIds=${universeIds}`),
-    getJson(`https://games.roblox.com/v1/games/votes?universeIds=${universeIds}`),
+    getJson(
+      `https://games.roblox.com/v1/games/votes?universeIds=${universeIds}`,
+    ),
   ]);
 
   const icons = new Map(
@@ -160,15 +166,22 @@ async function main() {
   const details = new Map(
     (detailsResponse.data ?? []).map((item) => [String(item.id), item]),
   );
+  if (experiences.some((experience) => !details.has(experience.universeId))) {
+    throw new Error(
+      "Roblox returned an incomplete snapshot; the previous data was preserved.",
+    );
+  }
   const votes = new Map(
     (votesResponse.data ?? []).map((item) => [String(item.id), item]),
   );
   const games = await Promise.all(
-    experiences.map((experience) => fetchGame(experience, icons, details, votes)),
+    experiences.map((experience) =>
+      fetchGame(experience, icons, details, votes),
+    ),
   );
 
   const scriptDirectory = dirname(fileURLToPath(import.meta.url));
-  const outputPath = resolve(scriptDirectory, "../public/data/roblox-media.json");
+  const outputPath = resolve(scriptDirectory, "../src/data/roblox-media.json");
   await mkdir(dirname(outputPath), { recursive: true });
   await writeFile(
     outputPath,

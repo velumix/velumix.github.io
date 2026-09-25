@@ -12,3 +12,4 @@ out
 .dev-server.pid
 tsconfig.tsbuildinfo
 sites-version.tar.gz
+.preview/
