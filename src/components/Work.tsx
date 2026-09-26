@@ -33,23 +33,34 @@ function ProjectCard({
           width="768"
           height="432"
         />
+        <span className="project-number">0{index + 1}</span>
         <span className="project-open">
           <span>View project</span>
           <Icon name="diagonal" />
         </span>
+        {project.stats && (
+          <span className="project-visits">
+            {compact(project.stats.visits)} visits
+          </span>
+        )}
       </button>
       <div className="project-info">
-        <div className="project-meta">
-          <span>
-            0{index + 1} / {project.engineering.role}
-          </span>
-          {project.stats && <span>{compact(project.stats.visits)} visits</span>}
-        </div>
         <div className="project-heading">
           <h3>{project.name}</h3>
-          <Icon name="diagonal" />
+          <span className="project-role">
+            {project.id === "garden"
+              ? "LIVEOPS"
+              : project.id === "samurai"
+                ? "COMBAT"
+                : "GAMEPLAY"}
+          </span>
         </div>
         <p>{project.summary}</p>
+        <div className="tags">
+          {project.engineering.tags.slice(0, 3).map((tag) => (
+            <span key={tag}>{tag}</span>
+          ))}
+        </div>
         <div className="project-actions">
           <button
             className="text-link project-details"
@@ -86,15 +97,21 @@ export function Work({ onSelect }: { onSelect: (project: Project) => void }) {
       aria-labelledby="work-title"
     >
       <div className="section-heading">
-        <p className="eyebrow">01 — SELECTED WORK</p>
         <div>
-          <h2 id="work-title">
-            Made to be <em>played.</em>
-          </h2>
-          <p>
-            Five games, different challenges. Here’s the work I contributed.
+          <p className="eyebrow">
+            <span>01 /</span> SELECTED WORK
           </p>
+          <h2 id="work-title">
+            Less talk.
+            <br className="mobile-break" /> More{" "}
+            <span className="muted">play.</span>
+          </h2>
         </div>
+        <p>
+          A few worlds I’ve helped bring to life.
+          <br />
+          Real games. Real players. A lot of Luau.
+        </p>
       </div>
       <div className="work-toolbar">
         <div

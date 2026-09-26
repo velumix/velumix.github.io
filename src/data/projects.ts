@@ -18,11 +18,11 @@ const categories: Record<string, Filter[]> = {
 };
 
 const descriptions: Record<string, string> = {
-  aquatica: "Swimming, creature behaviour, and discovery in an underwater world.",
-  samurai: "Sword combat built around commitment, spacing, and timing.",
-  ranger: "Vehicle physics, responsive AI, and cooperative emergency systems.",
-  paint: "Camouflage, match flow, and cross-platform hide-and-seek.",
-  garden: "Progression, chase mechanics, and events for a live experience.",
+  aquatica: "An ocean full of life. The systems that bring it together.",
+  samurai: "Every swing is a decision. Combat built around timing and feel.",
+  ranger: "Dynamic emergencies. A world that responds to its players.",
+  paint: "Blend in. Stand out. A new twist on hide-and-seek.",
+  garden: "Growing the gameplay loop, from progression to live events.",
 };
 
 const order = ["aquatica", "samurai", "ranger", "paint", "garden"];
