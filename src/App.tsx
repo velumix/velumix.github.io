@@ -206,18 +206,6 @@ export default function App() {
         </div>
       </header>
       <aside className="app-sidebar" aria-label="Portfolio navigation">
-        <button
-          className="sidebar-profile"
-          aria-label="About Velumix"
-          onClick={() => navigate("about")}
-        >
-          <Avatar small />
-          <span>
-            <strong>Velumix</strong>
-            <small>Gameplay engineer</small>
-          </span>
-        </button>
-        <p className="nav-label">Portfolio</p>
         <nav aria-label="Main navigation">
           {views.map((item) => (
             <button
