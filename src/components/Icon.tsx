@@ -190,12 +190,7 @@ export function Brand({ footer = false }: { footer?: boolean }) {
       href="#top"
       aria-label="Velumix home"
     >
-      <svg viewBox="0 0 32 32" fill="none" aria-hidden="true">
-        <path
-          d="m3 6 9 21h7L10 6H3Zm16 0-5 11 4 10L29 6H19Z"
-          fill="currentColor"
-        />
-      </svg>
+      <img src="/images/velumix-logo.png" alt="" width="32" height="32" />
       <span>
         velumix<span className="brand-period">.</span>
       </span>

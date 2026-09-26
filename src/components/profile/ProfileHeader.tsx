@@ -20,12 +20,13 @@ export function Avatar({ small = false }: { small?: boolean }) {
       className={`avatar${small ? " avatar-small" : ""}`}
       aria-hidden="true"
     >
-      <svg viewBox="0 0 32 32" fill="none">
-        <path
-          d="m3 6 9 21h7L10 6H3Zm16 0-5 11 4 10L29 6H19Z"
-          fill="currentColor"
-        />
-      </svg>
+      <img
+        src="/images/velumix-logo.png"
+        alt=""
+        width="1254"
+        height="1254"
+        decoding="async"
+      />
     </span>
   );
 }
