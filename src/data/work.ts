@@ -85,6 +85,7 @@ const softwareCatalog: SoftwareProject[] = [
     kind: "software",
     id: "projectvite",
     name: "ProjectVite",
+    status: "Past project",
     preview: {
       src: "/images/projectvite-preview.jpg",
       alt: "ProjectVite's interactive inventory interface in the browser preview",

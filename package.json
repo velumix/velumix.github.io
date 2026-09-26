@@ -7,8 +7,10 @@
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview --host 127.0.0.1",
     "fetch:roblox": "node scripts/fetch-roblox-media.mjs",
+    "fetch:profiles": "node scripts/fetch-social-profiles.mjs",
+    "check:profiles": "node --test scripts/social-profiles.test.mjs",
     "build:pages": "npm run build",
-    "check": "npm run build && npm run check:observatory-docs",
+    "check": "npm run check:profiles && npm run build && npm run check:observatory-docs",
     "check:browser": "node scripts/visual-check.mjs",
     "check:observatory-docs": "node scripts/check-observatory-docs.mjs",
     "check:observatory-browser": "node scripts/check-observatory-browser.mjs"

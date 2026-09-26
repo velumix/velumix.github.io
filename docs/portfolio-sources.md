@@ -5,6 +5,15 @@ curated account of published projects and contributions, not a live GitHub
 activity feed or an employment history. Project and contribution counts in
 the UI are derived from `src/data/work.ts`.
 
+The separate GitHub account card uses public profile fields from
+`https://api.github.com/users/velumix`, including its avatar, public repository
+count, and followers. Its repository count describes the whole account, not
+the curated portfolio. Discord identity is read from the official Get User
+endpoint when a bot secret is configured, or from Lanyard after account opt-in.
+Source names and successful fetch timestamps are recorded per account in
+`public/data/social-profiles.json`; absent data is not replaced with fabricated
+profile details. See the README for access and refresh configuration.
+
 | Work               | Evidence                                                                                                                                                                                                                                                               | Attribution / boundary                                                                                                                                         |
 | ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Abraxius Workspace | [README](https://github.com/velumix/Abraxius-Workspace), [architecture](https://github.com/velumix/Abraxius-Workspace/blob/main/docs/architecture.md)                                                                                                                  | Personal C#/.NET runtime and Avalonia application. Does not claim every platform host is production-tested or include features from the open Design Studio PR. |
@@ -22,9 +31,9 @@ The five existing game case studies retain their contribution descriptions in
 `src/data/roblox-media.json`. Seven-plus years is explicitly scoped to Roblox;
 it is not applied to every language or discipline.
 
-Abraxius is categorized as a past project based on the owner's correction,
-not inferred from GitHub archive flags. It remains part of the experience
-catalog and is excluded from the featured software position.
+Abraxius and ProjectVite are categorized as past projects based on the owner's corrections,
+not inferred from GitHub archive flags. Both remain part of the experience
+catalog, below the Roblox showcase and other software.
 
 `public/images/projectvite-preview.jpg` was captured directly from the
 inventory interface at [ProjectVite's public browser preview](https://velumix.github.io/ProjectVite/)

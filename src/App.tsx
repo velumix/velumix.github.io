@@ -12,7 +12,8 @@ import { ProjectFeed } from "./components/profile/ProjectFeed";
 import { AboutPanel, SourcePanel } from "./components/profile/ProfilePanels";
 import { type Project } from "./data/projects";
 import { portfolio, type WorkFilter } from "./data/work";
-import { discordUrl } from "./data/links";
+import { discordUrl, githubUrl } from "./data/links";
+import { AccountAvatar } from "./components/profile/SocialProfiles";
 
 function readView(): View {
   const value = window.location.hash.slice(1);
@@ -182,12 +183,12 @@ export default function App() {
         <div className="header-actions">
           <a
             className="header-github"
-            href="https://github.com/velumix"
+            href={githubUrl}
             target="_blank"
             rel="noreferrer"
             aria-label="Velumix on GitHub"
           >
-            <Icon name="github" />
+            <AccountAvatar provider="github" />
           </a>
           <button
             className="icon-button theme-toggle"
@@ -203,7 +204,7 @@ export default function App() {
             rel="noreferrer"
             aria-label="Message Velumix on Discord"
           >
-            <Icon name="discord" />
+            <AccountAvatar provider="discord" />
           </a>
         </div>
       </header>
@@ -229,11 +230,11 @@ export default function App() {
         <div className="sidebar-links">
           <a
             aria-label="GitHub"
-            href="https://github.com/velumix"
+            href={githubUrl}
             target="_blank"
             rel="noreferrer"
           >
-            <Icon name="github" />
+            <AccountAvatar provider="github" />
             <span>GitHub</span>
             <Icon name="diagonal" />
           </a>
@@ -243,7 +244,7 @@ export default function App() {
             target="_blank"
             rel="noreferrer"
           >
-            <Icon name="discord" />
+            <AccountAvatar provider="discord" />
             <span>Discord</span>
             <Icon name="diagonal" />
           </a>

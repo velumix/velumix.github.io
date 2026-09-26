@@ -1,6 +1,7 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App";
+import { SocialProfilesProvider } from "./components/profile/SocialProfiles";
 import "@fontsource-variable/dm-sans";
 import "@fontsource/space-mono/latin-400.css";
 import "./styles.css";
@@ -13,6 +14,8 @@ if (!root) {
 
 createRoot(root).render(
   <StrictMode>
-    <App />
+    <SocialProfilesProvider>
+      <App />
+    </SocialProfilesProvider>
   </StrictMode>,
 );

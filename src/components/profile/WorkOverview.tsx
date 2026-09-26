@@ -30,9 +30,6 @@ export function WorkOverview({
   const past = softwareProjects.filter(
     (project) => project.status === "Past project",
   );
-  const featuredSoftware = personal.find(
-    (project) => project.id === "projectvite",
-  )!;
   return (
     <div className="work-overview">
       <div className="featured-work">
@@ -64,30 +61,6 @@ export function WorkOverview({
             saved={saved.includes(projects[0].id)}
             onSave={onSave}
             onSelect={onSelect}
-            featured
-          />
-        </section>
-        <section
-          className="featured-collection"
-          aria-labelledby="featured-software-title"
-        >
-          <div className="collection-heading">
-            <div>
-              <h2 id="featured-software-title">
-                <Icon name="code" />
-                Software & tools
-              </h2>
-              <p>Native apps, developer tools, and web interfaces</p>
-            </div>
-            <a href="#software-projects" aria-label="Browse software projects">
-              Browse
-              <Icon name="down" />
-            </a>
-          </div>
-          <SoftwareCard
-            project={featuredSoftware}
-            saved={saved.includes(featuredSoftware.id)}
-            onSave={onSave}
             featured
           />
         </section>
@@ -132,7 +105,7 @@ export function WorkOverview({
       >
         <div className="collection-heading">
           <div>
-            <h2 id="more-software-title">More software & tools</h2>
+            <h2 id="more-software-title">Software & tools</h2>
             <p>
               Code intelligence, interfaces, protocol tooling, and frameworks.
             </p>
@@ -147,16 +120,14 @@ export function WorkOverview({
           </a>
         </div>
         <div className="software-collection-grid">
-          {personal
-            .filter((project) => project.id !== featuredSoftware.id)
-            .map((project) => (
-              <SoftwareCard
-                key={project.id}
-                project={project}
-                saved={saved.includes(project.id)}
-                onSave={onSave}
-              />
-            ))}
+          {personal.map((project) => (
+            <SoftwareCard
+              key={project.id}
+              project={project}
+              saved={saved.includes(project.id)}
+              onSave={onSave}
+            />
+          ))}
         </div>
       </section>
 

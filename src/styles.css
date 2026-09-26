@@ -1328,6 +1328,115 @@
     width: 12px;
     height: 12px;
   }
+  .account-avatar {
+    display: grid;
+    place-items: center;
+    width: 25px;
+    height: 25px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    overflow: hidden;
+    background: var(--subtle);
+    color: var(--muted);
+  }
+  .account-avatar > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .account-avatar > svg {
+    width: 17px;
+    height: 17px;
+  }
+  .account-avatar-large {
+    width: 48px;
+    height: 48px;
+  }
+  .account-avatar-large > svg {
+    width: 25px;
+    height: 25px;
+  }
+  .account-cards {
+    display: grid;
+    gap: 12px;
+    margin-top: 18px;
+  }
+  .account-card {
+    display: block;
+    position: relative;
+    border: 1px solid var(--line);
+    border-radius: 9px;
+    overflow: hidden;
+    background: var(--bg);
+  }
+  .account-card:hover {
+    border-color: var(--blue);
+  }
+  .account-service {
+    display: flex;
+    gap: 7px;
+    align-items: center;
+    padding: 12px 13px 0;
+    font-size: 11px;
+    color: var(--muted);
+  }
+  .account-service > svg {
+    width: 14px;
+    height: 14px;
+  }
+  .account-service > svg:last-child {
+    margin-left: auto;
+    width: 12px;
+    height: 12px;
+  }
+  .account-identity {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    padding: 13px;
+  }
+  .account-identity > span:last-child {
+    min-width: 0;
+  }
+  .account-identity strong {
+    display: block;
+    font-size: 15px;
+    overflow-wrap: anywhere;
+  }
+  .account-identity small {
+    display: block;
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 3px;
+    overflow-wrap: anywhere;
+  }
+  .account-stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px 13px;
+    padding: 0 13px 14px;
+    color: var(--muted);
+    font-size: 11px;
+  }
+  .account-stats strong {
+    color: var(--ink);
+  }
+  .account-bio {
+    padding: 0 13px 13px;
+    font-size: 12px;
+    line-height: 1.6;
+    color: var(--muted);
+    overflow-wrap: anywhere;
+  }
+  .account-banner {
+    width: 100%;
+    height: 75px;
+    object-fit: cover;
+  }
+  .profile-actions .account-avatar {
+    width: 20px;
+    height: 20px;
+  }
   .work-merged {
     color: var(--green);
   }
@@ -1462,7 +1571,7 @@
   }
   .featured-work {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: minmax(0, 1fr);
     gap: 22px;
   }
   .featured-collection {
@@ -2019,7 +2128,7 @@
     .nav-label,
     .app-sidebar nav button > span,
     .app-sidebar nav button > small,
-    .sidebar-links a > span,
+    .sidebar-links a > span:not(.account-avatar),
     .sidebar-links a > svg:last-child,
     .sidebar-bottom {
       display: none;

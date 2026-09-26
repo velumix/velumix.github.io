@@ -36,6 +36,13 @@ jobs:
         run: npm run fetch:roblox
         continue-on-error: true
 
+      - name: Refresh GitHub and Discord profiles
+        run: npm run fetch:profiles
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+        continue-on-error: true
+
       - name: Build and check static portfolio
         run: npm run check
 

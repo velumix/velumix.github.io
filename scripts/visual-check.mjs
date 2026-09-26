@@ -38,55 +38,63 @@ try {
     assert.equal(await page.locator(".featured-work .game-card").count(), 1);
     assert.equal(
       await page.locator(".featured-work .software-card").count(),
-      1,
-    );
-    await page
-      .locator(".featured-work")
-      .getByRole("heading", { name: "ProjectVite", exact: true })
-      .waitFor();
-    assert.equal(
-      await page
-        .locator(".featured-work")
-        .getByRole("heading", { name: /Abraxius/ })
-        .count(),
       0,
-      "Past work must not take a featured position",
     );
     assert.equal(
       await page.locator(".game-collection-grid .game-card").count(),
       4,
     );
-    await page
-      .locator(".past-work")
-      .getByRole("heading", { name: "Abraxius", exact: true })
-      .waitFor();
+    for (const name of ["Abraxius", "ProjectVite"]) {
+      await page
+        .locator(".past-work")
+        .getByRole("heading", { name, exact: true })
+        .waitFor();
+    }
     const gameFeature = await page
       .locator(".featured-work .game-card")
       .boundingBox();
-    const softwareFeature = await page
-      .locator(".featured-work .software-card")
-      .boundingBox();
-    if (width > 700) {
-      assert.ok(
-        Math.abs(gameFeature.y - softwareFeature.y) < 2,
-        "Roblox and software must have equal placement on desktop",
+    const featuredArea = await page.locator(".featured-work").boundingBox();
+    assert.ok(
+      Math.abs(gameFeature.width - featuredArea.width) < 2,
+      "Roblox showcase must use one column",
+    );
+    const moreGames = await page.locator(".game-collection-grid").boundingBox();
+    const softwareArea = await page.locator("#software-projects").boundingBox();
+    assert.ok(
+      softwareArea.y >= moreGames.y + moreGames.height,
+      "Software must follow the Roblox collection",
+    );
+    const socialSnapshot = await page.request
+      .get(site.url + "/data/social-profiles.json")
+      .then((response) => response.json());
+    if (socialSnapshot.github) {
+      const githubCard = page.locator('.account-card[data-provider="github"]');
+      await githubCard
+        .getByText(socialSnapshot.github.displayName, { exact: true })
+        .waitFor();
+      assert.equal(
+        await githubCard.locator("img").getAttribute("src"),
+        socialSnapshot.github.avatarPath,
       );
-      assert.ok(
-        gameFeature.x + gameFeature.width <= softwareFeature.x,
-        "Featured columns must not overlap",
+    }
+    if (!socialSnapshot.discord) {
+      assert.equal(
+        await page
+          .locator('.account-card[data-provider="discord"] img')
+          .count(),
+        0,
+        "Unavailable Discord data must not invent a profile photo",
       );
-    } else {
-      assert.ok(
-        gameFeature.y + gameFeature.height <= softwareFeature.y,
-        "Mobile features must not overlap",
-      );
-      const moreGames = await page
-        .locator(".game-collection-grid")
-        .boundingBox();
-      assert.ok(
-        softwareFeature.y < moreGames.y,
-        "Both disciplines appear before the rest of either collection",
-      );
+    }
+    if (await page.locator(".app-sidebar").isVisible()) {
+      for (const provider of ["github", "discord"]) {
+        assert.ok(
+          await page
+            .locator(`.sidebar-links .account-avatar[data-provider="${provider}"]`)
+            .isVisible(),
+          `${provider} avatar stays visible in the collapsed sidebar`,
+        );
+      }
     }
     assert.equal(await page.title(), "Velumix — Software Engineer & Developer");
     assert.ok(
@@ -167,13 +175,6 @@ try {
     assert.equal(await page.locator(".game-card").count(), 5);
     assert.equal(await page.locator(".software-card").count(), 0);
     await page.getByRole("button", { name: "All work", exact: true }).click();
-    await page
-      .getByRole("link", { name: "Browse software projects", exact: true })
-      .click();
-    assert.ok(page.url().endsWith("#software-projects"));
-    await page
-      .getByRole("heading", { name: "More software & tools", exact: true })
-      .waitFor();
     await page.getByRole("button", { name: "Web & UI", exact: true }).click();
     assert.equal(await page.locator(".project-card").count(), 1);
     await page
@@ -324,13 +325,40 @@ try {
     }
     await page.getByRole("tab", { name: /^Projects/ }).click();
 
+    const fixtureAvatar = socialSnapshot.github?.avatarPath;
+    assert.ok(
+      fixtureAvatar,
+      "Profile test needs the real checked-in GitHub avatar",
+    );
+    const profileRoute = (route) =>
+      route.fulfill({
+        json: {
+          ...socialSnapshot,
+          discord: {
+            id: "499413963310891017",
+            username: "api_verified_handle",
+            displayName: "API profile fixture",
+            avatarPath: fixtureAvatar,
+            bannerPath: null,
+            fetchedAt: "2026-09-26T00:00:00Z",
+          },
+        },
+      });
+    await page.route("**/data/social-profiles.json", profileRoute);
+    await page.reload({ waitUntil: "networkidle" });
     await page
-      .getByRole("button", { name: "Copy Discord username velumix" })
+      .locator('.account-card[data-provider="discord"]')
+      .getByText("@api_verified_handle", { exact: true })
+      .waitFor();
+    await page
+      .getByRole("button", {
+        name: "Copy Discord username api_verified_handle",
+      })
       .click();
     await page.getByText("Username copied!", { exact: true }).waitFor();
     assert.equal(
       await page.evaluate(() => navigator.clipboard.readText()),
-      "velumix",
+      "api_verified_handle",
     );
     await page.evaluate(() => {
       navigator.clipboard.writeText = async () => {
@@ -338,14 +366,19 @@ try {
       };
     });
     await page
-      .getByRole("button", { name: "Copy Discord username velumix" })
+      .getByRole("button", {
+        name: "Copy Discord username api_verified_handle",
+      })
       .click();
     await page
       .getByText(
-        "Couldn’t copy automatically. My Discord username is velumix.",
+        "Couldn’t copy automatically. My Discord username is api_verified_handle.",
         { exact: true },
       )
       .waitFor();
+
+    await page.unroute("**/data/social-profiles.json", profileRoute);
+    await page.reload({ waitUntil: "networkidle" });
 
     if ([390, 1024, 1440].includes(width)) {
       const audit = await new AxeBuilder({ page })
@@ -385,6 +418,10 @@ try {
     await page.evaluate(() => scrollTo({ top: 0, behavior: "instant" }));
     if (width === 390 || width === 1440) {
       const name = width === 390 ? "mobile" : "desktop";
+      await page.locator(".contact-panel").screenshot({
+        path: `.preview/social-profiles-${name}.png`,
+      });
+      await page.evaluate(() => scrollTo({ top: 0, behavior: "instant" }));
       await page.screenshot({
         path: `.preview/profile-${name}.png`,
         fullPage: true,

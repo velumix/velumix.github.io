@@ -2,10 +2,11 @@ import { useEffect, useState } from "react";
 import { Icon } from "../Icon";
 import { compact, totalVisits } from "../../data/projects";
 import { softwareProjects } from "../../data/work";
-import { discordUrl } from "../../data/links";
+import { SocialProfileCard, useSocialProfiles } from "./SocialProfiles";
 import type { View } from "./ProfileHeader";
 
 export function ProfileInfo({ onView }: { onView: (view: View) => void }) {
+  const { discord } = useSocialProfiles();
   const [copyState, setCopyState] = useState<"idle" | "copied" | "failed">(
     "idle",
   );
@@ -15,8 +16,9 @@ export function ProfileInfo({ onView }: { onView: (view: View) => void }) {
     return () => clearTimeout(timer);
   }, [copyState]);
   async function copy() {
+    if (!discord) return;
     try {
-      await navigator.clipboard.writeText("velumix");
+      await navigator.clipboard.writeText(discord.username);
       setCopyState("copied");
     } catch {
       setCopyState("failed");
@@ -92,32 +94,23 @@ export function ProfileInfo({ onView }: { onView: (view: View) => void }) {
       <section className="panel contact-panel">
         <h2>Let’s connect</h2>
         <p>Have a project in mind? Tell me what you’re building.</p>
-        <a
-          className="contact-link"
-          href={discordUrl}
-          target="_blank"
-          rel="noreferrer"
-        >
-          <span className="contact-icon">
-            <Icon name="discord" />
-          </span>
-          <span>
-            <strong>Discord</strong>
-            <small>@velumix</small>
-          </span>
-          <Icon name="diagonal" />
-        </a>
-        <button
-          className="copy-handle"
-          onClick={copy}
-          aria-label="Copy Discord username velumix"
-        >
-          <Icon name={copyState === "copied" ? "check" : "copy"} />
-          {copyState === "copied" ? "Username copied!" : "Copy username"}
-        </button>
+        <div className="account-cards">
+          <SocialProfileCard provider="discord" />
+          <SocialProfileCard provider="github" />
+        </div>
+        {discord && (
+          <button
+            className="copy-handle"
+            onClick={copy}
+            aria-label={`Copy Discord username ${discord.username}`}
+          >
+            <Icon name={copyState === "copied" ? "check" : "copy"} />
+            {copyState === "copied" ? "Username copied!" : "Copy username"}
+          </button>
+        )}
         <span role="status" className="copy-feedback">
           {copyState === "failed"
-            ? "Couldn’t copy automatically. My Discord username is velumix."
+            ? `Couldn’t copy automatically. My Discord username is ${discord?.username}.`
             : copyState === "copied"
               ? "Copied to clipboard"
               : ""}

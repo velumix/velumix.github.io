@@ -1,7 +1,8 @@
 import { Icon, type IconName } from "../Icon";
-import { discordUrl } from "../../data/links";
+import { discordUrl, githubUrl } from "../../data/links";
 import { portfolio } from "../../data/work";
 import { projects, type Project } from "../../data/projects";
+import { AccountAvatar } from "./SocialProfiles";
 
 export const views = [
   { id: "projects", label: "Projects", icon: "briefcase" },
@@ -81,16 +82,16 @@ export function ProfileHeader({
             target="_blank"
             rel="noreferrer"
           >
-            <Icon name="discord" />
+            <AccountAvatar provider="discord" />
             Message me
           </a>
           <a
             className="button button-secondary"
-            href="https://github.com/velumix"
+            href={githubUrl}
             target="_blank"
             rel="noreferrer"
           >
-            <Icon name="github" />
+            <AccountAvatar provider="github" />
             GitHub
             <Icon name="diagonal" />
           </a>

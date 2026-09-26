@@ -1,1 +1,4 @@
-export const discordUrl = "https://discord.com/users/499413963310891017";
+import accounts from "./social-accounts.json";
+
+export const discordUrl = `https://discord.com/users/${accounts.discordId}`;
+export const githubUrl = `https://github.com/${accounts.githubUsername}`;
