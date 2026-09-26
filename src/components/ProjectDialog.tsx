@@ -109,10 +109,9 @@ export function ProjectDialog({
           type="button"
           className="dialog-close"
           aria-label="Close project"
+          aria-keyshortcuts="Escape"
           onClick={onClose}
         >
-          <span>Close</span>
-          <kbd>Esc</kbd>
           <Icon name="close" />
         </button>
       </div>
