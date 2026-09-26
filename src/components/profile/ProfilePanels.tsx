@@ -18,8 +18,8 @@ export function AboutPanel() {
         </p>
         <p>
           I’ve spent over seven years building on Roblox. Alongside that work, I
-          develop agent runtimes, code intelligence tools, desktop software, and
-          UI systems, and contribute fixes to open-source projects.
+          have built agent runtimes, code intelligence tools, desktop software,
+          and UI systems, and contributed fixes to open-source projects.
         </p>
         <h3>Where I’ve put it to work</h3>
         <div className="skills-list">
@@ -75,16 +75,19 @@ export function SourcePanel({
   onSave: (id: string) => void;
 }) {
   const personal = softwareProjects.filter(
-    (project) => project.role === "Personal project",
+    (project) => project.role === "Personal project" && !project.status,
   );
   const contributions = softwareProjects.filter(
     (project) => project.role !== "Personal project",
+  );
+  const past = softwareProjects.filter(
+    (project) => project.status === "Past project",
   );
   return (
     <div className="source-panel">
       <div className="panel panel-heading">
         <h2>Open source</h2>
-        <p>Projects I build and contributions to the tools I use.</p>
+        <p>Projects I’ve built and contributions to the tools I use.</p>
         <a
           className="all-repositories"
           href="https://github.com/velumix?tab=repositories"
@@ -117,6 +120,21 @@ export function SourcePanel({
           onSave={onSave}
         />
       ))}
+      {past.length > 0 && (
+        <>
+          <h3 className="source-group-title">
+            Past projects <span>{past.length}</span>
+          </h3>
+          {past.map((project) => (
+            <SoftwareCard
+              key={project.id}
+              project={project}
+              saved={saved.includes(project.id)}
+              onSave={onSave}
+            />
+          ))}
+        </>
+      )}
     </div>
   );
 }

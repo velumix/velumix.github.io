@@ -5,15 +5,38 @@ export function SoftwareCard({
   project,
   saved,
   onSave,
+  featured = false,
 }: {
   project: SoftwareProject;
   saved: boolean;
   onSave: (id: string) => void;
+  featured?: boolean;
 }) {
   return (
     <article
-      className={`panel project-card software-card tone-${project.tone}`}
+      className={`panel project-card software-card tone-${project.tone}${featured ? " software-card-featured" : ""}`}
     >
+      {project.preview && (
+        <a
+          className="project-cover software-preview"
+          href={project.preview.url}
+          target="_blank"
+          rel="noreferrer"
+          aria-label={`Open ${project.name} browser preview`}
+        >
+          <img
+            src={project.preview.src}
+            alt={project.preview.alt}
+            width="1175"
+            height="660"
+            loading={featured ? "eager" : "lazy"}
+          />
+          <span>
+            Browser preview
+            <Icon name="diagonal" />
+          </span>
+        </a>
+      )}
       <div className="project-card-top">
         <span className="software-icon" aria-hidden="true">
           <Icon name={project.icon} />
@@ -46,6 +69,12 @@ export function SoftwareCard({
           {project.role}
         </span>
         <span>{project.category}</span>
+        {project.status && (
+          <span className="work-status">
+            <Icon name="clock" />
+            {project.status}
+          </span>
+        )}
       </div>
       <div className="project-context">
         <div className="project-tags">
@@ -54,7 +83,10 @@ export function SoftwareCard({
           ))}
         </div>
       </div>
-      <details className="work-details">
+      <details
+        className="work-details"
+        open={(featured && !project.preview) || undefined}
+      >
         <summary>
           Engineering details
           <span className="sr-only"> for {project.name}</span>
@@ -74,7 +106,16 @@ export function SoftwareCard({
           ))}
         </div>
       </details>
-      <div className="project-card-actions software-actions">
+      <div
+        className={`project-card-actions software-actions${project.preview ? " software-actions-with-preview" : ""}`}
+      >
+        {project.preview && (
+          <a href={project.preview.url} target="_blank" rel="noreferrer">
+            <Icon name="globe" />
+            Open preview
+            <Icon name="diagonal" />
+          </a>
+        )}
         <a
           href={project.url}
           target="_blank"

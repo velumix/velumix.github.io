@@ -35,6 +35,59 @@ try {
     assert.equal(await page.locator("h1").innerText(), "Velumix");
     assert.equal(await page.locator(".project-card").count(), 14);
     assert.equal(await page.locator(".software-card").count(), 9);
+    assert.equal(await page.locator(".featured-work .game-card").count(), 1);
+    assert.equal(
+      await page.locator(".featured-work .software-card").count(),
+      1,
+    );
+    await page
+      .locator(".featured-work")
+      .getByRole("heading", { name: "ProjectVite", exact: true })
+      .waitFor();
+    assert.equal(
+      await page
+        .locator(".featured-work")
+        .getByRole("heading", { name: /Abraxius/ })
+        .count(),
+      0,
+      "Past work must not take a featured position",
+    );
+    assert.equal(
+      await page.locator(".game-collection-grid .game-card").count(),
+      4,
+    );
+    await page
+      .locator(".past-work")
+      .getByRole("heading", { name: "Abraxius", exact: true })
+      .waitFor();
+    const gameFeature = await page
+      .locator(".featured-work .game-card")
+      .boundingBox();
+    const softwareFeature = await page
+      .locator(".featured-work .software-card")
+      .boundingBox();
+    if (width > 700) {
+      assert.ok(
+        Math.abs(gameFeature.y - softwareFeature.y) < 2,
+        "Roblox and software must have equal placement on desktop",
+      );
+      assert.ok(
+        gameFeature.x + gameFeature.width <= softwareFeature.x,
+        "Featured columns must not overlap",
+      );
+    } else {
+      assert.ok(
+        gameFeature.y + gameFeature.height <= softwareFeature.y,
+        "Mobile features must not overlap",
+      );
+      const moreGames = await page
+        .locator(".game-collection-grid")
+        .boundingBox();
+      assert.ok(
+        softwareFeature.y < moreGames.y,
+        "Both disciplines appear before the rest of either collection",
+      );
+    }
     assert.equal(await page.title(), "Velumix — Software Engineer & Developer");
     assert.ok(
       await page.evaluate(
@@ -49,7 +102,7 @@ try {
       ["Apps & tools", 5],
       ["Web & UI", 1],
       ["Contributions", 3],
-      ["Games", 5],
+      ["Roblox", 5],
       ["All work", 14],
     ]) {
       await page.getByRole("button", { name, exact: true }).click();
@@ -60,7 +113,7 @@ try {
       );
     }
     const search = page.getByRole("searchbox", { name: "Search projects" });
-    await page.getByRole("button", { name: "Games", exact: true }).click();
+    await page.getByRole("button", { name: "Roblox", exact: true }).click();
     await search.fill("SQLite");
     assert.equal(await page.locator(".project-card").count(), 1);
     await page
@@ -108,7 +161,20 @@ try {
     );
     await page.getByRole("button", { name: "Feed view", exact: true }).click();
 
-    await page.locator(".cover-interfaces").click();
+    await page
+      .getByRole("button", { name: "View all Roblox projects", exact: true })
+      .click();
+    assert.equal(await page.locator(".game-card").count(), 5);
+    assert.equal(await page.locator(".software-card").count(), 0);
+    await page.getByRole("button", { name: "All work", exact: true }).click();
+    await page
+      .getByRole("link", { name: "Browse software projects", exact: true })
+      .click();
+    assert.ok(page.url().endsWith("#software-projects"));
+    await page
+      .getByRole("heading", { name: "More software & tools", exact: true })
+      .waitFor();
+    await page.getByRole("button", { name: "Web & UI", exact: true }).click();
     assert.equal(await page.locator(".project-card").count(), 1);
     await page
       .getByRole("heading", { name: "ProjectVite", exact: true })

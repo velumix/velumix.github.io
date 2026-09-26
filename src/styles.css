@@ -1268,88 +1268,6 @@
     display: none;
   }
 
-  .profile-cover.work-cover {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    height: 202px;
-    background: #161f2e;
-  }
-  .cover-discipline {
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 9px;
-    padding: 25px 30px 40px;
-    text-align: left;
-    color: #f0f3fc;
-  }
-  .cover-discipline + .cover-discipline {
-    border-left: 1px solid #ffffff1c;
-  }
-  .cover-discipline:focus-visible {
-    outline-offset: -5px;
-  }
-  .cover-discipline::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: #ffffff;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 160ms;
-  }
-  .cover-discipline:hover::after {
-    opacity: 0.06;
-  }
-  .cover-software {
-    background: linear-gradient(120deg, #24233b, #202d44);
-  }
-  .cover-interfaces {
-    background: linear-gradient(120deg, #202d44, #173645);
-  }
-  .cover-discipline > svg:first-of-type {
-    width: 25px;
-    height: 25px;
-    margin-bottom: 9px;
-    color: #b8cdff;
-  }
-  .cover-discipline strong {
-    font-size: 23px;
-    font-weight: 650;
-    letter-spacing: -0.4px;
-  }
-  .cover-discipline > span {
-    font-size: 12px;
-    color: #c6d2e7;
-  }
-  .cover-discipline > svg:last-child {
-    position: absolute;
-    right: 22px;
-    top: 24px;
-    width: 17px;
-    height: 17px;
-    color: #c6d2e7;
-  }
-  .cover-games > img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: 60% 70%;
-    z-index: -2;
-  }
-  .cover-games::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: #0a2135c9;
-    z-index: -1;
-  }
   .software-card {
     --work-accent: var(--blue);
   }
@@ -1399,6 +1317,16 @@
   .work-role svg {
     width: 13px;
     height: 13px;
+  }
+  .work-status {
+    display: inline-flex;
+    gap: 5px;
+    align-items: center;
+    color: var(--muted);
+  }
+  .work-status svg {
+    width: 12px;
+    height: 12px;
   }
   .work-merged {
     color: var(--green);
@@ -1480,6 +1408,12 @@
   .software-actions {
     grid-template-columns: 1fr;
   }
+  .software-actions-with-preview {
+    grid-template-columns: 1fr 1fr;
+  }
+  .software-preview {
+    flex-shrink: 0;
+  }
   .software-actions > a {
     color: var(--blue);
   }
@@ -1520,6 +1454,169 @@
   }
   .all-repositories {
     margin-top: 14px;
+  }
+
+  .work-overview {
+    display: grid;
+    gap: 34px;
+  }
+  .featured-work {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+  }
+  .featured-collection {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+  .collection-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 14px;
+    min-height: 56px;
+  }
+  .collection-heading > div {
+    min-width: 0;
+  }
+  .collection-heading h2 {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 19px;
+    letter-spacing: -0.3px;
+  }
+  .collection-heading h2 > svg {
+    color: var(--blue);
+  }
+  .collection-heading p {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.6;
+    margin-top: 6px;
+  }
+  .collection-heading > button,
+  .collection-heading > a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    color: var(--blue);
+    font-size: 12px;
+    font-weight: 600;
+    flex-shrink: 0;
+    min-height: 38px;
+    padding: 7px 8px;
+    border-radius: 6px;
+  }
+  .collection-heading > button:hover,
+  .collection-heading > a:hover {
+    background: var(--subtle);
+  }
+  .collection-heading > button svg,
+  .collection-heading > a svg {
+    width: 14px;
+    height: 14px;
+  }
+  .featured-collection > .project-card {
+    flex: 1;
+  }
+  .game-card-featured,
+  .software-card-featured {
+    display: flex;
+    flex-direction: column;
+  }
+  .game-card-featured .project-card-actions,
+  .software-card-featured .project-card-actions {
+    margin-top: auto;
+  }
+  .featured-work .project-summary {
+    font-size: 14px;
+  }
+  .featured-work .work-details > ul {
+    line-height: 1.8;
+  }
+  .game-collection-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+  }
+  .game-collection-grid .project-card-top {
+    padding: 13px 13px 0;
+    gap: 6px;
+    align-items: flex-start;
+  }
+  .game-collection-grid .project-card-top h3 {
+    font-size: 15px;
+  }
+  .game-collection-grid .project-card-top > div > span {
+    font-size: 11px;
+  }
+  .game-collection-grid .project-summary {
+    display: none;
+  }
+  .game-collection-grid .project-context {
+    padding: 12px 13px;
+  }
+  .game-collection-grid .project-tags {
+    display: none;
+  }
+  .game-collection-grid .project-card-actions {
+    grid-template-columns: 1fr;
+    margin-inline: 9px;
+  }
+  .game-collection-grid .project-card-actions > button,
+  .game-collection-grid .project-card-actions > a {
+    min-height: 35px;
+    font-size: 11px;
+  }
+  .game-collection-grid .save-button {
+    width: 29px;
+    height: 29px;
+  }
+  .game-collection-grid .save-button svg {
+    width: 17px;
+    height: 17px;
+  }
+  .game-collection-grid .project-cover > span {
+    display: none;
+  }
+  .software-collection-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    align-items: start;
+  }
+  .contribution-collection-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    align-items: start;
+  }
+  .contribution-collection-grid .project-card-top {
+    padding-inline: 15px;
+  }
+  .contribution-collection-grid .software-icon {
+    display: none;
+  }
+  .contribution-collection-grid .project-card-top h3 {
+    font-size: 16px;
+  }
+  .contribution-collection-grid .project-summary {
+    font-size: 13px;
+    padding-inline: 15px;
+  }
+  .contribution-collection-grid .software-meta,
+  .contribution-collection-grid .project-context {
+    padding-inline: 15px;
+  }
+  .contribution-collection-grid .work-details {
+    margin-inline: 15px;
+  }
+  .work-collection {
+    scroll-margin-top: 86px;
   }
 
   .project-dialog {
@@ -1832,41 +1929,7 @@
   }
 }
 @layer responsive {
-  @media (max-width: 1100px) {
-    .cover-discipline {
-      padding-inline: 22px;
-    }
-    .cover-discipline strong {
-      font-size: 20px;
-    }
-    .cover-discipline > span {
-      font-size: 11px;
-    }
-  }
   @media (max-width: 700px) {
-    .profile-cover.work-cover {
-      height: 163px;
-    }
-    .cover-discipline {
-      padding: 19px 14px 35px;
-      gap: 7px;
-    }
-    .cover-discipline strong {
-      font-size: 15px;
-      letter-spacing: -0.2px;
-    }
-    .cover-discipline > span {
-      font-size: 10px;
-      line-height: 1.5;
-    }
-    .cover-discipline > svg:first-of-type {
-      width: 20px;
-      height: 20px;
-      margin-bottom: 5px;
-    }
-    .cover-discipline > svg:last-child {
-      display: none;
-    }
     .software-meta {
       padding-inline: 14px;
     }
@@ -2621,6 +2684,117 @@
     .profile-actions .button {
       padding-inline: 11px;
       font-size: 12px;
+    }
+  }
+  .profile-content.profile-content-work {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .profile-content-work > .profile-panel {
+    order: 0;
+  }
+  .profile-content-work > .profile-info {
+    order: 1;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    align-items: start;
+    padding-top: 12px;
+  }
+  .profile-content-work .rail-footer {
+    grid-column: 1 / -1;
+  }
+  .profile-content-work .feed-items:not(.feed-grid) {
+    max-width: 850px;
+    margin-inline: auto;
+  }
+  @media (max-width: 1100px) {
+    .featured-work {
+      gap: 16px;
+    }
+    .collection-heading {
+      align-items: flex-start;
+    }
+    .collection-heading h2 {
+      font-size: 17px;
+    }
+    .collection-heading p {
+      font-size: 11px;
+    }
+    .collection-heading > button,
+    .collection-heading > a {
+      font-size: 11px;
+      padding-inline: 4px;
+    }
+    .game-collection-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .contribution-collection-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .profile-content-work > .profile-info {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  @media (max-width: 700px) {
+    .featured-work {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 24px;
+    }
+    .collection-heading {
+      align-items: center;
+      min-height: 48px;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .collection-heading h2 {
+      font-size: 18px;
+    }
+    .collection-heading p {
+      font-size: 11px;
+    }
+    .collection-heading > button,
+    .collection-heading > a {
+      max-width: 105px;
+      text-align: right;
+    }
+    .work-overview {
+      gap: 26px;
+    }
+    .game-collection-grid {
+      gap: 12px;
+    }
+    .game-collection-grid .project-card-top {
+      padding-inline: 10px;
+    }
+    .game-collection-grid .project-card-top h3 {
+      font-size: 13px;
+    }
+    .game-collection-grid .project-card-top > div > span {
+      font-size: 10px;
+    }
+    .game-collection-grid .meta-separator {
+      display: none;
+    }
+    .game-collection-grid .project-card-top > div > span {
+      display: none;
+    }
+    .game-collection-grid .project-context {
+      padding-inline: 10px;
+    }
+    .game-collection-grid .project-visits {
+      font-size: 10px;
+    }
+    .software-collection-grid,
+    .contribution-collection-grid {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 14px;
+    }
+    .profile-content-work > .profile-info {
+      display: flex;
+      padding-top: 0;
+    }
+    .profile-content-work .intro-panel,
+    .profile-content-work .expertise-panel {
+      display: block;
     }
   }
   @media (prefers-reduced-motion: reduce) {

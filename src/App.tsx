@@ -266,18 +266,12 @@ export default function App() {
           <ProfileHeader
             view={view}
             onView={navigate}
-            onExplore={(category) => {
-              navigate("projects");
-              setFilter(category);
-              requestAnimationFrame(() =>
-                document
-                  .querySelector(".profile-tabs")
-                  ?.scrollIntoView({ block: "start", behavior: "smooth" }),
-              );
-            }}
+            onSelect={setSelectedProject}
             savedCount={saved.length}
           />
-          <div className="profile-content">
+          <div
+            className={`profile-content${view === "projects" || view === "saved" ? " profile-content-work" : ""}`}
+          >
             <ProfileInfo onView={navigate} />
             <section
               id="profile-panel"
@@ -298,7 +292,10 @@ export default function App() {
                     setFilter("All work");
                   }}
                   filter={filter}
-                  onFilter={setFilter}
+                  onFilter={(next) => {
+                    setFilter(next);
+                    revealPanel();
+                  }}
                   layout={layout}
                   onLayout={setLayout}
                 />

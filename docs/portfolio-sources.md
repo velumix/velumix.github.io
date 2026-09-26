@@ -22,6 +22,15 @@ The five existing game case studies retain their contribution descriptions in
 `src/data/roblox-media.json`. Seven-plus years is explicitly scoped to Roblox;
 it is not applied to every language or discipline.
 
+Abraxius is categorized as a past project based on the owner's correction,
+not inferred from GitHub archive flags. It remains part of the experience
+catalog and is excluded from the featured software position.
+
+`public/images/projectvite-preview.jpg` was captured directly from the
+inventory interface at [ProjectVite's public browser preview](https://velumix.github.io/ProjectVite/)
+on September 26, 2026 (UTC). Its link is labeled as a browser preview, not a
+released Roblox experience.
+
 Monolith and Genesis-Hermes contained only starter repository content when
 reviewed. Unchanged forks (including Zed and Hermes Agent) are not counted as
 authored projects or contributions. Visitors can reach the complete public

@@ -3,10 +3,10 @@ import { projects, type Project } from "./projects";
 
 export const workFilters = [
   "All work",
+  "Games",
   "Apps & tools",
   "Web & UI",
   "Contributions",
-  "Games",
 ] as const;
 export type WorkFilter = (typeof workFilters)[number];
 
@@ -16,6 +16,8 @@ export type SoftwareProject = {
   name: string;
   category: Exclude<WorkFilter, "All work" | "Games">;
   role: "Personal project" | "Merged contribution" | "Fork development";
+  status?: "Past project";
+  preview?: { src: string; alt: string; url: string };
   discipline: string;
   summary: string;
   tags: string[];
@@ -28,7 +30,7 @@ export type SoftwareProject = {
 
 // Curated from public source and merged PRs; see docs/portfolio-sources.md.
 // A fork alone is not treated as a contribution. No GitHub activity is invented.
-export const softwareProjects: SoftwareProject[] = [
+const softwareCatalog: SoftwareProject[] = [
   {
     kind: "software",
     id: "abraxius-workspace",
@@ -83,6 +85,11 @@ export const softwareProjects: SoftwareProject[] = [
     kind: "software",
     id: "projectvite",
     name: "ProjectVite",
+    preview: {
+      src: "/images/projectvite-preview.jpg",
+      alt: "ProjectVite's interactive inventory interface in the browser preview",
+      url: "https://velumix.github.io/ProjectVite/",
+    },
     category: "Web & UI",
     role: "Personal project",
     discipline: "Interactive interfaces & tooling",
@@ -191,6 +198,7 @@ export const softwareProjects: SoftwareProject[] = [
     kind: "software",
     id: "abraxius",
     name: "Abraxius",
+    status: "Past project",
     category: "Apps & tools",
     role: "Personal project",
     discipline: "Desktop companion & sync tooling",
@@ -258,6 +266,21 @@ export const softwareProjects: SoftwareProject[] = [
   },
 ];
 
+const softwareOrder = [
+  "projectvite",
+  "gojo",
+  "nerve",
+  "stride",
+  "vscodroid",
+  "claude-system",
+  "abraxius-lattice",
+  "abraxius-workspace",
+  "abraxius",
+];
+export const softwareProjects = [...softwareCatalog].sort(
+  (a, b) => softwareOrder.indexOf(a.id) - softwareOrder.indexOf(b.id),
+);
+
 type GameWork = {
   kind: "game";
   id: string;
@@ -284,12 +307,8 @@ const gameWork: GameWork[] = projects.map((project) => ({
 }));
 
 export const portfolio: Work[] = [
-  ...softwareProjects.slice(0, 3),
-  ...gameWork.slice(0, 1),
-  ...softwareProjects.slice(3, 5),
-  ...gameWork.slice(1, 2),
+  ...gameWork.flatMap((game, index) => [game, softwareProjects[index]]),
   ...softwareProjects.slice(5),
-  ...gameWork.slice(2),
 ];
 
 export const experience = [

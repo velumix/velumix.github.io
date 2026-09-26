@@ -31,10 +31,12 @@ Browser checks use an installed Chrome, Edge, Brave, or Chromium. Set `BROWSER_P
 - `src/data/roblox-media.json`: dated Roblox metadata snapshot bundled with the app. Run `npm run fetch:roblox` to refresh it before building; normal builds work without Roblox API access.
 - `public/images/`: project artwork saved from the original portfolio’s Roblox media. Refresh artwork separately when a project’s visuals change.
 - `src/App.tsx`: profile navigation, search, saved projects, and theme preferences.
-- `src/components/profile/`: profile header, information sidebar, mixed project feed, and Experience/Open source panels.
+- `src/components/profile/`: profile header, paired game/software features, project collections, and Experience/Open source panels.
 - `src/styles.css`: design tokens, layouts, and responsive styles.
 
 Project metrics describe the whole experience, not sole authorship. Each project panel explains the specific contribution. The Discord profile link and username-copy button are separate; clipboard errors are reported without claiming a successful copy.
+
+The default overview gives Roblox and software their own featured positions, then groups the remaining games, software, contributions, and past projects. On mobile, both featured projects appear before the longer collections. Abraxius is marked as past work. The ProjectVite image is a screenshot of its actual public browser preview, not a mockup.
 
 The interface opens in dark mode. Profile tabs use URL fragments, so browser back/forward and direct links work. Search matches project names, contributions, and skills. Bookmarks and appearance preferences are stored locally on the current device; they do not require an account. Browser checks cover these interactions, responsive layouts, keyboard navigation, dialog focus, and accessibility.
 

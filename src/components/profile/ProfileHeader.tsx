@@ -1,6 +1,7 @@
 import { Icon, type IconName } from "../Icon";
 import { discordUrl } from "../../data/links";
-import { portfolio, type WorkFilter } from "../../data/work";
+import { portfolio } from "../../data/work";
+import { projects, type Project } from "../../data/projects";
 
 export const views = [
   { id: "projects", label: "Projects", icon: "briefcase" },
@@ -34,44 +35,29 @@ export function Avatar({ small = false }: { small?: boolean }) {
 export function ProfileHeader({
   view,
   onView,
-  onExplore,
+  onSelect,
   savedCount,
 }: {
   view: View;
   onView: (view: View) => void;
-  onExplore: (filter: WorkFilter) => void;
+  onSelect: (project: Project) => void;
   savedCount: number;
 }) {
   return (
     <section className="profile-card" aria-labelledby="profile-name">
-      <div className="profile-cover work-cover" aria-label="Explore my work">
-        <button
-          className="cover-discipline cover-software"
-          onClick={() => onExplore("Apps & tools")}
-        >
-          <Icon name="terminal" />
-          <strong>Apps & tools</strong>
-          <span>Rust · C# · Go</span>
-          <Icon name="arrow" />
-        </button>
-        <button
-          className="cover-discipline cover-interfaces"
-          onClick={() => onExplore("Web & UI")}
-        >
-          <Icon name="grid" />
-          <strong>Interfaces</strong>
-          <span>React · TypeScript</span>
-          <Icon name="arrow" />
-        </button>
-        <button
-          className="cover-discipline cover-games"
-          onClick={() => onExplore("Games")}
-        >
-          <img src="/images/aquatica.png" alt="" width="768" height="432" />
+      <div className="profile-cover">
+        <img
+          src="/images/aquatica.png"
+          alt="The underwater world of Aquatica Observatory"
+          width="768"
+          height="432"
+          fetchPriority="high"
+        />
+        <div className="cover-shade" />
+        <button className="cover-credit" onClick={() => onSelect(projects[0])}>
           <Icon name="gamepad" />
-          <strong>Games</strong>
-          <span>Gameplay · Simulation</span>
-          <Icon name="arrow" />
+          <span>Aquatica Observatory</span>
+          <Icon name="diagonal" />
         </button>
       </div>
       <div className="profile-identity">
@@ -81,10 +67,10 @@ export function ProfileHeader({
         </div>
         <div className="profile-name">
           <h1 id="profile-name">Velumix</h1>
-          <p>Software engineer & developer</p>
+          <p>Software & gameplay engineer</p>
           <div className="profile-meta">
             <span>Canada</span>
-            <span>Apps, tools & games</span>
+            <span>7+ years on Roblox</span>
             <span>Open-source contributor</span>
           </div>
         </div>

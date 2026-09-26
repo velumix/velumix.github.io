@@ -27,13 +27,14 @@ export function ProfileInfo({ onView }: { onView: (view: View) => void }) {
       <section className="panel intro-panel">
         <h2>Intro</h2>
         <p>
-          I build software, developer tools, and games. My work runs from native
-          apps and code intelligence to interactive UIs and multiplayer systems.
+          I build gameplay systems, software, and developer tools. Seven-plus
+          years on Roblox sit alongside my work in native apps, code
+          intelligence, and interactive interfaces.
         </p>
         <ul className="intro-details">
           <li>
             <Icon name="briefcase" />
-            <span>Software & systems engineering</span>
+            <span>Software & gameplay engineering</span>
           </li>
           <li>
             <Icon name="pin" />
