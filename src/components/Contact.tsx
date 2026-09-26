@@ -22,24 +22,16 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="contact-section shell"
+      className="contact-section"
       aria-labelledby="contact-title"
     >
-      <div className="contact-grid" aria-hidden="true" />
-      <div className="contact-content">
-        <p className="eyebrow">
-          <span className="status-dot" /> LET’S MAKE SOMETHING WORTH PLAYING
-        </p>
+      <div className="shell contact-content">
+        <p className="eyebrow">HAVE A PROJECT IN MIND?</p>
         <h2 id="contact-title">
-          Got a good idea?
-          <br />
-          Let’s <span>build it.</span>
+          Let’s <em>talk.</em>
+          <Icon name="diagonal" />
         </h2>
-        <p>
-          I’m interested in teams that care about great gameplay
-          <br className="desktop-break" /> and the craft behind it. Tell me what
-          you’re working on.
-        </p>
+        <p>Tell me about the game you’re making and where I can help.</p>
         <div className="contact-actions">
           <a
             className="button button-primary"
@@ -66,13 +58,6 @@ export function Contact() {
               ? "Couldn’t copy automatically. My Discord username is velumix."
               : ""}
         </span>
-      </div>
-      <span className="contact-asterisk" aria-hidden="true">
-        ✳
-      </span>
-      <div className="contact-bottom">
-        <span>CANADA ↔ EVERYWHERE</span>
-        <span>GREAT GAMES START WITH A CONVERSATION.</span>
       </div>
     </section>
   );

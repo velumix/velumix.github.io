@@ -31,7 +31,7 @@ export function useEntranceMotion() {
       );
       document
         .querySelectorAll(
-          ".section-heading, .deep-dive, .tool-card, .about-intro, .capability, .contact-section",
+          ".section-heading, .dive-copy, .tool-row, .about-content, .contact-content",
         )
         .forEach((element) => observer?.observe(element));
     }
