@@ -28,10 +28,13 @@ Browser checks use an installed Chrome, Edge, Brave, or Chromium. Set `BROWSER_P
 - `src/data/engineering.ts`: roles, contributions, and technical details.
 - `src/data/roblox-media.json`: dated Roblox metadata snapshot bundled with the app. Run `npm run fetch:roblox` to refresh it before building; normal builds work without Roblox API access.
 - `public/images/`: project artwork saved from the original portfolio’s Roblox media. Refresh artwork separately when a project’s visuals change.
-- `src/App.tsx`: page sections and navigation.
+- `src/App.tsx`: profile navigation, search, saved projects, and theme preferences.
+- `src/components/profile/`: profile header, information sidebar, project feed, and About/Open source panels.
 - `src/styles.css`: design tokens, layouts, and responsive styles.
 
 Project metrics describe the whole experience, not sole authorship. Each project panel explains the specific contribution. The Discord profile link and username-copy button are separate; clipboard errors are reported without claiming a successful copy.
+
+The interface opens in dark mode. Profile tabs use URL fragments, so browser back/forward and direct links work. Search matches project names, contributions, and skills. Bookmarks and appearance preferences are stored locally on the current device; they do not require an account. Browser checks cover these interactions, responsive layouts, keyboard navigation, dialog focus, and accessibility.
 
 ## Deployment
 
