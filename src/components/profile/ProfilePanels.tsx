@@ -1,35 +1,55 @@
 import { Icon } from "../Icon";
-import { skills } from "../../data/projects";
+import { experience, softwareProjects } from "../../data/work";
+import { SoftwareCard } from "./SoftwareCard";
 
 export function AboutPanel() {
   return (
     <div className="panel about-panel">
       <div className="panel-heading">
-        <h2>About Velumix</h2>
-        <span>Gameplay & software engineer</span>
+        <h2>Experience</h2>
+        <p>Across applications, infrastructure, interfaces, and games.</p>
       </div>
       <div className="about-body">
-        <h3>A bit about me</h3>
+        <h3>About me</h3>
         <p>
-          I’m a gameplay and software engineer based in Canada. For over seven
-          years, I’ve been building on Roblox, from custom movement and combat
-          to the systems that keep a live game running.
+          I’m a software engineer and developer based in Canada. I build native
+          applications, developer tools, interactive web interfaces, and games.
+          My public work spans Rust, C#, Go, TypeScript, JavaScript, and Luau.
         </p>
         <p>
-          I care about how a game feels in your hands, and what it takes to make
-          that feeling hold up in production.
+          I’ve spent over seven years building on Roblox. Alongside that work, I
+          develop agent runtimes, code intelligence tools, desktop software, and
+          UI systems, and contribute fixes to open-source projects.
         </p>
-        <h3>Experience & skills</h3>
+        <h3>Where I’ve put it to work</h3>
         <div className="skills-list">
-          {skills.map((skill) => (
-            <article key={skill.name}>
+          {experience.map((area) => (
+            <article key={area.name}>
               <span className="skill-icon">
-                <Icon name={skill.icon} />
+                <Icon name={area.icon} />
               </span>
               <div>
-                <h4>{skill.name}</h4>
-                <p>{skill.detail}</p>
-                <span>{skill.tags}</span>
+                <h4>{area.name}</h4>
+                <p>{area.detail}</p>
+                <span>{area.tags}</span>
+                <div className="experience-links">
+                  {area.projects.map((id) => {
+                    const project = softwareProjects.find(
+                      (item) => item.id === id,
+                    )!;
+                    return (
+                      <a
+                        key={id}
+                        href={project.url}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {project.name}
+                        <Icon name="diagonal" />
+                      </a>
+                    );
+                  })}
+                </div>
               </div>
             </article>
           ))}
@@ -38,7 +58,7 @@ export function AboutPanel() {
           <Icon name="layers" />
           <span>
             <strong>Aquatica engineering docs</strong>
-            <small>Explore the gameplay systems in more detail</small>
+            <small>A closer look at my gameplay and simulation work</small>
           </span>
           <Icon name="diagonal" />
         </a>
@@ -47,69 +67,55 @@ export function AboutPanel() {
   );
 }
 
-export function SourcePanel() {
-  const tools = [
-    {
-      name: "Nerve",
-      description:
-        "A Roblox framework with typed networking, service lifecycles, and production essentials.",
-      tags: ["Luau", "ByteNet", "MIT"],
-      letter: "N",
-    },
-    {
-      name: "Abraxius",
-      description:
-        "A bridge between code and Roblox Studio. Inspect live projects, sync Luau, and connect your development tools.",
-      tags: ["Rust", "WinUI 3", "Luau"],
-      letter: "A",
-    },
-  ];
+export function SourcePanel({
+  saved,
+  onSave,
+}: {
+  saved: string[];
+  onSave: (id: string) => void;
+}) {
+  const personal = softwareProjects.filter(
+    (project) => project.role === "Personal project",
+  );
+  const contributions = softwareProjects.filter(
+    (project) => project.role !== "Personal project",
+  );
   return (
     <div className="source-panel">
       <div className="panel panel-heading">
         <h2>Open source</h2>
-        <p>Frameworks and tools I build for other developers.</p>
+        <p>Projects I build and contributions to the tools I use.</p>
+        <a
+          className="all-repositories"
+          href="https://github.com/velumix?tab=repositories"
+          target="_blank"
+          rel="noreferrer"
+        >
+          All repositories on GitHub
+          <Icon name="diagonal" />
+        </a>
       </div>
-      {tools.map((tool) => (
-        <article key={tool.name} className="panel repository">
-          <div className="repository-heading">
-            <span className={`repository-icon repo-${tool.name.toLowerCase()}`}>
-              {tool.letter}
-            </span>
-            <div>
-              <span>velumix /</span>
-              <h3>{tool.name}</h3>
-            </div>
-            <Icon name="code" />
-          </div>
-          <p>{tool.description}</p>
-          <div className="repository-tags">
-            {tool.tags.map((tag) => (
-              <span key={tag}>{tag}</span>
-            ))}
-          </div>
-          <div className="repository-links">
-            <a
-              className="button button-secondary"
-              href={`https://github.com/velumix/${tool.name}`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <Icon name="github" />
-              Repository
-              <Icon name="diagonal" />
-            </a>
-            <a
-              className="button button-plain"
-              href={`https://velumix.github.io/${tool.name}/`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Documentation
-              <Icon name="diagonal" />
-            </a>
-          </div>
-        </article>
+      <h3 className="source-group-title">
+        My projects <span>{personal.length}</span>
+      </h3>
+      {personal.map((project) => (
+        <SoftwareCard
+          key={project.id}
+          project={project}
+          saved={saved.includes(project.id)}
+          onSave={onSave}
+        />
+      ))}
+      <h3 className="source-group-title">
+        Contributions <span>{contributions.length}</span>
+      </h3>
+      {contributions.map((project) => (
+        <SoftwareCard
+          key={project.id}
+          project={project}
+          saved={saved.includes(project.id)}
+          onSave={onSave}
+        />
       ))}
     </div>
   );

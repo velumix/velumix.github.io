@@ -1,6 +1,6 @@
 # Velumix
 
-Gameplay and software engineering portfolio. Built with **Vite, React, and TypeScript**, with self-hosted fonts, local project artwork, and plain CSS.
+Software engineering portfolio covering native apps, developer tools, web interfaces, open-source contributions, and games. Built with **Vite, React, and TypeScript**, with self-hosted fonts, local project artwork, and plain CSS.
 
 ## Development
 
@@ -24,12 +24,14 @@ Browser checks use an installed Chrome, Edge, Brave, or Chromium. Set `BROWSER_P
 
 ## Content
 
-- `src/data/projects.ts`: project ordering, descriptions, categories, and skills.
+- `src/data/work.ts`: the complete portfolio catalog, filters, software projects, contributions, and experience areas.
+- `docs/portfolio-sources.md`: public source evidence and attribution boundaries for that catalog.
+- `src/data/projects.ts`: Roblox project ordering, descriptions, and snapshot metrics.
 - `src/data/engineering.ts`: roles, contributions, and technical details.
 - `src/data/roblox-media.json`: dated Roblox metadata snapshot bundled with the app. Run `npm run fetch:roblox` to refresh it before building; normal builds work without Roblox API access.
 - `public/images/`: project artwork saved from the original portfolio’s Roblox media. Refresh artwork separately when a project’s visuals change.
 - `src/App.tsx`: profile navigation, search, saved projects, and theme preferences.
-- `src/components/profile/`: profile header, information sidebar, project feed, and About/Open source panels.
+- `src/components/profile/`: profile header, information sidebar, mixed project feed, and Experience/Open source panels.
 - `src/styles.css`: design tokens, layouts, and responsive styles.
 
 Project metrics describe the whole experience, not sole authorship. Each project panel explains the specific contribution. The Discord profile link and username-copy button are separate; clipboard errors are reported without claiming a successful copy.

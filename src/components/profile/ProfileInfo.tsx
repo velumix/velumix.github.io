@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Icon } from "../Icon";
 import { compact, totalVisits } from "../../data/projects";
+import { softwareProjects } from "../../data/work";
 import { discordUrl } from "../../data/links";
 import type { View } from "./ProfileHeader";
 
@@ -25,11 +26,14 @@ export function ProfileInfo({ onView }: { onView: (view: View) => void }) {
     <aside className="profile-info" aria-label="Profile information">
       <section className="panel intro-panel">
         <h2>Intro</h2>
-        <p>I build the movement, combat, and systems behind Roblox games.</p>
+        <p>
+          I build software, developer tools, and games. My work runs from native
+          apps and code intelligence to interactive UIs and multiplayer systems.
+        </p>
         <ul className="intro-details">
           <li>
             <Icon name="briefcase" />
-            <span>Gameplay & software engineering</span>
+            <span>Software & systems engineering</span>
           </li>
           <li>
             <Icon name="pin" />
@@ -38,9 +42,17 @@ export function ProfileInfo({ onView }: { onView: (view: View) => void }) {
             </span>
           </li>
           <li>
-            <Icon name="clock" />
+            <Icon name="github" />
             <span>
-              <strong>7+ years</strong> building on Roblox
+              <strong>
+                {
+                  softwareProjects.filter(
+                    (project) => project.role === "Personal project",
+                  ).length
+                }{" "}
+                software projects
+              </strong>{" "}
+              and open-source contributions
             </span>
           </li>
           <li>
@@ -55,19 +67,22 @@ export function ProfileInfo({ onView }: { onView: (view: View) => void }) {
           className="button button-secondary full-width"
           onClick={() => onView("about")}
         >
-          More about me
+          Explore my experience
         </button>
       </section>
       <section className="panel expertise-panel">
         <h2>What I work on</h2>
         <div className="expertise-chips">
           {[
-            "Gameplay",
+            "Rust",
+            "C# / .NET",
+            "Go",
+            "React",
+            "TypeScript",
             "Luau",
-            "Physics",
-            "Creature AI",
-            "Networking",
+            "Agent systems",
             "Developer tools",
+            "Gameplay",
           ].map((label) => (
             <span key={label}>{label}</span>
           ))}

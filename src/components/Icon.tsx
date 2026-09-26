@@ -1,6 +1,13 @@
 import type { CSSProperties } from "react";
 
 const paths = {
+  terminal: (
+    <>
+      <rect x="2" y="4" width="20" height="16" rx="3" />
+      <path d="m6 8 4 4-4 4m7 0h5" />
+    </>
+  ),
+  chevron: <path d="m6 9 6 6 6-6" />,
   search: (
     <>
       <circle cx="10.5" cy="10.5" r="6.5" />

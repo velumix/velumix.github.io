@@ -10,7 +10,8 @@ import {
 import { ProfileInfo } from "./components/profile/ProfileInfo";
 import { ProjectFeed } from "./components/profile/ProjectFeed";
 import { AboutPanel, SourcePanel } from "./components/profile/ProfilePanels";
-import { projects, type Project, type Filter } from "./data/projects";
+import { type Project } from "./data/projects";
+import { portfolio, type WorkFilter } from "./data/work";
 import { discordUrl } from "./data/links";
 
 function readView(): View {
@@ -26,7 +27,7 @@ function readSaved(): string[] {
       ? value.filter(
           (id): id is string =>
             typeof id === "string" &&
-            projects.some((project) => project.id === id),
+            portfolio.some((project) => project.id === id),
         )
       : [];
   } catch {
@@ -46,7 +47,7 @@ function readTheme(): "light" | "dark" {
 export default function App() {
   const [view, setView] = useState<View>(readView);
   const [query, setQuery] = useState("");
-  const [filter, setFilter] = useState<Filter>("All work");
+  const [filter, setFilter] = useState<WorkFilter>("All work");
   const [layout, setLayout] = useState<"feed" | "grid">("feed");
   const [saved, setSaved] = useState<string[]>(readSaved);
   const [theme, setTheme] = useState<"light" | "dark">(readTheme);
@@ -123,6 +124,7 @@ export default function App() {
   }
   function searchProjects(value: string) {
     setQuery(value);
+    setFilter("All work");
     revealPanel();
     if (view !== "projects" && view !== "saved") {
       setView("projects");
@@ -217,7 +219,7 @@ export default function App() {
             >
               <Icon name={item.icon} />
               <span>{item.label}</span>
-              {item.id === "projects" && <small>5</small>}
+              {item.id === "projects" && <small>{portfolio.length}</small>}
               {item.id === "saved" && <small>{saved.length}</small>}
             </button>
           ))}
@@ -256,7 +258,7 @@ export default function App() {
             <span />
             Open to the right project
           </span>
-          <p>Gameplay, systems, and everything that makes a game feel good.</p>
+          <p>Software, developer tools, interfaces, and games.</p>
         </div>
       </aside>
       <main id="main" className="app-main">
@@ -264,7 +266,15 @@ export default function App() {
           <ProfileHeader
             view={view}
             onView={navigate}
-            onSelect={setSelectedProject}
+            onExplore={(category) => {
+              navigate("projects");
+              setFilter(category);
+              requestAnimationFrame(() =>
+                document
+                  .querySelector(".profile-tabs")
+                  ?.scrollIntoView({ block: "start", behavior: "smooth" }),
+              );
+            }}
             savedCount={saved.length}
           />
           <div className="profile-content">
@@ -294,7 +304,7 @@ export default function App() {
                 />
               )}
               {view === "about" && <AboutPanel />}
-              {view === "source" && <SourcePanel />}
+              {view === "source" && <SourcePanel saved={saved} onSave={save} />}
             </section>
           </div>
         </div>

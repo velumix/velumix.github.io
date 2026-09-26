@@ -33,7 +33,9 @@ try {
       "Dark theme must be the default",
     );
     assert.equal(await page.locator("h1").innerText(), "Velumix");
-    assert.equal(await page.locator(".project-card").count(), 5);
+    assert.equal(await page.locator(".project-card").count(), 14);
+    assert.equal(await page.locator(".software-card").count(), 9);
+    assert.equal(await page.title(), "Velumix — Software Engineer & Developer");
     assert.ok(
       await page.evaluate(
         () =>
@@ -44,10 +46,11 @@ try {
     );
 
     for (const [name, count] of [
-      ["Gameplay", 4],
-      ["Simulation", 2],
-      ["LiveOps", 1],
-      ["All work", 5],
+      ["Apps & tools", 5],
+      ["Web & UI", 1],
+      ["Contributions", 3],
+      ["Games", 5],
+      ["All work", 14],
     ]) {
       await page.getByRole("button", { name, exact: true }).click();
       assert.equal(
@@ -57,6 +60,32 @@ try {
       );
     }
     const search = page.getByRole("searchbox", { name: "Search projects" });
+    await page.getByRole("button", { name: "Games", exact: true }).click();
+    await search.fill("SQLite");
+    assert.equal(await page.locator(".project-card").count(), 1);
+    await page
+      .getByRole("heading", { name: "Abraxius Lattice", exact: true })
+      .waitFor();
+    assert.equal(
+      await page
+        .getByRole("button", { name: "All work", exact: true })
+        .getAttribute("aria-pressed"),
+      "true",
+      "Global search clears category restrictions",
+    );
+    await search.fill("floating-point");
+    await page
+      .getByRole("heading", { name: "Stride engine", exact: true })
+      .waitFor();
+    await page.getByText("Merged contribution", { exact: true }).waitFor();
+    await page.locator(".work-details summary").click();
+    assert.ok(await page.locator(".work-details").evaluate((el) => el.open));
+    assert.equal(
+      await page
+        .getByRole("link", { name: "Bounds fix #3401" })
+        .getAttribute("href"),
+      "https://github.com/stride3d/stride/pull/3401",
+    );
     await search.fill("camouflage");
     assert.equal(await page.locator(".project-card").count(), 1);
     await page
@@ -66,22 +95,43 @@ try {
     await page.getByRole("heading", { name: "No matching projects" }).waitFor();
     await page.getByRole("button", { name: "Clear search & filters" }).click();
     assert.equal(await search.inputValue(), "");
-    assert.equal(await page.locator(".project-card").count(), 5);
+    assert.equal(await page.locator(".project-card").count(), 14);
     await page.getByRole("button", { name: "Grid view", exact: true }).click();
-    assert.equal(await page.locator(".feed-grid .project-card").count(), 5);
+    assert.equal(await page.locator(".feed-grid .project-card").count(), 14);
+    assert.ok(
+      await page.evaluate(
+        () =>
+          document.documentElement.scrollWidth <=
+          document.documentElement.clientWidth,
+      ),
+      `Grid overflow at ${width}px`,
+    );
     await page.getByRole("button", { name: "Feed view", exact: true }).click();
 
+    await page.locator(".cover-interfaces").click();
+    assert.equal(await page.locator(".project-card").count(), 1);
+    await page
+      .getByRole("heading", { name: "ProjectVite", exact: true })
+      .waitFor();
+    await page.getByRole("button", { name: "All work", exact: true }).click();
+
+    await page
+      .getByRole("button", { name: "Save Abraxius Workspace", exact: true })
+      .click();
     await page
       .getByRole("button", { name: "Save Aquatica Observatory", exact: true })
       .click();
     await page.getByRole("tab", { name: /^Saved/ }).click();
-    assert.equal(await page.locator(".project-card").count(), 1);
+    assert.equal(await page.locator(".project-card").count(), 2);
     await page.reload({ waitUntil: "networkidle" });
     assert.equal(
       await page.locator(".project-card").count(),
-      1,
-      "Saved project must survive reload",
+      2,
+      "Software and game saves must survive reload",
     );
+    await page
+      .getByRole("button", { name: "Unsave Abraxius Workspace", exact: true })
+      .click();
     await page
       .getByRole("button", { name: "Unsave Aquatica Observatory", exact: true })
       .click();
@@ -166,25 +216,44 @@ try {
     await page.keyboard.press("Escape");
     await dialog.waitFor({ state: "detached" });
 
-    await page.getByRole("tab", { name: "About", exact: true }).click();
+    await page.getByRole("tab", { name: "Experience", exact: true }).click();
     await page
-      .getByRole("heading", { name: "About Velumix", exact: true })
+      .getByRole("heading", { name: "Experience", exact: true })
       .waitFor();
+    assert.equal(await page.locator(".skills-list article").count(), 5);
     await page.keyboard.press("ArrowRight");
     await page.getByRole("heading", { name: "Nerve", exact: true }).waitFor();
+    assert.equal(await page.locator(".software-card").count(), 9);
+    await page.getByText("Fork development", { exact: true }).waitFor();
+    assert.equal(
+      await page.getByText("Merged contribution", { exact: true }).count(),
+      2,
+    );
+    await page.getByRole("button", { name: "Save Gojo", exact: true }).click();
     assert.ok(page.url().endsWith("#source"));
     await page.reload({ waitUntil: "networkidle" });
     await page.getByRole("heading", { name: "Nerve", exact: true }).waitFor();
+    await page
+      .getByRole("button", { name: "Unsave Gojo", exact: true })
+      .waitFor();
+    await page.getByRole("tab", { name: /^Saved/ }).click();
+    assert.equal(
+      await page.locator(".project-card").count(),
+      1,
+      "A source-panel save appears in Saved",
+    );
+    await page.getByRole("heading", { name: "Gojo", exact: true }).waitFor();
+    await page.getByRole("tab", { name: "Open source", exact: true }).click();
     await page.getByRole("tab", { name: /^Projects/ }).click();
     await page.goBack({ waitUntil: "networkidle" });
     await page.getByRole("heading", { name: "Nerve", exact: true }).waitFor();
     if (width < 700) {
       await page
         .getByRole("navigation", { name: "Mobile navigation" })
-        .getByRole("button", { name: "About", exact: true })
+        .getByRole("button", { name: "Experience", exact: true })
         .click();
       await page
-        .getByRole("heading", { name: "About Velumix", exact: true })
+        .getByRole("heading", { name: "Experience", exact: true })
         .waitFor();
     }
     await page.getByRole("tab", { name: /^Projects/ }).click();
