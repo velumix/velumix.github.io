@@ -1,0 +1,24 @@
+{
+  "generator": "4.5.14 LTS",
+  "rigged": true,
+  "habitat": "reef-floor",
+  "habitatCompression": "draco",
+  "assets": [
+    {
+      "file": "chromis.glb",
+      "bytes": 1124852
+    },
+    {
+      "file": "clownfish.glb",
+      "bytes": 1208176
+    },
+    {
+      "file": "reef-habitat.glb",
+      "bytes": 5206536
+    },
+    {
+      "file": "yellow-tang.glb",
+      "bytes": 1122712
+    }
+  ]
+}

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { lazy, Suspense, useEffect, useRef, useState } from "react";
 import { Icon } from "./components/Icon";
 import { ProjectDialog } from "./components/ProjectDialog";
 import {
@@ -15,8 +15,10 @@ import { portfolio, type WorkFilter } from "./data/work";
 import { discordUrl, githubUrl } from "./data/links";
 import { AccountAvatar } from "./components/profile/SocialProfiles";
 
+const FlockingLab = lazy(() => import("./lab/FlockingLab"));
+
 function readView(): View {
-  const value = window.location.hash.slice(1);
+  const value = window.location.hash.slice(1).split("?")[0];
   return views.find((item) => item.id === value)?.id ?? "projects";
 }
 function readSaved(): string[] {
@@ -113,7 +115,8 @@ export default function App() {
     setView(next);
     setQuery("");
     setFilter("All work");
-    revealPanel();
+    if (next === "lab") window.scrollTo({ top: 0, behavior: "instant" });
+    else revealPanel();
     if (location.hash !== `#${next}`) history.pushState(null, "", `#${next}`);
   }
   function save(id: string) {
@@ -179,7 +182,9 @@ export default function App() {
             <kbd>/</kbd>
           )}
         </div>
-        <span className="header-context">Developer portfolio</span>
+        <span className="header-context">
+          {view === "lab" ? "Game systems lab" : "Developer portfolio"}
+        </span>
         <div className="header-actions">
           <a
             className="header-github"
@@ -262,50 +267,67 @@ export default function App() {
           <p>Software, developer tools, interfaces, and games.</p>
         </div>
       </aside>
-      <main id="main" className="app-main">
-        <div className="profile-container">
-          <ProfileHeader
-            view={view}
-            onView={navigate}
-            onSelect={setSelectedProject}
-            savedCount={saved.length}
-          />
-          <div
-            className={`profile-content${view === "projects" || view === "saved" ? " profile-content-work" : ""}`}
+      <main
+        id="main"
+        className={`app-main${view === "lab" ? " app-main-lab" : ""}`}
+      >
+        {view === "lab" ? (
+          <Suspense
+            fallback={
+              <div className="panel" style={{ padding: 32 }} role="status">
+                Opening the Aquatica lab…
+              </div>
+            }
           >
-            <ProfileInfo onView={navigate} />
-            <section
-              id="profile-panel"
-              role="tabpanel"
-              aria-labelledby={`tab-${view}`}
-              tabIndex={0}
-              className="profile-panel"
+            <FlockingLab />
+          </Suspense>
+        ) : (
+          <div className="profile-container">
+            <ProfileHeader
+              view={view}
+              onView={navigate}
+              onSelect={setSelectedProject}
+              savedCount={saved.length}
+            />
+            <div
+              className={`profile-content${view === "projects" || view === "saved" ? " profile-content-work" : ""}`}
             >
-              {(view === "projects" || view === "saved") && (
-                <ProjectFeed
-                  savedOnly={view === "saved"}
-                  saved={saved}
-                  onSave={save}
-                  onSelect={setSelectedProject}
-                  query={query}
-                  onClear={() => {
-                    setQuery("");
-                    setFilter("All work");
-                  }}
-                  filter={filter}
-                  onFilter={(next) => {
-                    setFilter(next);
-                    revealPanel();
-                  }}
-                  layout={layout}
-                  onLayout={setLayout}
-                />
-              )}
-              {view === "about" && <AboutPanel />}
-              {view === "source" && <SourcePanel saved={saved} onSave={save} />}
-            </section>
+              <ProfileInfo onView={navigate} />
+              <section
+                id="profile-panel"
+                role="tabpanel"
+                aria-labelledby={`tab-${view}`}
+                tabIndex={0}
+                className="profile-panel"
+              >
+                {(view === "projects" || view === "saved") && (
+                  <ProjectFeed
+                    savedOnly={view === "saved"}
+                    saved={saved}
+                    onSave={save}
+                    onSelect={setSelectedProject}
+                    query={query}
+                    onClear={() => {
+                      setQuery("");
+                      setFilter("All work");
+                    }}
+                    filter={filter}
+                    onFilter={(next) => {
+                      setFilter(next);
+                      revealPanel();
+                    }}
+                    layout={layout}
+                    onLayout={setLayout}
+                  />
+                )}
+                {view === "about" && <AboutPanel />}
+                {view === "source" && (
+                  <SourcePanel saved={saved} onSave={save} />
+                )}
+              </section>
+            </div>
           </div>
-        </div>
+        )}
       </main>
       <nav className="mobile-app-nav" aria-label="Mobile navigation">
         {views.map((item) => (

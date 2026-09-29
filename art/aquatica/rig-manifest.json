@@ -1,0 +1,32 @@
+[
+  {
+    "species": "chromis",
+    "bones": 11,
+    "clips": [
+      "Glide",
+      "Swim"
+    ],
+    "duration": 1.2,
+    "vertices": 3902
+  },
+  {
+    "species": "yellow-tang",
+    "bones": 11,
+    "clips": [
+      "Glide",
+      "Swim"
+    ],
+    "duration": 1.2,
+    "vertices": 3836
+  },
+  {
+    "species": "clownfish",
+    "bones": 11,
+    "clips": [
+      "Glide",
+      "Swim"
+    ],
+    "duration": 1.2,
+    "vertices": 4074
+  }
+]

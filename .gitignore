@@ -13,3 +13,6 @@ out
 tsconfig.tsbuildinfo
 sites-version.tar.gz
 .preview/
+*.blend1
+*.blend2
+__pycache__/

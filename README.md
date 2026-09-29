@@ -14,8 +14,10 @@ npm run dev
 Open the local URL printed by Vite (normally http://localhost:5173).
 
 ```sh
-npm run check          # Profile API tests, TypeScript, build, and documentation links
+npm run check          # Profile/lab tests, TypeScript, build, and documentation links
 npm run check:browser  # Desktop/mobile interaction and layout checks against dist
+npm run check:lab      # Flocking simulation and preset validation
+npm run check:lab-browser # Lab interactions and responsive/accessibility checks
 npm run check:observatory-browser
 npm run preview        # Serve the production build locally
 ```
@@ -23,6 +25,8 @@ npm run preview        # Serve the production build locally
 Browser checks use an installed Chrome, Edge, Brave, or Chromium. Set `BROWSER_PATH` to override automatic detection. Screenshots go to `.preview/` (ignored by Git). Set `PORTFOLIO_URL` to test an already-running server instead of the production build.
 
 ## Content
+
+The **Systems lab** navigation item opens the Aquatica Flocking Lab at `/#lab`: a browser adaptation of Velumix's own Aquatica fish system, with schooling controls, fish inspection, saved presets, and JSON/Luau exports. See [the lab documentation](docs/flocking-lab.md) for controls, source grounding, and implementation details.
 
 - `src/data/work.ts`: the complete portfolio catalog, filters, software projects, contributions, and experience areas.
 - `docs/portfolio-sources.md`: public source evidence and attribution boundaries for that catalog.

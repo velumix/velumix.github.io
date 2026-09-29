@@ -10,7 +10,9 @@
     "fetch:profiles": "node scripts/fetch-social-profiles.mjs",
     "check:profiles": "node --test scripts/social-profiles.test.mjs",
     "build:pages": "npm run build",
-    "check": "npm run check:profiles && npm run build && npm run check:observatory-docs",
+    "check": "npm run check:profiles && npm run check:lab && npm run build && npm run check:observatory-docs",
+    "check:lab": "node --test scripts/flocking.test.mjs",
+    "check:lab-browser": "node scripts/check-flocking-browser.mjs",
     "check:browser": "node scripts/visual-check.mjs",
     "check:observatory-docs": "node scripts/check-observatory-docs.mjs",
     "check:observatory-browser": "node scripts/check-observatory-browser.mjs"
@@ -19,13 +21,15 @@
     "@fontsource-variable/dm-sans": "^5.3.0",
     "@fontsource/space-mono": "^5.3.0",
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "three": "^0.186.1"
   },
   "devDependencies": {
     "@axe-core/playwright": "^4.13.0",
     "@types/node": "^24.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
+    "@types/three": "^0.186.0",
     "@vitejs/plugin-react": "^6.0.4",
     "playwright-core": "^1.62.0",
     "typescript": "^5.9.0",

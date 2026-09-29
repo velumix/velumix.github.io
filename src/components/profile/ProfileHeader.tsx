@@ -6,6 +6,7 @@ import { AccountAvatar } from "./SocialProfiles";
 
 export const views = [
   { id: "projects", label: "Projects", icon: "briefcase" },
+  { id: "lab", label: "Systems lab", icon: "orbit" },
   { id: "about", label: "Experience", icon: "user" },
   { id: "source", label: "Open source", icon: "code" },
   { id: "saved", label: "Saved", icon: "bookmark" },

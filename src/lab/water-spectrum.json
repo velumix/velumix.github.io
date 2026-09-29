@@ -1,0 +1,155 @@
+{
+  "tile": 8,
+  "waterTop": 34,
+  "resolution": 1024,
+  "segments": 320,
+  "margin": 1.6,
+  "energyScale": 8,
+  "blurRadius": 2.1,
+  "waves": [
+    {
+      "cycles": [11, -1],
+      "amplitude": 0.0003371,
+      "speed": 1.56266,
+      "phase": 3.20139
+    },
+    {
+      "cycles": [-2, -7],
+      "amplitude": 0.0007461,
+      "speed": 1.31313,
+      "phase": 6.15214
+    },
+    {
+      "cycles": [0, -6],
+      "amplitude": 0.001174,
+      "speed": 1.18314,
+      "phase": 0.38642
+    },
+    {
+      "cycles": [5, 0],
+      "amplitude": 0.0013669,
+      "speed": 1.15484,
+      "phase": 2.21495
+    },
+    {
+      "cycles": [-1, -13],
+      "amplitude": 0.0001743,
+      "speed": 1.75479,
+      "phase": 2.42465
+    },
+    {
+      "cycles": [-4, -11],
+      "amplitude": 0.0003081,
+      "speed": 1.71202,
+      "phase": 2.27571
+    },
+    {
+      "cycles": [4, 8],
+      "amplitude": 0.0006408,
+      "speed": 1.39121,
+      "phase": 4.22752
+    },
+    {
+      "cycles": [6, -3],
+      "amplitude": 0.0008172,
+      "speed": 1.37181,
+      "phase": 6.19715
+    },
+    {
+      "cycles": [6, 9],
+      "amplitude": 0.000375,
+      "speed": 1.53075,
+      "phase": 0.39184
+    },
+    {
+      "cycles": [-5, 4],
+      "amplitude": 0.0010577,
+      "speed": 1.14094,
+      "phase": 2.2942
+    },
+    {
+      "cycles": [9, 5],
+      "amplitude": 0.0004331,
+      "speed": 1.44013,
+      "phase": 5.8041
+    },
+    {
+      "cycles": [6, 2],
+      "amplitude": 0.0010571,
+      "speed": 1.22264,
+      "phase": 1.05703
+    },
+    {
+      "cycles": [5, -10],
+      "amplitude": 0.0003373,
+      "speed": 1.7912,
+      "phase": 4.36983
+    },
+    {
+      "cycles": [-4, 4],
+      "amplitude": 0.0012166,
+      "speed": 1.06483,
+      "phase": 0.10818
+    },
+    {
+      "cycles": [-6, -5],
+      "amplitude": 0.0007298,
+      "speed": 1.44188,
+      "phase": 1.0892
+    },
+    {
+      "cycles": [4, 12],
+      "amplitude": 0.0002364,
+      "speed": 1.90548,
+      "phase": 4.62227
+    },
+    {
+      "cycles": [3, 6],
+      "amplitude": 0.000904,
+      "speed": 1.38554,
+      "phase": 1.60889
+    },
+    {
+      "cycles": [-3, 6],
+      "amplitude": 0.0010705,
+      "speed": 1.3823,
+      "phase": 3.45764
+    },
+    {
+      "cycles": [11, -2],
+      "amplitude": 0.0003996,
+      "speed": 1.58491,
+      "phase": 5.92987
+    },
+    {
+      "cycles": [3, -5],
+      "amplitude": 0.0012998,
+      "speed": 1.21645,
+      "phase": 3.00397
+    },
+    {
+      "cycles": [-6, -10],
+      "amplitude": 0.0003477,
+      "speed": 1.62244,
+      "phase": 4.07088
+    },
+    {
+      "cycles": [5, -3],
+      "amplitude": 0.0014486,
+      "speed": 1.2898,
+      "phase": 3.54493
+    },
+    {
+      "cycles": [-5, -12],
+      "amplitude": 0.0002494,
+      "speed": 1.85272,
+      "phase": 5.79431
+    },
+    {
+      "cycles": [-1, -5],
+      "amplitude": 0.0014154,
+      "speed": 1.15807,
+      "phase": 2.8245
+    }
+  ]
+}
