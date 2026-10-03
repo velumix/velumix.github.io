@@ -5,6 +5,7 @@ import { SocialProfilesProvider } from "./components/profile/SocialProfiles";
 import "@fontsource-variable/dm-sans";
 import "@fontsource/space-mono/latin-400.css";
 import "./styles.css";
+import "./workspace.css";
 
 const root = document.getElementById("root");
 

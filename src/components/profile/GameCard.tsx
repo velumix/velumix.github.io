@@ -25,7 +25,8 @@ export function GameCard({
         alt={`${project.name} game artwork`}
         width="768"
         height="432"
-        loading={featured ? "eager" : "lazy"}
+        loading="lazy"
+        decoding="async"
       />
       <span>
         View project <Icon name="diagonal" />

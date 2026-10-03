@@ -25,12 +25,18 @@ try {
         ? route.continue()
         : route.abort(),
     );
-    await page.goto(site.url + "/#lab", { waitUntil: "networkidle" });
+    await page.goto(site.url, { waitUntil: "networkidle" });
+    await page.locator(".lab-callout").click();
     await page.locator(".lab-canvas canvas").waitFor();
     assert.equal(await page.locator(".lab-render-error").count(), 0);
     await page
       .getByRole("button", { name: "Play simulation", exact: true })
       .waitFor();
+    assert.equal(
+      await page.evaluate(() => window.scrollY),
+      0,
+      "Opening the lab from the portfolio starts at the top",
+    );
     await page
       .getByRole("button", { name: "Play simulation", exact: true })
       .click();
@@ -88,6 +94,10 @@ try {
       /saved in this browser/,
     );
     await page.getByRole("button", { name: "Copy link", exact: true }).click();
+    await page
+      .locator(".lab-notice")
+      .filter({ hasText: /link copied/ })
+      .waitFor();
     assert.match(await page.locator(".lab-notice").innerText(), /link copied/);
     const link = await page.evaluate(() => navigator.clipboard.readText());
     assert.ok(link.includes("#lab?config="));
@@ -181,6 +191,24 @@ try {
         })),
         [],
         `${width}px ${theme} accessibility`,
+      );
+    }
+    if (width < 700) {
+      const navigation = page.getByRole("navigation", {
+        name: "Mobile navigation",
+      });
+      await navigation
+        .getByRole("button", { name: "Projects", exact: true })
+        .click();
+      await page.locator(".work-overview").waitFor();
+      await navigation
+        .getByRole("button", { name: "Systems lab", exact: true })
+        .click();
+      await page.locator(".lab-canvas canvas").waitFor();
+      assert.equal(
+        await page.evaluate(() => window.scrollY),
+        0,
+        "Mobile lab navigation does not scroll the previous portfolio tabs",
       );
     }
     assert.deepEqual(errors, []);

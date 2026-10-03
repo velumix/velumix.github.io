@@ -98,6 +98,23 @@ export function WorkOverview({
         </p>
       </section>
 
+      <a className="lab-callout" href="#lab">
+        <span className="lab-callout-art" aria-hidden="true">
+          <Icon name="orbit" />
+        </span>
+        <span className="lab-callout-copy">
+          <span className="section-eyebrow">An interactive detour</span>
+          <strong>Get a feel for the systems.</strong>
+          <span>
+            Step inside Aquatica’s flocking simulation. Change the rules and
+            watch the school respond.
+          </span>
+        </span>
+        <span className="lab-callout-action">
+          Open systems lab <Icon name="arrow" />
+        </span>
+      </a>
+
       <section
         id="software-projects"
         className="work-collection"

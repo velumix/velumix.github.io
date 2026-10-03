@@ -27,7 +27,7 @@ export function ProfileInfo({ onView }: { onView: (view: View) => void }) {
   return (
     <aside className="profile-info" aria-label="Profile information">
       <section className="panel intro-panel">
-        <h2>Intro</h2>
+        <h2>Behind the work</h2>
         <p>
           I build gameplay systems, software, and developer tools. Seven-plus
           years on Roblox sit alongside my work in native apps, code

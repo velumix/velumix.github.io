@@ -28,25 +28,31 @@ export function ProjectFeed({
   layout: "feed" | "grid";
   onLayout: (layout: "feed" | "grid") => void;
 }) {
-  const visible = portfolio.filter(
+  const searchText = query.trim().toLowerCase();
+  const matches = portfolio.filter(
     (project) =>
       (!savedOnly || saved.includes(project.id)) &&
-      (filter === "All work" || project.category === filter) &&
       `${project.name} ${project.tags.join(" ")} ${project.summary} ${project.kind === "software" ? `${project.discipline} ${project.role} ${project.status ?? ""} ${project.details.join(" ")}` : ""}`
         .toLowerCase()
-        .includes(query.trim().toLowerCase()),
+        .includes(searchText),
+  );
+  const visible = matches.filter(
+    (project) => filter === "All work" || project.category === filter,
   );
   const showOverview =
-    !savedOnly && !query && filter === "All work" && layout === "feed";
+    !savedOnly && !searchText && filter === "All work" && layout === "feed";
   return (
     <div className="project-feed">
       <div className="panel feed-controls">
         <div className="feed-title">
           <div>
+            <span className="section-eyebrow">
+              {savedOnly ? "Your collection" : "Selected work"}
+            </span>
             <h2>{savedOnly ? "Saved projects" : "Projects"}</h2>
             <p role="status">
-              {query
-                ? `${visible.length} result${visible.length === 1 ? "" : "s"} for “${query}”`
+              {searchText
+                ? `${visible.length} result${visible.length === 1 ? "" : "s"} for “${query.trim()}”`
                 : savedOnly
                   ? "Your collection, saved on this device"
                   : "Roblox gameplay, software, and open-source contributions"}
@@ -77,13 +83,34 @@ export function ProjectFeed({
               onClick={() => onFilter(item)}
             >
               {item === "Games" ? "Roblox" : item}
+              <span className="filter-count" aria-hidden="true">
+                {
+                  matches.filter(
+                    (project) =>
+                      item === "All work" || project.category === item,
+                  ).length
+                }
+              </span>
             </button>
           ))}
         </div>
       </div>
+      {(searchText || filter !== "All work") && (
+        <div className="filter-summary">
+          <span>
+            {visible.length} project{visible.length === 1 ? "" : "s"}
+            {filter !== "All work"
+              ? ` in ${filter === "Games" ? "Roblox" : filter}`
+              : " found"}
+          </span>
+          <button onClick={onClear}>
+            Reset filters <Icon name="close" />
+          </button>
+        </div>
+      )}
       {visible.length === 0 ? (
         <div className="panel empty-state">
-          <Icon name={savedOnly && !query ? "bookmark" : "search"} />
+          <Icon name={savedOnly && !searchText ? "bookmark" : "search"} />
           <h3>
             {savedOnly && saved.length === 0
               ? "Keep a project for later"

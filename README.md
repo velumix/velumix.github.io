@@ -37,12 +37,15 @@ The **Systems lab** navigation item opens the Aquatica Flocking Lab at `/#lab`: 
 - `src/App.tsx`: profile navigation, search, saved projects, and theme preferences.
 - `src/components/profile/`: profile header, Roblox showcase, project collections, and Experience/Open source panels.
 - `src/styles.css`: design tokens, layouts, and responsive styles.
+- `src/workspace.css`: Velum Code-inspired palette, app shell, portfolio introduction, collection layouts, and responsive refinements.
 
 Project metrics describe the whole experience, not sole authorship. Each project panel explains the specific contribution. The Discord profile link and username-copy button are separate; clipboard errors are reported without claiming a successful copy.
 
 The default overview leads with Roblox, followed by software, contributions, and past projects. Abraxius and ProjectVite are marked as past work. The ProjectVite image is a screenshot of its actual public browser preview, not a mockup.
 
-The interface opens in dark mode. Profile tabs use URL fragments, so browser back/forward and direct links work. Search matches project names, contributions, and skills. Bookmarks and appearance preferences are stored locally on the current device; they do not require an account. Browser checks cover these interactions, responsive layouts, keyboard navigation, dialog focus, and accessibility.
+The interface uses Velum Code’s charcoal surfaces, restrained blue accents, and compact navigation, with a split introduction and real project artwork. It opens in dark mode and restores a saved appearance before rendering. Profile tabs use URL fragments, so browser back/forward and direct links work. Search matches project names, contributions, and skills. Category filters show project counts, and the interactive lab is linked from the overview.
+
+Bookmarks, appearance, and the chosen feed/grid layout are stored locally on the current device; they do not require an account. Saving or removing a project shows a confirmation with Undo. Browser checks cover these interactions, responsive layouts at 320–1440px, keyboard navigation, dialog focus, and accessibility in both themes.
 
 ## GitHub and Discord profiles
 

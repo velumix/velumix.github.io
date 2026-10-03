@@ -47,20 +47,33 @@ function readTheme(): "light" | "dark" {
   }
 }
 
+function readLayout(): "feed" | "grid" {
+  try {
+    return localStorage.getItem("velumix:layout") === "grid" ? "grid" : "feed";
+  } catch {
+    return "feed";
+  }
+}
+
 export default function App() {
   const [view, setView] = useState<View>(readView);
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState<WorkFilter>("All work");
-  const [layout, setLayout] = useState<"feed" | "grid">("feed");
+  const [layout, setLayout] = useState<"feed" | "grid">(readLayout);
   const [saved, setSaved] = useState<string[]>(readSaved);
   const [theme, setTheme] = useState<"light" | "dark">(readTheme);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [saveNotice, setSaveNotice] = useState<{
+    id: string;
+    name: string;
+    removed: boolean;
+  } | null>(null);
   const search = useRef<HTMLInputElement>(null);
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
     document
       .querySelector('meta[name="theme-color"]')
-      ?.setAttribute("content", theme === "dark" ? "#18191a" : "#ffffff");
+      ?.setAttribute("content", theme === "dark" ? "#191b1f" : "#f6f7f9");
     try {
       localStorage.setItem("velumix:appearance", theme);
     } catch {
@@ -75,8 +88,22 @@ export default function App() {
     }
   }, [saved]);
   useEffect(() => {
+    try {
+      localStorage.setItem("velumix:layout", layout);
+    } catch {
+      /* The selected layout still works for this visit. */
+    }
+  }, [layout]);
+  useEffect(() => {
+    if (!saveNotice) return;
+    const timer = window.setTimeout(() => setSaveNotice(null), 6000);
+    return () => window.clearTimeout(timer);
+  }, [saveNotice]);
+  useEffect(() => {
     const update = () => {
-      setView(readView());
+      const next = readView();
+      setView(next);
+      if (next === "lab") window.scrollTo({ top: 0, behavior: "instant" });
       setQuery("");
       setFilter("All work");
     };
@@ -120,6 +147,9 @@ export default function App() {
     if (location.hash !== `#${next}`) history.pushState(null, "", `#${next}`);
   }
   function save(id: string) {
+    const project = portfolio.find((item) => item.id === id);
+    if (!project) return;
+    setSaveNotice({ id, name: project.name, removed: saved.includes(id) });
     setSaved((current) =>
       current.includes(id)
         ? current.filter((item) => item !== id)
@@ -150,7 +180,9 @@ export default function App() {
           aria-label="Velumix home"
         >
           <Avatar small />
-          <span>velumix</span>
+          <span>
+            velumix<span className="brand-suffix"> / portfolio</span>
+          </span>
         </button>
         <div className="global-search">
           <Icon name="search" />
@@ -159,6 +191,7 @@ export default function App() {
             type="search"
             placeholder="Search projects, skills..."
             aria-label="Search projects"
+            aria-keyshortcuts="Control+k Meta+k /"
             value={query}
             onChange={(event) => searchProjects(event.target.value)}
             onKeyDown={(event) => {
@@ -179,11 +212,12 @@ export default function App() {
               <Icon name="close" />
             </button>
           ) : (
-            <kbd>/</kbd>
+            <kbd>Ctrl K</kbd>
           )}
         </div>
         <span className="header-context">
-          {view === "lab" ? "Game systems lab" : "Developer portfolio"}
+          <Icon name={views.find((item) => item.id === view)!.icon} />
+          {views.find((item) => item.id === view)!.label}
         </span>
         <div className="header-actions">
           <a
@@ -214,11 +248,13 @@ export default function App() {
         </div>
       </header>
       <aside className="app-sidebar" aria-label="Portfolio navigation">
+        <p className="nav-label">Explore</p>
         <nav aria-label="Main navigation">
           {views.map((item) => (
             <button
               key={item.id}
               aria-label={item.label}
+              title={item.label}
               className={view === item.id ? "active" : ""}
               aria-current={view === item.id ? "page" : undefined}
               onClick={() => navigate(item.id)}
@@ -260,6 +296,13 @@ export default function App() {
           </a>
         </div>
         <div className="sidebar-bottom">
+          <button className="sidebar-lab" onClick={() => navigate("lab")}>
+            <Icon name="orbit" />
+            <strong>A little room to experiment</strong>
+            <span>
+              Explore the interactive systems lab <Icon name="arrow" />
+            </span>
+          </button>
           <span className="availability">
             <span />
             Open to the right project
@@ -283,6 +326,15 @@ export default function App() {
           </Suspense>
         ) : (
           <div className="profile-container">
+            <div className="workspace-heading">
+              <span>
+                <Icon name="briefcase" /> The portfolio <span>/</span>{" "}
+                {views.find((item) => item.id === view)!.label}
+              </span>
+              <span className="availability">
+                <span /> Open to the right project
+              </span>
+            </div>
             <ProfileHeader
               view={view}
               onView={navigate}
@@ -336,9 +388,13 @@ export default function App() {
             aria-current={view === item.id ? "page" : undefined}
             onClick={() => {
               navigate(item.id);
-              document
-                .querySelector(".profile-tabs")
-                ?.scrollIntoView({ block: "start", behavior: "smooth" });
+              if (item.id !== "lab") {
+                requestAnimationFrame(() =>
+                  document
+                    .querySelector(".profile-tabs")
+                    ?.scrollIntoView({ block: "start", behavior: "instant" }),
+                );
+              }
             }}
           >
             <Icon name={item.icon} />
@@ -349,6 +405,41 @@ export default function App() {
           </button>
         ))}
       </nav>
+      <div
+        className="save-feedback"
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+      >
+        {saveNotice && (
+          <div className="save-toast">
+            <Icon name={saveNotice.removed ? "bookmark" : "check"} />
+            <span>
+              {saveNotice.name}{" "}
+              {saveNotice.removed ? "removed from saved" : "saved for later"}
+            </span>
+            <button
+              onClick={() => {
+                setSaved((current) =>
+                  saveNotice.removed
+                    ? [...new Set([...current, saveNotice.id])]
+                    : current.filter((id) => id !== saveNotice.id),
+                );
+                setSaveNotice(null);
+              }}
+            >
+              Undo
+            </button>
+            <button
+              className="toast-dismiss"
+              aria-label="Dismiss saved project notification"
+              onClick={() => setSaveNotice(null)}
+            >
+              <Icon name="close" />
+            </button>
+          </div>
+        )}
+      </div>
       {selectedProject && (
         <ProjectDialog
           project={selectedProject}

@@ -1,8 +1,12 @@
 import { Icon, type IconName } from "../Icon";
 import { discordUrl, githubUrl } from "../../data/links";
 import { portfolio } from "../../data/work";
-import { projects, type Project } from "../../data/projects";
-import { AccountAvatar } from "./SocialProfiles";
+import {
+  projects,
+  compact,
+  totalVisits,
+  type Project,
+} from "../../data/projects";
 
 export const views = [
   { id: "projects", label: "Projects", icon: "briefcase" },
@@ -46,57 +50,89 @@ export function ProfileHeader({
   savedCount: number;
 }) {
   return (
-    <section className="profile-card" aria-labelledby="profile-name">
-      <div className="profile-cover">
-        <img
-          src="/images/aquatica.png"
-          alt="The underwater world of Aquatica Observatory"
-          width="768"
-          height="432"
-          fetchPriority="high"
-        />
-        <div className="cover-shade" />
-        <button className="cover-credit" onClick={() => onSelect(projects[0])}>
-          <Icon name="gamepad" />
-          <span>Aquatica Observatory</span>
-          <Icon name="diagonal" />
-        </button>
-      </div>
-      <div className="profile-identity">
-        <div className="profile-avatar">
-          <Avatar />
-          <span className="online-dot" title="Open to projects" />
-        </div>
-        <div className="profile-name">
-          <h1 id="profile-name">Velumix</h1>
-          <p>Software & gameplay engineer</p>
-          <div className="profile-meta">
-            <span>Canada</span>
-            <span>7+ years on Roblox</span>
-            <span>Open-source contributor</span>
+    <section className="profile-card" aria-labelledby="intro-title">
+      <div className="portfolio-intro">
+        <div className="intro-copy">
+          <p className="intro-role">Software & gameplay engineer</p>
+          <h1 id="intro-title" className="intro-statement">
+            Tools for builders.
+            <br />
+            <span>Worlds for players.</span>
+          </h1>
+          <p className="intro-description">
+            I build developer tools, thoughtful interfaces, and the systems that
+            bring games to life. Made with care, from Canada.
+          </p>
+          <div className="intro-actions">
+            <a
+              className="button button-primary"
+              href={discordUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Icon name="discord" />
+              Let’s build something
+              <Icon name="diagonal" />
+            </a>
+            <a
+              className="button button-secondary"
+              href={githubUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              <Icon name="github" />
+              GitHub
+            </a>
           </div>
         </div>
-        <div className="profile-actions">
-          <a
-            className="button button-primary"
-            href={discordUrl}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <AccountAvatar provider="discord" />
-            Message me
-          </a>
-          <a
-            className="button button-secondary"
-            href={githubUrl}
-            target="_blank"
-            rel="noreferrer"
-          >
-            <AccountAvatar provider="github" />
-            GitHub
+        <button
+          className="intro-showcase"
+          onClick={() => onSelect(projects[0])}
+          aria-label="Explore Aquatica Observatory"
+        >
+          <span className="showcase-toolbar">
+            <span>
+              <Icon name="gamepad" /> A world I helped build
+            </span>
             <Icon name="diagonal" />
-          </a>
+          </span>
+          <span className="showcase-art">
+            <img
+              src="/images/aquatica.png"
+              alt="The underwater world of Aquatica Observatory"
+              width="768"
+              height="432"
+              fetchPriority="high"
+            />
+            <span className="showcase-caption">
+              <span>Gameplay · Simulation</span>
+              <strong>Aquatica Observatory</strong>
+            </span>
+          </span>
+          <span className="showcase-footer">
+            Discover the systems behind the scenery
+            <Icon name="arrow" />
+          </span>
+        </button>
+      </div>
+      <div className="portfolio-facts" aria-label="Portfolio at a glance">
+        <div>
+          <strong>7+</strong>
+          <span>years building on Roblox</span>
         </div>
+        <div>
+          <strong>{projects.length}</strong>
+          <span>game experiences</span>
+        </div>
+        <div>
+          <strong>{compact(totalVisits)}</strong>
+          <span>visits across games I’ve worked on</span>
+        </div>
+        <a href={githubUrl} target="_blank" rel="noreferrer">
+          <Icon name="code" />
+          <span>Built in the open</span>
+          <Icon name="diagonal" />
+        </a>
       </div>
       <div
         className="profile-tabs"
@@ -132,15 +168,12 @@ export function ProfileHeader({
             tabIndex={view === item.id ? 0 : -1}
             onClick={() => onView(item.id)}
           >
+            <Icon name={item.icon} />
             {item.label}
             {item.id === "projects" && <span>{portfolio.length}</span>}
             {item.id === "saved" && savedCount > 0 && <span>{savedCount}</span>}
           </button>
         ))}
-        <span className="profile-availability">
-          <span />
-          Open to projects
-        </span>
       </div>
     </section>
   );

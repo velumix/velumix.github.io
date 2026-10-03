@@ -32,7 +32,10 @@ try {
       "dark",
       "Dark theme must be the default",
     );
-    assert.equal(await page.locator("h1").innerText(), "Velumix");
+    assert.equal(
+      await page.locator("h1").innerText(),
+      "Tools for builders.\nWorlds for players.",
+    );
     assert.equal(await page.locator(".project-card").count(), 14);
     assert.equal(await page.locator(".software-card").count(), 9);
     assert.equal(await page.locator(".featured-work .game-card").count(), 1);
@@ -90,7 +93,9 @@ try {
       for (const provider of ["github", "discord"]) {
         assert.ok(
           await page
-            .locator(`.sidebar-links .account-avatar[data-provider="${provider}"]`)
+            .locator(
+              `.sidebar-links .account-avatar[data-provider="${provider}"]`,
+            )
             .isVisible(),
           `${provider} avatar stays visible in the collapsed sidebar`,
         );
@@ -124,6 +129,14 @@ try {
     await page.getByRole("button", { name: "Roblox", exact: true }).click();
     await search.fill("SQLite");
     assert.equal(await page.locator(".project-card").count(), 1);
+    assert.equal(
+      await page
+        .getByRole("button", { name: "Apps & tools", exact: true })
+        .locator(".filter-count")
+        .innerText(),
+      "1",
+      "Category counts respect the search",
+    );
     await page
       .getByRole("heading", { name: "Abraxius Lattice", exact: true })
       .waitFor();
@@ -182,6 +195,26 @@ try {
       .waitFor();
     await page.getByRole("button", { name: "All work", exact: true }).click();
 
+    // A whitespace-only search keeps the overview; saved feedback is reversible.
+    await search.fill("   ");
+    assert.equal(await page.locator(".work-overview").count(), 1);
+    await search.fill("");
+    await page.getByRole("button", { name: "Save Gojo", exact: true }).click();
+    await page.getByText("Gojo saved for later", { exact: true }).waitFor();
+    await page.getByRole("button", { name: "Undo", exact: true }).click();
+    await page
+      .getByRole("button", { name: "Save Gojo", exact: true })
+      .waitFor();
+    assert.equal(await page.locator(".save-toast").count(), 0);
+    await page.getByRole("button", { name: "Grid view", exact: true }).click();
+    await page.reload({ waitUntil: "networkidle" });
+    assert.equal(
+      await page.locator(".feed-grid .project-card").count(),
+      14,
+      "The chosen layout survives reload",
+    );
+    await page.getByRole("button", { name: "Feed view", exact: true }).click();
+
     await page
       .getByRole("button", { name: "Save Abraxius Workspace", exact: true })
       .click();
@@ -205,6 +238,15 @@ try {
     await page
       .getByRole("heading", { name: "Keep a project for later" })
       .waitFor();
+    await page.getByRole("button", { name: "Undo", exact: true }).click();
+    assert.equal(
+      await page.locator(".project-card").count(),
+      1,
+      "Undo restores a removed project in the saved collection",
+    );
+    await page
+      .getByRole("button", { name: "Unsave Aquatica Observatory", exact: true })
+      .click();
     await page.getByRole("tab", { name: /^Projects/ }).click();
 
     const trigger = page.getByRole("button", {
@@ -400,6 +442,19 @@ try {
         await page.locator("html").getAttribute("data-theme"),
         "light",
       );
+      const lightAudit = await new AxeBuilder({ page })
+        .withTags(["wcag2a", "wcag2aa", "wcag21aa"])
+        .analyze();
+      assert.deepEqual(
+        lightAudit.violations.map((v) => ({
+          id: v.id,
+          nodes: v.nodes.map((n) => n.target),
+        })),
+        [],
+        "Light theme accessibility",
+      );
+      await page.evaluate(() => scrollTo({ top: 0, behavior: "instant" }));
+      await page.screenshot({ path: ".preview/profile-light-screen.png" });
       await page.getByRole("button", { name: "Switch to dark mode" }).click();
       await page.reload({ waitUntil: "networkidle" });
       assert.equal(
@@ -429,7 +484,7 @@ try {
       await page.screenshot({ path: `.preview/profile-${name}-screen.png` });
     }
     console.log(
-      `PASS ${width}px: dark default, search, filters, layouts, saved persistence, tabs, history, modal, gallery, clipboard, loaded artwork${[390, 1024, 1440].includes(width) ? ", accessibility" : ""}`,
+      `PASS ${width}px: dark default, search, filters, layout persistence, save/unsave undo, saved persistence, tabs, history, modal, gallery, clipboard, loaded artwork${[390, 1024, 1440].includes(width) ? ", accessibility" : ""}`,
     );
     await context.close();
   }
