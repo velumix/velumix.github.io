@@ -197,7 +197,7 @@ export function Brand({ footer = false }: { footer?: boolean }) {
       href="#top"
       aria-label="Velumix home"
     >
-      <img src="/images/velumix-logo.png" alt="" width="32" height="32" />
+      <img src="/images/brand/logo-128.webp" alt="" width="32" height="32" />
       <span>
         velumix<span className="brand-period">.</span>
       </span>

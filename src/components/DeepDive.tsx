@@ -13,11 +13,14 @@ export function DeepDive({
       aria-labelledby="dive-title"
     >
       <div className="dive-image">
-        <img
-          src="/images/aquatica.png"
-          alt="A diver exploring the Aquatica Observatory"
-          loading="lazy"
-        />
+        <picture>
+          <source srcSet="/images/aquatica.webp" type="image/webp" />
+          <img
+            src="/images/aquatica.png"
+            alt="A diver exploring the Aquatica Observatory"
+            loading="lazy"
+          />
+        </picture>
         <div className="dive-image-shade" />
         <span className="dive-coordinate">↓ BELOW THE SURFACE</span>
         <span className="dive-word">

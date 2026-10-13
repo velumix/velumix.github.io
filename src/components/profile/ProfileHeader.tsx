@@ -28,10 +28,10 @@ export function Avatar({ small = false }: { small?: boolean }) {
       aria-hidden="true"
     >
       <img
-        src="/images/velumix-logo.png"
+        src="/images/brand/logo-128.webp"
         alt=""
-        width="1254"
-        height="1254"
+        width={small ? "32" : "48"}
+        height={small ? "32" : "48"}
         decoding="async"
       />
     </span>
@@ -43,11 +43,15 @@ export function ProfileHeader({
   onView,
   onSelect,
   savedCount,
+  onSearch,
+  activeQuery = "",
 }: {
   view: View;
   onView: (view: View) => void;
   onSelect: (project: Project) => void;
   savedCount: number;
+  onSearch?: (query: string) => void;
+  activeQuery?: string;
 }) {
   return (
     <section className="profile-card" aria-labelledby="intro-title">
@@ -84,6 +88,23 @@ export function ProfileHeader({
               GitHub
             </a>
           </div>
+          <div className="intro-chips" role="group" aria-label="Core technologies">
+            {["Rust", "C#", "Go", "React", "Luau"].map((tech) => {
+              const active = activeQuery.trim().toLowerCase() === tech.toLowerCase();
+              return (
+                <button
+                  key={tech}
+                  type="button"
+                  className={`intro-chip${active ? " is-active" : ""}`}
+                  aria-pressed={active}
+                  onClick={() => onSearch?.(active ? "" : tech)}
+                  title={active ? `Clear ${tech} filter` : `Filter portfolio by ${tech}`}
+                >
+                  {tech}
+                </button>
+              );
+            })}
+          </div>
         </div>
         <button
           className="intro-showcase"
@@ -97,13 +118,16 @@ export function ProfileHeader({
             <Icon name="diagonal" />
           </span>
           <span className="showcase-art">
-            <img
-              src="/images/aquatica.png"
-              alt="The underwater world of Aquatica Observatory"
-              width="768"
-              height="432"
-              fetchPriority="high"
-            />
+            <picture>
+              <source srcSet="/images/aquatica.webp" type="image/webp" />
+              <img
+                src="/images/aquatica.png"
+                alt="The underwater world of Aquatica Observatory"
+                width="768"
+                height="432"
+                fetchPriority="high"
+              />
+            </picture>
             <span className="showcase-caption">
               <span>Gameplay · Simulation</span>
               <strong>Aquatica Observatory</strong>

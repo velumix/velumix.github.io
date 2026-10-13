@@ -340,6 +340,8 @@ export default function App() {
               onView={navigate}
               onSelect={setSelectedProject}
               savedCount={saved.length}
+              onSearch={searchProjects}
+              activeQuery={query}
             />
             <div
               className={`profile-content${view === "projects" || view === "saved" ? " profile-content-work" : ""}`}

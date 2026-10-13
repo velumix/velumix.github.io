@@ -14,20 +14,24 @@ export function GameCard({
   onSelect: (project: Project) => void;
   featured?: boolean;
 }) {
+  const webpCover = project.cover.replace(/\.png$/, ".webp");
   const artwork = (
     <button
       className="project-cover"
       aria-label={`View ${project.name} project`}
       onClick={() => onSelect(project)}
     >
-      <img
-        src={project.cover}
-        alt={`${project.name} game artwork`}
-        width="768"
-        height="432"
-        loading="lazy"
-        decoding="async"
-      />
+      <picture>
+        <source srcSet={webpCover} type="image/webp" />
+        <img
+          src={project.cover}
+          alt={`${project.name} game artwork`}
+          width="768"
+          height="432"
+          loading="lazy"
+          decoding="async"
+        />
+      </picture>
       <span>
         View project <Icon name="diagonal" />
       </span>
@@ -40,14 +44,17 @@ export function GameCard({
       {featured && artwork}
       <div className="project-card-top">
         {!featured && (
-          <img
-            className="project-avatar"
-            src={project.cover}
-            alt=""
-            loading="lazy"
-            width="44"
-            height="44"
-          />
+          <picture>
+            <source srcSet={webpCover} type="image/webp" />
+            <img
+              className="project-avatar"
+              src={project.cover}
+              alt=""
+              loading="lazy"
+              width="44"
+              height="44"
+            />
+          </picture>
         )}
         <div>
           <h3>

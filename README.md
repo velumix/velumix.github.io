@@ -19,6 +19,8 @@ npm run check:browser  # Desktop/mobile interaction and layout checks against di
 npm run check:lab      # Flocking simulation and preset validation
 npm run check:lab-browser # Lab interactions and responsive/accessibility checks
 npm run check:observatory-browser
+npm run optimize:images # Resample artwork and generate crisp WebP images and brand icons
+npm run render:og       # Render 1200×630 social preview card for Open Graph / Twitter
 npm run preview        # Serve the production build locally
 ```
 
